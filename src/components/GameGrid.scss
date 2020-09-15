@@ -1,0 +1,22 @@
+#GameGrid {
+    .row {
+        display: flex;
+
+        .block {
+            background: #444444;
+            width: 125px;
+            height: 125px;
+            margin: 10px;
+            transition: .2s ease-out all;
+            border: 2px solid #444444;
+
+            &.pink {
+                border: 2px dashed #DE7186;
+            }
+
+            &.completed {
+                background: #DE7186;
+            }
+        }
+    }
+}

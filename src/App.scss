@@ -1,0 +1,24 @@
+// IMPORT ALL COMPONENTS
+@import './components/GameGrid.scss';
+
+.App {
+  display: flex;
+  height: 100vh;
+  background: black;
+  color: white;
+
+  .col {
+    padding: 40px;
+    width: 50%;
+
+    &.left-col {
+      background: #181616;
+    }
+
+    &.right-col {
+      background: #232323;
+    }
+  }
+
+
+}
