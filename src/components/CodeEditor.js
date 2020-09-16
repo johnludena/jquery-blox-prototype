@@ -15,12 +15,11 @@ import 'codemirror/mode/javascript/javascript';
 class CodeEditor extends React.Component {
   constructor() {
     super();
-    this.iframe = React.createRef(); // new React refs format;
+    this.iframe = React.createRef(); // iframe node (new React refs format)
 
     this.state = {
       html: `<button>click me</button>`,
-      css: `
-      button {
+      css: `button {
         padding: 10px 20px;
       background: blue;
       color: white;
@@ -30,24 +29,24 @@ class CodeEditor extends React.Component {
         background: red;
     }
       `,
-      js: `
-      let button = document.querySelector('button');
-
-button.addEventListener('click', ()=> {
-	button.classList.add('active');
+      js: `let button = document.querySelector('button');
+    button.addEventListener('click', ()=> {
+    button.classList.toggle('active');
 });`,
     };
   }
 
   componentDidUpdate() {
+    console.log('componentDidUpdate')
     
     // trigger an update when user adds new code
     this.runCode();
   }
 
   componentDidMount() {
+      console.log('componentDidMount')
 
-    // initial runCode();
+    // initial load
     this.runCode();
   }
 
@@ -56,6 +55,8 @@ button.addEventListener('click', ()=> {
 
     const iframe = this.iframe.current;
     const document = iframe.contentDocument;
+
+    console.log(document)
     const documentContents = `
       <!DOCTYPE html>
       <html lang="en">
@@ -131,6 +132,7 @@ button.addEventListener('click', ()=> {
                 ...codeMirrorOptions,
               }}
               onBeforeChange={(editor, data, js) => {
+                console.log({editor, data, js})
                 this.setState({ js });
               }}
             />
