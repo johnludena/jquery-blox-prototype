@@ -13,76 +13,11 @@ import 'codemirror/mode/javascript/javascript';
 
 
 class CodeEditor extends React.Component {
-  constructor() {
-    super();
-    this.iframe = React.createRef(); // iframe node (new React refs format)
+  constructor(props) {
+    super(props);
 
-    this.state = {
-      html: `<button>click me</button>`,
-      css: `button {
-        padding: 10px 20px;
-      background: blue;
-      color: white;
-    }
-
-    button.active {
-        background: red;
-    }
-      `,
-      js: `let button = document.querySelector('button');
-    button.addEventListener('click', ()=> {
-    button.classList.toggle('active');
-});`,
-    };
   }
 
-  componentDidUpdate() {
-    console.log('componentDidUpdate')
-    
-    // trigger an update when user adds new code
-    this.runCode();
-  }
-
-  componentDidMount() {
-      console.log('componentDidMount')
-
-    // initial load
-    this.runCode();
-  }
-
-  runCode = () => {
-    const { html, css, js } = this.state;
-
-    const iframe = this.iframe.current;
-    const document = iframe.contentDocument;
-
-    console.log(document)
-    const documentContents = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-        <style>
-          ${css}
-        </style>
-      </head>
-      <body>
-        ${html}
-
-        <script type="text/javascript">
-          ${js}
-        </script>
-      </body>
-      </html>
-    `;
-
-    document.open();
-    document.write(documentContents);
-    document.close();
-  };
 
   render() {
     const { html, js, css } = this.state;
@@ -138,9 +73,7 @@ class CodeEditor extends React.Component {
             />
           </div>
         </section>
-        <section className="result">
-          <iframe title="result" className="iframe" ref={this.iframe} />
-        </section>
+        
       </div>
     );
   }
