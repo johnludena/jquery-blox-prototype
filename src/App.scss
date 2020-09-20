@@ -3,7 +3,7 @@
 
 .App {
   display: flex;
-  height: 100vh;
+  height: 100%;
   background: black;
   color: white;
 
@@ -13,10 +13,20 @@
 
     &.left-col {
       background: #181616;
+      // height: 100vh;
     }
 
     &.right-col {
       background: #232323;
+      // height: 100vh;
+
+       iframe { 
+        //  width: 100%;
+        //  height: 100vh;
+        width: 100%;
+        height: 660px;
+        
+        }
     }
   }
 

@@ -18,9 +18,15 @@ class CodeEditor extends React.Component {
 
   }
 
+  handleChange(codeType, payload) {
+    console.log('handChange FN');
+    console.log(codeType, payload);
+    this.props.refreshCode(codeType, payload);
+  }
+
 
   render() {
-    const { html, js, css } = this.state;
+    const { html, js, css } = this.props.data;
 
     const codeMirrorOptions = {
         theme: 'material',
@@ -41,7 +47,7 @@ class CodeEditor extends React.Component {
                 ...codeMirrorOptions,
               }}
               onBeforeChange={(editor, data, html) => {
-                this.setState({ html });
+                this.handleChange('html', html);
               }}
             />
           </div>
@@ -54,7 +60,7 @@ class CodeEditor extends React.Component {
                 ...codeMirrorOptions,
               }}
               onBeforeChange={(editor, data, css) => {
-                this.setState({ css });
+                this.handleChange('css', css);
               }}
             />
           </div>
@@ -67,8 +73,7 @@ class CodeEditor extends React.Component {
                 ...codeMirrorOptions,
               }}
               onBeforeChange={(editor, data, js) => {
-                console.log({editor, data, js})
-                this.setState({ js });
+                this.handleChange('js', js);
               }}
             />
           </div>

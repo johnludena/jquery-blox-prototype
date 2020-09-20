@@ -5,18 +5,13 @@ import './App.scss';
 
 let startHtml = `<button>hi</button>`;
 let startCss = `button {
-  padding: 10px 20px;
-  background: blue;
-  color: white;
+  border: 2px dashed #de7186;
 }
 
 button.active {
-    background: red;
+  background: #de7186;
 }`;
-let startJs = `var button = document.querySelector('button');
-button.addEventListener('click', ()=> {
-button.classList.toggle('active');
-});`
+let startJs = ``
 
 
 class App extends React.Component {
@@ -30,63 +25,25 @@ class App extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    console.log('componentDidUpdate')
-    
-    // trigger an update when user adds new code
-    this.runCode();
-  }
+  updateUi = (codeType, payload) => {
+    console.log('update UI FN');
+    console.log({codeType, payload})
 
-  componentDidMount() {
-      console.log('componentDidMount')
+    this.setState({
+      [codeType]: payload
+    })
+   }
 
-    // initial load
-    this.runCode();
-  }
-
-  runCode = () => {
-    const { html, css, js } = this.state;
-
-    const iframe = this.iframe.current;
-    const document = iframe.contentDocument;
-
-    console.log(document)
-    const documentContents = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-        <style>
-          ${css}
-        </style>
-      </head>
-      <body>
-        ${html}
-
-        <script type="text/javascript">
-          ${js}
-        </script>
-      </body>
-      </html>
-    `;
-
-    document.open();
-    document.write(documentContents);
-    document.close();
-  };
 
   render() {
     return (
       <div className="App">
         
         <div className="left-col col">
-          <CodeEditor />
+          <CodeEditor data={this.state} refreshCode={this.updateUi} />
         </div>
         <div className="right-col col">
-          <GameGrid />
+          <GameGrid data={this.state} />
         </div>
         
       </div>
