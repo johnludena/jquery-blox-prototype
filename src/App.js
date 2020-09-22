@@ -11,8 +11,7 @@ let startCss = `button {
 button.active {
   background: #de7186;
 }`;
-let startJs = ``
-
+let startJs = ``;
 
 class App extends React.Component {
 
@@ -26,12 +25,11 @@ class App extends React.Component {
   }
 
   updateUi = (codeType, payload) => {
-    console.log('update UI FN');
-    console.log({codeType, payload})
 
     this.setState({
       [codeType]: payload
-    })
+    });
+
    }
 
 

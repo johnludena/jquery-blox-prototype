@@ -19,8 +19,6 @@ class CodeEditor extends React.Component {
   }
 
   handleChange(codeType, payload) {
-    console.log('handChange FN');
-    console.log(codeType, payload);
     this.props.refreshCode(codeType, payload);
   }
 
