@@ -1,4 +1,6 @@
 #GameGrid {
+  background: url('../images/gray-square.svg') top left repeat-x;
+
   .row {
     display: flex;
 
@@ -9,6 +11,7 @@
       margin: 10px;
       transition: 0.2s ease-out all;
       border: 2px solid #444444;
+      // display: inline-block;
 
       &.pink {
         border: 2px dashed #de7186;
