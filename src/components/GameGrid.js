@@ -1,16 +1,14 @@
 import React from "react";
-import successSound from '../audio/success.wav';
+import successSound from "../audio/success.wav";
 
-let finalJs = `var button = document.querySelector('button')`
-
+let finalJs = `var button = document.querySelector('button')`;
 
 class GameGrid extends React.Component {
   constructor() {
     super();
-    
+
     this.iframe = React.createRef(); // iframe node (new React 'refs' format)
     this.audioFile = React.createRef();
-  
   }
 
   componentDidUpdate() {
@@ -18,7 +16,7 @@ class GameGrid extends React.Component {
 
     if (this.props.data.js === finalJs) {
       this.audioFile.current.play();
-      console.log('YOU DID IT!')
+      console.log("YOU DID IT!");
     }
   }
 
@@ -26,7 +24,6 @@ class GameGrid extends React.Component {
     this.updateGameGrid();
 
     // this.audioFile.current.play();
-    
   }
 
   updateGameGrid() {
@@ -43,7 +40,9 @@ class GameGrid extends React.Component {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Your Awesome Game!</title>
-        <link rel="stylesheet" href="${process.env.PUBLIC_URL + '/GameBlocks.css'}">
+        <link rel="stylesheet" href="${
+          process.env.PUBLIC_URL + "/GameBlocks.css"
+        }">
         <style>
           ${css}
         </style>
@@ -65,13 +64,41 @@ class GameGrid extends React.Component {
 
   render() {
     return (
-      <div id="GameGrid">
-        <iframe title="result" className="iframe" ref={this.iframe} />
-       
-        <audio src={successSound} ref={this.audioFile}></audio>
+      <div className="grids-outter-wrapper">
+        <div id="GameGrid">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
 
+        <div id="iFrameWrapper">
+          <iframe title="result" className="iframe" ref={this.iframe} />
+
+          <audio src={successSound} ref={this.audioFile}></audio>
+        </div>
       </div>
-
     );
   }
 }

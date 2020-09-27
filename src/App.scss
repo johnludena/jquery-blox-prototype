@@ -1,6 +1,10 @@
 // IMPORT ALL COMPONENTS
 @import './components/GameGrid.scss';
 
+body * {
+  box-sizing: border-box;
+}
+
 .App {
   display: flex;
   height: 100vh;
@@ -27,16 +31,6 @@
     &.right-col {
       background: #232323;
       // height: 100vh;
-
-       iframe { 
-        //  width: 100%;
-        //  height: 100vh;
-        width: 100%;
-        height: 660px;
-        
-        }
     }
   }
-
-
 }
