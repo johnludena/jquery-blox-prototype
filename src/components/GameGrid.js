@@ -16,7 +16,7 @@ class GameGrid extends React.Component {
 
     if (this.props.data.js === finalJs) {
       this.audioFile.current.play();
-      console.log("YOU DID IT!");
+      
     }
   }
 
@@ -64,7 +64,8 @@ class GameGrid extends React.Component {
 
   render() {
     return (
-      <div className="grids-outter-wrapper">
+      <div className="right-col col">
+        <div className="grids-outter-wrapper">
         <div id="GameGrid">
           <div></div>
           <div></div>
@@ -98,6 +99,7 @@ class GameGrid extends React.Component {
 
           <audio src={successSound} ref={this.audioFile}></audio>
         </div>
+      </div>
       </div>
     );
   }

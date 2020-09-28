@@ -1,7 +1,9 @@
-import React from 'react';
-import GameGrid from './components/GameGrid';
-import CodeEditor from './components/CodeEditor';
-import './App.scss';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import GameGrid from "./components/GameGrid";
+import CodeEditor from "./components/CodeEditor";
+import "./App.scss";
 
 let startHtml = `<button class="block">btn</button>
 <div class="block">div</div>
@@ -13,8 +15,7 @@ let startHtml = `<button class="block">btn</button>
   <li class="block">li 2</li>
   <li class="block">li 3</li>
 </ul>
-`
-;
+`;
 let startCss = `button {
   grid-column-start: 3;
   grid-row-start: 3;
@@ -36,9 +37,20 @@ ul li.block {
 }`;
 let startJs = ``;
 
-class App extends React.Component {
+function Home() {
+  return <h2>Home</h2>;
+}
 
-  constructor(){
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
+
+class App extends React.Component {
+  constructor() {
     super();
     this.state = {
       html: startHtml,
@@ -48,28 +60,27 @@ class App extends React.Component {
   }
 
   updateUi = (codeType, payload) => {
-
     this.setState({
-      [codeType]: payload
+      [codeType]: payload,
     });
-
-   }
-
+  };
 
   render() {
     return (
-      <div className="App">
-        
-        <div className="left-col col">
-          <h1>Lesson 1</h1>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde minus eos hic consectetur dolorum facere maxime nihil repellendus facilis nam, eveniet fugit consequuntur ipsa harum atque rerum maiores iusto est.</p>
-          <CodeEditor data={this.state} refreshCode={this.updateUi} />
-        </div>
-        <div className="right-col col">
-          <GameGrid data={this.state} />
-        </div>
-        
-      </div>
+      <Router>
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/lesson/3">
+            <Users />
+          </Route>
+          <Route path="/">
+            <CodeEditor data={this.state} refreshCode={this.updateUi} />
+            <GameGrid data={this.state} />
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }

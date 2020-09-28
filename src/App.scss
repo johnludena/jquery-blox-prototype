@@ -1,6 +1,8 @@
 // IMPORT ALL COMPONENTS
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import './components/GameGrid.scss';
+@import './components/CodeEditor.scss';
+
 body {
   font-family: 'Roboto', sans-serif;
   font-family: 16px;
@@ -10,7 +12,7 @@ body * {
   box-sizing: border-box;
 }
 
-.App {
+#root {
   display: flex;
   height: 100vh;
   background: black;
@@ -23,14 +25,6 @@ body * {
     &.left-col {
       background: #181616;
       // height: 100vh;
-
-      .code-editor {
-        margin-top: 20px;
-
-        &:first-child {
-          margin-top: 0;
-        }
-      }
     }
 
     &.right-col {
