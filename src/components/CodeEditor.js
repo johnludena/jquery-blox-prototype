@@ -1,6 +1,12 @@
 import React from "react";
-// import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react"; // not needed, delete after successful assertion testing
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+// Importing assertion + testing library for student's code validation
+import { expect } from 'chai';
+
+// CodeMirror React wrapper
 import { Controlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
 
 // CodeMirror CSS imports
@@ -11,6 +17,9 @@ import "codemirror/mode/htmlmixed/htmlmixed";
 import "codemirror/mode/css/css";
 import "codemirror/mode/javascript/javascript";
 
+// TESTING
+console.log(expect)
+
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +27,11 @@ class CodeEditor extends React.Component {
 
   handleChange(codeType, payload) {
     this.props.refreshCode(codeType, payload);
+    console.log('code was updated, running assertion...');
+    let foo = 45;
+    if (expect(foo).to.be.a('string')) {
+      console.log('foo is a string')
+    }
   }
 
   render() {
@@ -80,6 +94,9 @@ class CodeEditor extends React.Component {
               Go to next challenge
             </Link>
           </section>
+        </div>
+        <div className="results">
+          <div id="mocha"></div>
         </div>
       </div>
     );
