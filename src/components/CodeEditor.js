@@ -18,7 +18,6 @@ import "codemirror/mode/css/css";
 import "codemirror/mode/javascript/javascript";
 
 // TESTING
-console.log(expect)
 
 class CodeEditor extends React.Component {
   constructor(props) {
@@ -27,11 +26,21 @@ class CodeEditor extends React.Component {
 
   handleChange(codeType, payload) {
     this.props.refreshCode(codeType, payload);
-    console.log('code was updated, running assertion...');
-    let foo = 45;
-    if (expect(foo).to.be.a('string')) {
-      console.log('foo is a string')
+    
+    if (codeType === 'js') {
+      console.log('change was made to JS, about to run assertions...');
+
+      // let's access the DOM playing iframe
+      let iframe = document.querySelector('iframe');
+
+      // get the button node inside the iframe
+      let innerDoc = (iframe.contentDocument) ? iframe.contentDocument : iframe.contentWindow.document; 
+      let currentScript = innerDoc.currentScript;
+
+      let buttonNode = innerDoc.querySelector('button');
+      console.log({buttonNode, currentScript})
     }
+
   }
 
   render() {

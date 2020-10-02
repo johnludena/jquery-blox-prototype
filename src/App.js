@@ -5,37 +5,14 @@ import GameGrid from "./components/GameGrid";
 import CodeEditor from "./components/CodeEditor";
 import "./App.scss";
 
-let startHtml = `<button class="block">btn</button>
-<div class="block">div</div>
-<p class="block">p</p>
-<a class="block">a</a>
-<img class="block" src="https://picsum.photos/125/125" />
-<ul>
-  <li class="block">li 1</li>
-  <li class="block">li 2</li>
-  <li class="block">li 3</li>
-</ul>
-`;
-let startCss = `button {
+let startHtml = `<button class="block one">btn 1</button>
+<button class="block two">btn 2</button>`;
+let startCss = `button.one {
   grid-column-start: 3;
   grid-row-start: 3;
-}
-ul {
-  grid-column-start: 2;
-  grid-row-start: 4;
-  grid-column-end: 5;
-  display: flex;
-  list-style-type: none;
-  justify-content: space-between;
-}
-ul li.block {
-  flex: 1;
-  max-width: 125px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }`;
-let startJs = ``;
+let startJs = `// create a node for the button element and assign it to a variable called 'purpleButton'
+var buttonNode = document.querySelector('button.two')`;
 
 function Home() {
   return <h2>Home</h2>;

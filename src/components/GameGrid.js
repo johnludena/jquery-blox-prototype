@@ -53,6 +53,20 @@ class GameGrid extends React.Component {
         <script type="text/javascript">
           ${js}
         </script>
+        <script type="text/javascript">
+          if (typeof buttonNode !== 'undefined') {
+            console.log('Nice, we got a node selection');
+            var isEqualNode = buttonNode.isEqualNode(document.querySelector('button.block'));
+            if (isEqualNode) {
+              console.log('awesome! nodes match!');
+            }
+            else {
+              console.log('sorry, you selected the wrong node');
+            }
+          } else {
+            console.log('Sorry, try again');
+          }
+        </script>
       </body>
       </html>
     `;
