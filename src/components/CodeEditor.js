@@ -40,7 +40,6 @@ class CodeEditor extends React.Component {
       let buttonNode = innerDoc.querySelector('button');
       console.log({buttonNode, currentScript})
     }
-
   }
 
   render() {

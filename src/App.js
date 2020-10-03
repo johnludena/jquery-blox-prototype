@@ -5,6 +5,10 @@ import GameGrid from "./components/GameGrid";
 import CodeEditor from "./components/CodeEditor";
 import "./App.scss";
 
+import lessons from './lessons/data';
+
+console.log({lessons})
+
 let startHtml = `<button class="block one">btn 1</button>
 <button class="block two">btn 2</button>`;
 let startCss = `button.one {
@@ -14,12 +18,8 @@ let startCss = `button.one {
 let startJs = `// create a node for the button element and assign it to a variable called 'purpleButton'
 var buttonNode = document.querySelector('button.two')`;
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
 function About() {
-  return <h2>About</h2>;
+  return <h2>About Route</h2>;
 }
 
 function Users() {
