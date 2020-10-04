@@ -28,7 +28,6 @@ class CodeEditor extends React.Component {
     this.props.refreshCode(codeType, payload);
     
     if (codeType === 'js') {
-      console.log('change was made to JS, about to run assertions...');
 
       // let's access the DOM playing iframe
       let iframe = document.querySelector('iframe');
@@ -38,7 +37,6 @@ class CodeEditor extends React.Component {
       let currentScript = innerDoc.currentScript;
 
       let buttonNode = innerDoc.querySelector('button');
-      console.log({buttonNode, currentScript})
     }
   }
 

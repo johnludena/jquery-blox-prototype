@@ -5,34 +5,14 @@ import GameGrid from "./components/GameGrid";
 import CodeEditor from "./components/CodeEditor";
 import "./App.scss";
 
-import lessons from './lessons/data';
+import lessonsArr from './lessons/data';
 
-console.log({lessons})
-
-let startHtml = `<button class="block one">btn 1</button>
-<button class="block two">btn 2</button>`;
-let startCss = `button.one {
-  grid-column-start: 3;
-  grid-row-start: 3;
-}`;
-let startJs = `// create a node for the button element and assign it to a variable called 'purpleButton'
-var buttonNode = document.querySelector('button.two')`;
-
-function About() {
-  return <h2>About Route</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      html: startHtml,
-      css: startCss,
-      js: startJs,
+      lessonsArr 
     };
   }
 
@@ -43,10 +23,23 @@ class App extends React.Component {
   };
 
   render() {
+
+    console.log('App > this.state', this.state)
+
+    let routesArr = lessonsArr.map((lesson, index)=>{
+      return (
+        <Route path={`/${index + 1}`} key={index + 1}>
+          <CodeEditor data={this.state.lessonsArr[index]} refreshCode={this.updateUi} />
+          <GameGrid data={this.state.lessonsArr[index]} />
+        </Route>
+      )
+    });
+
     return (
       <Router>
         <Switch>
-          <Route path="/about">
+          {routesArr}
+          {/* <Route path="/about">
             <About />
           </Route>
           <Route path="/lesson/3">
@@ -55,7 +48,7 @@ class App extends React.Component {
           <Route path="/">
             <CodeEditor data={this.state} refreshCode={this.updateUi} />
             <GameGrid data={this.state} />
-          </Route>
+          </Route> */}
         </Switch>
       </Router>
     );
