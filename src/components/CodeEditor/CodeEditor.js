@@ -25,7 +25,8 @@ class CodeEditor extends React.Component {
   }
 
   handleChange(codeType, payload) {
-    this.props.refreshCode(codeType, payload);
+    let lessonIndex = this.props.lessonKey;
+    this.props.refreshCode(codeType, payload, lessonIndex);
     
     if (codeType === 'js') {
 

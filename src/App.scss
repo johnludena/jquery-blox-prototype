@@ -1,7 +1,7 @@
 // IMPORT ALL COMPONENTS
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import './components/GameGrid.scss';
-@import './components/CodeEditor.scss';
+@import './components//GameGrid/GameGrid.scss';
+@import './components/CodeEditor/CodeEditor.scss';
 
 body {
   font-family: 'Roboto', sans-serif;

@@ -1,5 +1,8 @@
+// libs
 import React from "react";
-import successSound from "../audio/success.wav";
+
+// assets
+import successSound from "../../audio/success.wav";
 
 let finalJs = `var button = document.querySelector('button')`;
 
@@ -14,16 +17,14 @@ class GameGrid extends React.Component {
   componentDidUpdate() {
     this.updateGameGrid();
 
-    if (this.props.data.js === finalJs) {
-      this.audioFile.current.play();
+    // if (this.props.data.js === finalJs) {
+    //   this.audioFile.current.play();
       
-    }
+    // }
   }
 
   componentDidMount() {
     this.updateGameGrid();
-
-    // this.audioFile.current.play();
   }
 
   updateGameGrid() {
@@ -77,35 +78,19 @@ class GameGrid extends React.Component {
   }
 
   render() {
+
+    let blocksNumber = 25;
+    let divsArr = [];
+
+    for(let i = 0; i < blocksNumber; i++) {
+      divsArr.push(<div key={i}></div>);
+    }
+
     return (
       <div className="right-col col">
         <div className="grids-outter-wrapper">
         <div id="GameGrid">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          {divsArr} 
         </div>
 
         <div id="iFrameWrapper">

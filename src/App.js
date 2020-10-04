@@ -1,10 +1,15 @@
+// libs
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import GameGrid from "./components/GameGrid";
-import CodeEditor from "./components/CodeEditor";
+// components
+import GameGrid from "./components/GameGrid/GameGrid";
+import CodeEditor from "./components/CodeEditor/CodeEditor";
+
+// css
 import "./App.scss";
 
+// app data
 import lessonsArr from './lessons/data';
 
 
@@ -16,21 +21,25 @@ class App extends React.Component {
     };
   }
 
-  updateUi = (codeType, payload) => {
+  updateUi = (codeType, payload, pageIndex) => {
+    console.log({
+      codeType, payload, pageIndex
+    })
+
+    // let currentState = { ...this.state };
+    // console.log('current state', currentState);
     this.setState({
-      [codeType]: payload,
+      ...lessonsArr[pageIndex][codeType] = payload,
     });
   };
 
   render() {
 
-    console.log('App > this.state', this.state)
-
-    let routesArr = lessonsArr.map((lesson, index)=>{
+    let routesArr = this.state.lessonsArr.map((lesson, index)=>{
       return (
         <Route path={`/${index + 1}`} key={index + 1}>
-          <CodeEditor data={this.state.lessonsArr[index]} refreshCode={this.updateUi} />
-          <GameGrid data={this.state.lessonsArr[index]} />
+          <CodeEditor data={lesson} refreshCode={this.updateUi} lessonKey={index}  />
+          <GameGrid data={lesson} />
         </Route>
       )
     });
