@@ -22,15 +22,19 @@ class App extends React.Component {
   }
 
   updateUi = (codeType, payload, pageIndex) => {
-    console.log({
-      codeType, payload, pageIndex
-    })
 
-    // let currentState = { ...this.state };
+    // updated nested state property
+    let newState = [ ...this.state.lessonsArr ];
+    newState[pageIndex][codeType] = payload;
+
+    console.log('newState', newState)
+
+    this.setState({newState});
+
     // console.log('current state', currentState);
-    this.setState({
-      ...lessonsArr[pageIndex][codeType] = payload,
-    });
+    // this.setState({
+    //   ...lessonsArr[pageIndex][codeType] = payload,
+    // });
   };
 
   render() {
