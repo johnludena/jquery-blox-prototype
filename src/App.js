@@ -1,6 +1,6 @@
 // libs
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 // components
 import GameGrid from "./components/GameGrid/GameGrid";
@@ -24,17 +24,16 @@ class App extends React.Component {
   updateUi = (codeType, payload, pageIndex) => {
 
     // updated nested state property
-    let newState = [ ...this.state.lessonsArr ];
-    newState[pageIndex][codeType] = payload;
+    // let newState = [ ...this.state.lessonsArr ];
+    // newState[pageIndex][codeType] = payload;
 
-    console.log('newState', newState)
+    // this.setState({newState});
 
-    this.setState({newState});
-
+    // Another way to do the same thing as above...
     // console.log('current state', currentState);
-    // this.setState({
-    //   ...lessonsArr[pageIndex][codeType] = payload,
-    // });
+    this.setState({
+      ...lessonsArr[pageIndex][codeType] = payload,
+    });
   };
 
   render() {
@@ -51,17 +50,10 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
+          <Route exact path='/'>
+            <Redirect to='/1' />
+          </Route>
           {routesArr}
-          {/* <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/lesson/3">
-            <Users />
-          </Route>
-          <Route path="/">
-            <CodeEditor data={this.state} refreshCode={this.updateUi} />
-            <GameGrid data={this.state} />
-          </Route> */}
         </Switch>
       </Router>
     );

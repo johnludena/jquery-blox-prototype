@@ -97,7 +97,10 @@ class CodeEditor extends React.Component {
           </section>
 
           <section className="bottom-navigation">
-            <Link className="button" to="/about">
+            <Link style={{marginRight: 30}} className="button" to={`/${this.props.lessonKey}`}>
+              Go to previous challenge
+            </Link>
+            <Link className="button" to={`/${this.props.lessonKey + 2}`}>
               Go to next challenge
             </Link>
           </section>
