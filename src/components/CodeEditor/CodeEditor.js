@@ -4,7 +4,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // Importing assertion + testing library for student's code validation
-import { expect } from 'chai';
+// import { expect } from 'chai';
 
 // CodeMirror React wrapper
 import { Controlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
@@ -22,24 +22,16 @@ import "codemirror/mode/javascript/javascript";
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   handleChange(codeType, payload) {
     let lessonIndex = this.props.lessonKey;
     this.props.refreshCode(codeType, payload, lessonIndex);
-    
-    if (codeType === 'js') {
 
-      // let's access the DOM playing iframe
-      let iframe = document.querySelector('iframe');
-
-      // get the button node inside the iframe
-      let innerDoc = (iframe.contentDocument) ? iframe.contentDocument : iframe.contentWindow.document; 
-      let currentScript = innerDoc.currentScript;
-
-      let buttonNode = innerDoc.querySelector('button');
-    }
   }
+
+
 
   render() {
     const { html, js, css } = this.props.data;
@@ -96,6 +88,8 @@ class CodeEditor extends React.Component {
             </div>
           </section>
 
+          
+
           <section className="bottom-navigation">
             <Link style={{marginRight: 30}} className="button" to={`/${this.props.lessonKey}`}>
               Go to previous challenge
@@ -103,6 +97,7 @@ class CodeEditor extends React.Component {
             <Link className="button" to={`/${this.props.lessonKey + 2}`}>
               Go to next challenge
             </Link>
+            
           </section>
         </div>
         <div className="results">

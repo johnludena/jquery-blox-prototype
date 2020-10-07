@@ -4,7 +4,7 @@ import React from "react";
 // assets
 import successSound from "../../audio/success.wav";
 
-let finalJs = `var button = document.querySelector('button')`;
+// let finalJs = `var button = document.querySelector('button')`;
 
 class GameGrid extends React.Component {
   constructor() {
@@ -12,6 +12,11 @@ class GameGrid extends React.Component {
 
     this.iframe = React.createRef(); // iframe node (new React 'refs' format)
     this.audioFile = React.createRef();
+    this.evaluateCode = this.evaluateCode.bind(this);
+
+    this.state = {
+      lessonSubmitted: false
+    }
   }
 
   componentDidUpdate() {
@@ -27,8 +32,18 @@ class GameGrid extends React.Component {
     this.updateGameGrid();
   }
 
+  evaluateCode() {
+    console.log('evaluateCode FN');
+    
+    this.setState({
+      lessonSubmitted: true
+    })
+  }
+
   updateGameGrid() {
-    const { html, css, js } = this.props.data;
+    const { html, css, js, js_validation } = this.props.data;
+
+    console.log('js validation', js_validation)
 
     const iframe = this.iframe.current;
     const document = iframe.contentDocument;
@@ -45,7 +60,7 @@ class GameGrid extends React.Component {
           process.env.PUBLIC_URL + "/GameBlocks.css"
         }">
         <style>
-          ${css}
+          ${css}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
         </style>
       </head>
       <body>
@@ -55,18 +70,8 @@ class GameGrid extends React.Component {
           ${js}
         </script>
         <script type="text/javascript">
-          if (typeof buttonNode !== 'undefined') {
-            console.log('Nice, we got a node selection');
-            var isEqualNode = buttonNode.isEqualNode(document.querySelector('button.block'));
-            if (isEqualNode) {
-              console.log('awesome! nodes match!');
-            }
-            else {
-              console.log('sorry, you selected the wrong node');
-            }
-          } else {
-            console.log('Sorry, try again');
-          }
+          // this is where our validation scripts will run
+          ${ this.state.lessonSubmitted ? js_validation : '' }
         </script>
       </body>
       </html>
@@ -94,11 +99,15 @@ class GameGrid extends React.Component {
         </div>
 
         <div id="iFrameWrapper">
-          <iframe title="result" className="iframe" ref={this.iframe} />
+          <iframe title="Okama Game Sphere" className="iframe" ref={this.iframe} />
 
           <audio src={successSound} ref={this.audioFile}></audio>
         </div>
+
       </div>
+      <section>
+            <button onClick={this.evaluateCode} className="button" style={{backgroundColor: 'blue', fontSize: 20, fontColor: 'white'}}>Submit code</button>
+        </section>
       </div>
     );
   }

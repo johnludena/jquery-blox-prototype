@@ -1,0 +1,5 @@
+if (purpleButton !== undefined) {
+    console.log('give me a hell yeah!');
+} else {
+    console.log('hell no :(')
+}
