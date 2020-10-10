@@ -21,6 +21,17 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    window.addEventListener('message', this.catchIframeEvent);
+  }
+
+  catchIframeEvent = (e) => {
+    console.log('message event listener triggered!');
+    console.log('event', e)
+    let lessonStatus = JSON.parse(e.data);
+    console.log('your data:', lessonStatus);
+  }
+
   updateUi = (codeType, payload, pageIndex) => {
 
     // updated nested state property

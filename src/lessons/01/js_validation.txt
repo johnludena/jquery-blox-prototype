@@ -1,6 +1,13 @@
 try {
     if (typeof purpleButton !== 'undefined') {
         console.log('IF: purpleButton is truthy!');
+        window.top.postMessage(
+            JSON.stringify({
+                error: false,
+                message: 'Hello world!',
+            }),
+            '*'
+        );
     }
     else {
         console.log('ELSE: purpleButton is not defined');
