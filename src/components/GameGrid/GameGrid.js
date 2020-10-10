@@ -43,8 +43,6 @@ class GameGrid extends React.Component {
   updateGameGrid() {
     const { html, css, js, js_validation } = this.props.data;
 
-    console.log('js validation', js_validation)
-
     const iframe = this.iframe.current;
     const document = iframe.contentDocument;
 
@@ -105,8 +103,8 @@ class GameGrid extends React.Component {
         </div>
 
       </div>
-      <section>
-            <button onClick={this.evaluateCode} className="button" style={{backgroundColor: 'blue', fontSize: 20, fontColor: 'white'}}>Submit code</button>
+      <section style={{display: 'flex', justifyContent: 'center'}}>
+            <button onClick={this.evaluateCode} className="button" style={{backgroundColor: 'blue', fontSize: 20, color: 'white', padding: 20}}>Submit code</button>
         </section>
       </div>
     );

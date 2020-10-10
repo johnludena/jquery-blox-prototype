@@ -32,7 +32,6 @@ class CodeEditor extends React.Component {
   }
 
 
-
   render() {
     const { html, js, css } = this.props.data;
 
