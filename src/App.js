@@ -1,6 +1,7 @@
 // libs
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { Provider } from 'react-redux'
 
 // components
 import GameGrid from "./components/GameGrid/GameGrid";
@@ -11,6 +12,8 @@ import "./App.scss";
 
 // app data
 import lessonsArr from './lessons/data';
+
+console.log({Provider})
 
 
 class App extends React.Component {
@@ -26,21 +29,11 @@ class App extends React.Component {
   }
 
   catchIframeEvent = (e) => {
-    console.log('message event listener triggered!');
-    console.log('event', e)
     let lessonStatus = JSON.parse(e.data);
-    console.log('your data:', lessonStatus);
   }
 
   updateUi = (codeType, payload, pageIndex) => {
 
-    // updated nested state property
-    // let newState = [ ...this.state.lessonsArr ];
-    // newState[pageIndex][codeType] = payload;
-
-    // this.setState({newState});
-
-    // Another way to do the same thing as above...
     // console.log('current state', currentState);
     this.setState({
       ...lessonsArr[pageIndex][codeType] = payload,
