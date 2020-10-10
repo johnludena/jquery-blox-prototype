@@ -1,12 +1,13 @@
 try {
-    if (purpleButton) {
+    if (typeof purpleButton !== 'undefined') {
         console.log('IF: purpleButton is truthy!');
     }
     else {
-        console.log('ELSE: purpleButton is not defined')
+        console.log('ELSE: purpleButton is not defined');
+        console.log(purpleButton);
     }
 }
 
 catch (error) {
-    console.log('uh oh, here is the error:', error)
+    console.log(error)
 }
