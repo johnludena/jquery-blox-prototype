@@ -13,8 +13,6 @@ import "./App.scss";
 // app data
 import lessonsArr from './lessons/data';
 
-console.log({Provider})
-
 
 class App extends React.Component {
   constructor() {
