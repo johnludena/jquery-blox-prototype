@@ -6,6 +6,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // Importing assertion + testing library for student's code validation
 // import { expect } from 'chai';
 
+// Redux
+import store from '../../redux/store';
+import { connect } from 'react-redux';
+import { addTodo } from '../../redux/actions';
+
 // CodeMirror React wrapper
 import { Controlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
 
@@ -107,4 +112,12 @@ class CodeEditor extends React.Component {
   }
 }
 
-export default CodeEditor;
+const mapStateToProps = function(store) {
+  return {
+    users: store.userState.users
+  };
+}
+
+// export default CodeEditor;
+export default connect(mapStateToProps)(CodeEditor);
+
