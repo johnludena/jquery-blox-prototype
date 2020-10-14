@@ -1,12 +1,11 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER } from "./actionTypes";
-
-let nextTodoId = 0;
+import { ADD_USER } from "./actionTypes";
 
 export const addTodo = content => ({
-  type: ADD_TODO,
+  type: ADD_USER,
   payload: {
-    id: ++nextTodoId,
-    content
+    name: 'David Loop',
+    title: 'Lead Web Developer',
+    employed: true,
   }
 });
 

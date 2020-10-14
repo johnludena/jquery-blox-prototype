@@ -112,12 +112,10 @@ class CodeEditor extends React.Component {
   }
 }
 
-const mapStateToProps = function(store) {
-  return {
-    users: store.userState.users
-  };
+const mapStateToProps = function(state) {
+  return state;
 }
 
 // export default CodeEditor;
-export default connect(mapStateToProps)(CodeEditor);
+export default connect(null)(CodeEditor);
 
