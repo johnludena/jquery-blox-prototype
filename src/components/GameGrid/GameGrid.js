@@ -1,8 +1,14 @@
 // libs
 import React from "react";
 
+// redux
+import store from '../../redux/store';
+import { connect } from 'react-redux';
+
 // assets
 import successSound from "../../audio/success.wav";
+
+console.log('STORE STATE =>', store.getState());
 
 // let finalJs = `var button = document.querySelector('button')`;
 
@@ -34,7 +40,18 @@ class GameGrid extends React.Component {
 
   evaluateCode() {
     console.log('evaluateCode FN');
-    
+
+    this.props.dispatch({
+      type: 'ADD_USER',
+      payload: {
+        name: 'David Loop',
+        title: 'Lead Web Developer',
+        employed: true,
+      }
+    });
+
+    console.log('NEW STORE DATA:', store.getState())
+      
     this.setState({
       lessonSubmitted: true
     })
@@ -111,4 +128,9 @@ class GameGrid extends React.Component {
   }
 }
 
-export default GameGrid;
+function mapStateToProps(state) {
+  const { users } = state; // get 'users' array from state
+  return { users }
+}
+
+export default connect()(GameGrid)
