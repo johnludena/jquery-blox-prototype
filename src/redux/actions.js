@@ -2,11 +2,7 @@ import { ADD_USER } from "./actionTypes";
 
 export const addTodo = content => ({
   type: ADD_USER,
-  payload: {
-    name: 'David Loop',
-    title: 'Lead Web Developer',
-    employed: true,
-  }
+  payload: content
 });
 
 // export const toggleTodo = id => ({
