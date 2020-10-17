@@ -8,9 +8,6 @@ import { connect } from 'react-redux';
 // assets
 import successSound from "../../audio/success.wav";
 
-console.log('STORE STATE =>', store.getState());
-
-// let finalJs = `var button = document.querySelector('button')`;
 
 class GameGrid extends React.Component {
   constructor() {
@@ -130,7 +127,8 @@ class GameGrid extends React.Component {
 
 function mapStateToProps(state) {
   const { users } = state; // get 'users' array from state
-  return { users }
+  console.log('mapStateToProps', { users })
+  return users
 }
 
 export default connect()(GameGrid)

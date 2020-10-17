@@ -1,7 +1,7 @@
 // libs
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import { Provider } from 'react-redux'
+import { connect } from 'react-redux';
 
 // components
 import GameGrid from "./components/GameGrid/GameGrid";
@@ -10,37 +10,36 @@ import CodeEditor from "./components/CodeEditor/CodeEditor";
 // css
 import "./App.scss";
 
-// app data
-import lessonsArr from './lessons/data';
-
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      lessonsArr 
-    };
+    // this.state = {
+    //   lessonsArr 
+    // };
   }
 
-  componentDidMount = () => {
-    window.addEventListener('message', this.catchIframeEvent);
-  }
+  // componentDidMount = () => {
+  //   window.addEventListener('message', this.catchIframeEvent);
+  // }
 
-  catchIframeEvent = (e) => {
-    let lessonStatus = JSON.parse(e.data);
-  }
+  // catchIframeEvent = (e) => {
+  //   let lessonStatus = JSON.parse(e.data);
+  // }
 
-  updateUi = (codeType, payload, pageIndex) => {
+  // updateUi = (codeType, payload, pageIndex) => {
 
-    // console.log('current state', currentState);
-    this.setState({
-      ...lessonsArr[pageIndex][codeType] = payload,
-    });
-  };
+  //   // console.log('current state', currentState);
+  //   this.setState({
+  //     ...lessonsArr[pageIndex][codeType] = payload,
+  //   });
+  // };
 
   render() {
 
-    let routesArr = this.state.lessonsArr.map((lesson, index)=>{
+    console.log('this.props', this.props)
+
+    let routesArr = this.props.lessons.lessons.map((lesson, index)=>{
       return (
         <Route path={`/${index + 1}`} key={index + 1}>
           <CodeEditor data={lesson} refreshCode={this.updateUi} lessonKey={index}  />
@@ -62,4 +61,11 @@ class App extends React.Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  console.log('mapStateToProps state', state);
+  const { lessons } = state;
+  return { lessons }
+}
+
+export default connect(mapStateToProps)(App)
+
