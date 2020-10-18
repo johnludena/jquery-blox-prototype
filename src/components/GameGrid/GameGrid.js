@@ -38,16 +38,9 @@ class GameGrid extends React.Component {
   evaluateCode() {
     console.log('evaluateCode FN');
 
-    this.props.dispatch({
-      type: 'ADD_USER',
-      payload: {
-        name: 'David Loop',
-        title: 'Lead Web Developer',
-        employed: true,
-      }
-    });
-
-    console.log('NEW STORE DATA:', store.getState())
+    // this.props.dispatch({
+    //   type: 'LESSON_SUBMITTED'
+    // });
       
     this.setState({
       lessonSubmitted: true

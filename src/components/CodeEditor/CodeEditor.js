@@ -30,9 +30,17 @@ class CodeEditor extends React.Component {
 
   }
 
-  handleChange(codeType, payload) {
+  handleChange(codeType, content) {
     let lessonIndex = this.props.lessonKey;
-    this.props.refreshCode(codeType, payload, lessonIndex);
+
+    this.props.dispatch({
+      type: 'CODE_UPDATED',
+      payload: {
+        codeType, content, lessonIndex
+      }
+    });
+
+    // this.props.refreshCode(codeType, payload, lessonIndex);
 
   }
 
@@ -113,9 +121,10 @@ class CodeEditor extends React.Component {
 }
 
 const mapStateToProps = function(state) {
-  return state;
+  const { lessonsReducer } = state;
+  return { lessonsReducer }
 }
 
 // export default CodeEditor;
-export default connect(null)(CodeEditor);
+export default connect()(CodeEditor);
 

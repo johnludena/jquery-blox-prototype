@@ -1,18 +1,15 @@
 import lessonsArr from '../../lessons/data'
 
-import { LESSON_PASSED, LESSON_SUBMITTED  } from "../actions";
+import { CODE_UPDATED, LESSON_PASSED, LESSON_SUBMITTED  } from "../actions";
 // import { ADD_USER, TOGGLE_TODO } from "../actionTypes";
 
 const initialState = {
-  lessons: lessonsArr
+  lessons: lessonsArr // ['lesson1', 'lesson2', 'lesson3]
 };
-
-console.log('initialState object:', initialState)
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case LESSON_PASSED: {
-      // const { name, title, employed } = action.payload;
       let newState =  {
         ...state,
         lessons: [...state.lessons, action.payload],
@@ -22,13 +19,21 @@ export default function(state = initialState, action) {
     }
 
     case LESSON_SUBMITTED: {
-      // const { name, title, employed } = action.payload;
       let newState =  {
         ...state,
         lessons: [...state.lessons, action.payload],
       }
 
       return newState;
+    }
+
+    case CODE_UPDATED: {
+      const { codeType, content, lessonIndex } = action.payload; // destructure payload properties
+
+      let newState = { ...state }
+      
+      return newState;
+
     }
     
     default:

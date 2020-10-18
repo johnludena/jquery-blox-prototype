@@ -14,9 +14,6 @@ import "./App.scss";
 class App extends React.Component {
   constructor() {
     super();
-    // this.state = {
-    //   lessonsArr 
-    // };
   }
 
   // componentDidMount = () => {
@@ -39,7 +36,7 @@ class App extends React.Component {
 
     console.log('this.props', this.props)
 
-    let routesArr = this.props.lessons.lessons.map((lesson, index)=>{
+    let routesArr = this.props.lessonsReducer.lessons.map((lesson, index)=>{
       return (
         <Route path={`/${index + 1}`} key={index + 1}>
           <CodeEditor data={lesson} refreshCode={this.updateUi} lessonKey={index}  />
@@ -62,9 +59,8 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log('mapStateToProps state', state);
-  const { lessons } = state;
-  return { lessons }
+  const { lessonsReducer } = state;
+  return { lessonsReducer }
 }
 
 export default connect(mapStateToProps)(App)
