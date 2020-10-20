@@ -16,31 +16,28 @@ class App extends React.Component {
     super();
   }
 
-  // componentDidMount = () => {
-  //   window.addEventListener('message', this.catchIframeEvent);
-  // }
+  componentDidMount = () => {
+    window.addEventListener('message', this.catchIframeEvent);
+  }
 
-  // catchIframeEvent = (e) => {
-  //   let lessonStatus = JSON.parse(e.data);
-  // }
+  catchIframeEvent = (event) => {
 
-  // updateUi = (codeType, payload, pageIndex) => {
+    // check for source of event to make sure it's from our iframe window and nothing else
+    
+    if (event.data.internalSignal) {
+      let lessonStatus = JSON.parse(event.data);
+      console.log({lessonStatus})
+    }
+    
+  }
 
-  //   // console.log('current state', currentState);
-  //   this.setState({
-  //     ...lessonsArr[pageIndex][codeType] = payload,
-  //   });
-  // };
-
-  render() {
-
-    console.log('this.props', this.props)
+  render = () => {
 
     let routesArr = this.props.lessonsReducer.lessons.map((lesson, index)=>{
       return (
         <Route path={`/${index + 1}`} key={index + 1}>
-          <CodeEditor data={lesson} refreshCode={this.updateUi} lessonKey={index}  />
-          <GameGrid data={lesson} />
+          <CodeEditor lessonKey={index}  />
+          <GameGrid lessonKey={index} />
         </Route>
       )
     });

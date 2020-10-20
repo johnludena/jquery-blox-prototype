@@ -3,6 +3,7 @@ try {
         console.log('IF: purpleButton is truthy!');
         window.top.postMessage(
             JSON.stringify({
+                internalSignal: true,
                 error: false,
                 message: 'Hello world!',
             }),

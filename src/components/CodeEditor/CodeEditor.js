@@ -27,11 +27,11 @@ import "codemirror/mode/javascript/javascript";
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
-  handleChange(codeType, content) {
-    let lessonIndex = this.props.lessonKey;
+  handleChange = (codeType, content) => {
+    
+    const lessonIndex = this.props.lessonKey;
 
     this.props.dispatch({
       type: 'CODE_UPDATED',
@@ -40,13 +40,11 @@ class CodeEditor extends React.Component {
       }
     });
 
-    // this.props.refreshCode(codeType, payload, lessonIndex);
-
   }
 
 
-  render() {
-    const { html, js, css } = this.props.data;
+  render = () => {
+    const { html, js, css } = this.props.lessonsReducer.lessons[this.props.lessonKey];
 
     const codeMirrorOptions = {
       theme: "material",
@@ -126,5 +124,5 @@ const mapStateToProps = function(state) {
 }
 
 // export default CodeEditor;
-export default connect()(CodeEditor);
+export default connect(mapStateToProps)(CodeEditor);
 

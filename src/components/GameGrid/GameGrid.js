@@ -15,14 +15,13 @@ class GameGrid extends React.Component {
 
     this.iframe = React.createRef(); // iframe node (new React 'refs' format)
     this.audioFile = React.createRef();
-    this.evaluateCode = this.evaluateCode.bind(this);
 
     this.state = {
       lessonSubmitted: false
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate = () => {
     this.updateGameGrid();
 
     // if (this.props.data.js === finalJs) {
@@ -31,11 +30,11 @@ class GameGrid extends React.Component {
     // }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.updateGameGrid();
   }
 
-  evaluateCode() {
+  evaluateCode = () => {
     console.log('evaluateCode FN');
 
     // this.props.dispatch({
@@ -47,8 +46,8 @@ class GameGrid extends React.Component {
     })
   }
 
-  updateGameGrid() {
-    const { html, css, js, js_validation } = this.props.data;
+  updateGameGrid = () => {
+    const { html, css, js, js_validation } = this.props.lessonsReducer.lessons[this.props.lessonKey];
 
     const iframe = this.iframe.current;
     const document = iframe.contentDocument;
@@ -119,9 +118,8 @@ class GameGrid extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { users } = state; // get 'users' array from state
-  console.log('mapStateToProps', { users })
-  return users
+  const { lessonsReducer } = state; // get 'lessons' array from state
+  return { lessonsReducer }
 }
 
-export default connect()(GameGrid)
+export default connect(mapStateToProps)(GameGrid)
