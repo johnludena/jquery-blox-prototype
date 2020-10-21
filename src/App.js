@@ -22,8 +22,6 @@ class App extends React.Component {
 
   catchIframeEvent = (event) => {
 
-    console.log({event})
-
     // check to make sure messages being sent from other windows are not gonna interfere with our app
     // TODO: Switch to complex string to prevent issues
     if (!event.data.internalSignal) {
@@ -33,7 +31,12 @@ class App extends React.Component {
     // check for source of event to make sure it's from our iframe window and nothing else
     let lessonStatusData = event.data;
     console.log({lessonStatusData});
-    
+
+    if (lessonStatusData.validated) {
+      alert(lessonStatusData.message);
+    } else {
+      alert(lessonStatusData.message);
+    }
     
   }
 

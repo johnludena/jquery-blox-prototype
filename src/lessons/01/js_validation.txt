@@ -1,17 +1,26 @@
+let validatedStatus = null;
+let lessonMessage = null;
+
 try {
   if (typeof purpleButton !== "undefined") {
-    console.log("IF: purpleButton is truthy!");
-    window.top.postMessage({
-        internalSignal: true,
-        error: false,
-        message: "Hello world!",
-      },
-      window.location.origin
-    );
+    console.log("CORRECT: purpleButton is truthy!");
+    validatedStatus = true;
+    lessonMessage = "You just passed lesson 1!"
+    
   } else {
-    console.log("ELSE: purpleButton is not defined");
-    console.log(purpleButton);
+    console.log("INCORRECT: purpleButton is not defined");
+    validatedStatus = false;
+    lessonMessage = "Sorry, that's not the right answer"
   }
 } catch (error) {
   console.log(error);
 }
+
+// send data to app's outter window
+window.top.postMessage({
+    internalSignal: true,
+    validated: validatedStatus,
+    message: lessonMessage,
+  },
+  window.location.origin
+);

@@ -74,7 +74,6 @@ class GameGrid extends React.Component {
           ${js}
         </script>
         <script type="text/javascript">
-          // this is where our validation scripts will run
           ${ this.state.lessonSubmitted ? js_validation : '' }
         </script>
       </body>

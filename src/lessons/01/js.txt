@@ -1,2 +1,1 @@
 // create a node for the button element and assign it to a variable called 'purpleButton'
-var purpleButton = document.querySelector('button');
