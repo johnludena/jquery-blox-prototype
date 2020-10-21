@@ -22,12 +22,18 @@ class App extends React.Component {
 
   catchIframeEvent = (event) => {
 
-    // check for source of event to make sure it's from our iframe window and nothing else
-    
-    if (event.data.internalSignal) {
-      let lessonStatus = JSON.parse(event.data);
-      console.log({lessonStatus})
+    console.log({event})
+
+    // check to make sure messages being sent from other windows are not gonna interfere with our app
+    // TODO: Switch to complex string to prevent issues
+    if (!event.data.internalSignal) {
+      return;
     }
+
+    // check for source of event to make sure it's from our iframe window and nothing else
+    let lessonStatusData = event.data;
+    console.log({lessonStatusData});
+    
     
   }
 

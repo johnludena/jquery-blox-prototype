@@ -1,21 +1,17 @@
 try {
-    if (typeof purpleButton !== 'undefined') {
-        console.log('IF: purpleButton is truthy!');
-        window.top.postMessage(
-            JSON.stringify({
-                internalSignal: true,
-                error: false,
-                message: 'Hello world!',
-            }),
-            '*'
-        );
-    }
-    else {
-        console.log('ELSE: purpleButton is not defined');
-        console.log(purpleButton);
-    }
-}
-
-catch (error) {
-    console.log(error)
+  if (typeof purpleButton !== "undefined") {
+    console.log("IF: purpleButton is truthy!");
+    window.top.postMessage({
+        internalSignal: true,
+        error: false,
+        message: "Hello world!",
+      },
+      window.location.origin
+    );
+  } else {
+    console.log("ELSE: purpleButton is not defined");
+    console.log(purpleButton);
+  }
+} catch (error) {
+  console.log(error);
 }

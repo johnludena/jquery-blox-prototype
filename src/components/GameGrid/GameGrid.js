@@ -88,7 +88,7 @@ class GameGrid extends React.Component {
 
   render() {
 
-    let blocksNumber = 25;
+    const blocksNumber = 25;
     let divsArr = [];
 
     for(let i = 0; i < blocksNumber; i++) {
@@ -103,7 +103,7 @@ class GameGrid extends React.Component {
         </div>
 
         <div id="iFrameWrapper">
-          <iframe title="Okama Game Sphere" className="iframe" ref={this.iframe} />
+          <iframe title="Okama Game Sphere" name="GameGridIframe" id="mySpecialId" className="iframe" ref={this.iframe} />
 
           <audio src={successSound} ref={this.audioFile}></audio>
         </div>
