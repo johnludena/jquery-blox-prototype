@@ -1,7 +1,7 @@
-let validatedStatus = null;
-let lessonMessage = null;
-
 try {
+    let validatedStatus = null;
+    let lessonMessage = null;
+    let errorMessage = ''
   if (typeof purpleButton !== "undefined") {
     console.log("CORRECT: purpleButton is truthy!");
     validatedStatus = true;
@@ -12,15 +12,16 @@ try {
     validatedStatus = false;
     lessonMessage = "Sorry, that's not the right answer"
   }
+
+    // send data to app's outter window
+    window.top.postMessage({
+        internalSignal: true,
+        validated: validatedStatus,
+        message: lessonMessage
+    },
+    window.location.origin
+    );
 } catch (error) {
   console.log(error);
 }
 
-// send data to app's outter window
-window.top.postMessage({
-    internalSignal: true,
-    validated: validatedStatus,
-    message: lessonMessage,
-  },
-  window.location.origin
-);

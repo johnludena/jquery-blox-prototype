@@ -44,8 +44,6 @@ export default function(state = initialState, action) {
         })  
       }
 
-      console.log('newState =>', newState)
-
       return newState;
     }
     

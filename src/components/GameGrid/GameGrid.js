@@ -52,8 +52,10 @@ class GameGrid extends React.Component {
     const iframe = this.iframe.current;
     const document = iframe.contentDocument;
 
-    const documentContents = `
-      <!DOCTYPE html>
+    const userScriptCode = `<script type="text/javascript">${js}</script>`;
+    const validationScriptCode = `<script type="text/javascript">${js_validation}</script>`;
+
+    const documentContents = `<!DOCTYPE html>
       <html lang="en">
       <head>
         <meta charset="UTF-8">
@@ -70,12 +72,9 @@ class GameGrid extends React.Component {
       <body>
         ${html}
 
-        <script type="text/javascript">
-          ${js}
-        </script>
-        <script type="text/javascript">
-          ${ this.state.lessonSubmitted ? js_validation : '' }
-        </script>
+        ${ this.state.lessonSubmitted ? userScriptCode : '' }
+        
+        ${ this.state.lessonSubmitted ? validationScriptCode : '' }
       </body>
       </html>
     `;
