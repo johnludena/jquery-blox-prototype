@@ -10,43 +10,104 @@ import successSound from "../../audio/success.wav";
 
 
 class GameGrid extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.iframe = React.createRef(); // iframe node (new React 'refs' format)
     this.audioFile = React.createRef();
 
     this.state = {
-      lessonSubmitted: false
+      lessonSubmitted: false,
+      lessonPassed: false
     }
   }
 
-  componentDidUpdate = () => {
-    this.updateGameGrid();
-
-    // if (this.props.data.js === finalJs) {
-    //   this.audioFile.current.play();
-      
-    // }
-  }
-
   componentDidMount = () => {
+    console.log('===== componentDidMount =======')
+
+    this.displayGameGrid();
+
+    // window.addEventListener('message', this.catchIframeEvent);
+  }
+
+  componentDidUpdate = () => {
+    console.log('===== componentDidUpdate =======')
+
     this.updateGameGrid();
   }
 
-  evaluateCode = () => {
-    console.log('evaluateCode FN');
+  catchIframeEvent = (event) => {
 
-    // this.props.dispatch({
-    //   type: 'LESSON_SUBMITTED'
-    // });
+    // check to make sure messages being sent from other windows are not gonna interfere with our app
+    // TODO: Switch to complex string to prevent issues
+    if (!event.data.internalSignal) {
+      return;
+    }
+
+    let lessonStatusData = event.data;
+    console.log({lessonStatusData});
+
+    if (lessonStatusData.validated) {
+      alert(lessonStatusData.message);
+    } else {
+      alert(lessonStatusData.message);
+    }
+    
+  }
+
+  correctSubmission = () => {
+    console.log('correctSubmission');
+  }
+
+  incorrectSubmission = () => {
+    console.log('incorrectSubmission');
+  }
+
+  onSubmitCode = () => {
+    console.log('===== onSubmitCode =======')
       
     this.setState({
       lessonSubmitted: true
-    })
+    });
+
+    
+  }
+
+  displayGameGrid = () => {
+    console.log('===== displayGameGrid =======')
+    const { html, css, js, js_validation } = this.props.lessonsReducer.lessons[this.props.lessonKey];
+
+    const iframe = this.iframe.current;
+    const document = iframe.contentDocument;
+
+    const documentContents = `<!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Your Awesome Game!</title>
+        <link rel="stylesheet" href="${
+          process.env.PUBLIC_URL + "/GameBlocks.css"
+        }">
+        <style>
+          ${css}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+        </style>
+      </head>
+      <body>
+        ${html}
+
+      </body>
+      </html>
+    `;
+
+    document.open();
+    document.write(documentContents);
+    document.close();
   }
 
   updateGameGrid = () => {
+    console.log('===== updateGameGrid =======')
     const { html, css, js, js_validation } = this.props.lessonsReducer.lessons[this.props.lessonKey];
 
     const iframe = this.iframe.current;
@@ -72,9 +133,10 @@ class GameGrid extends React.Component {
       <body>
         ${html}
 
-        ${ this.state.lessonSubmitted ? userScriptCode : '' }
-        
-        ${ this.state.lessonSubmitted ? validationScriptCode : '' }
+        ${this.state.lessonSubmitted ? userScriptCode : ''}
+
+        ${this.state.lessonSubmitted ? validationScriptCode : ''}
+
       </body>
       </html>
     `;
@@ -108,7 +170,7 @@ class GameGrid extends React.Component {
 
       </div>
       <section style={{display: 'flex', justifyContent: 'center'}}>
-            <button onClick={this.evaluateCode} className="button" style={{backgroundColor: 'blue', fontSize: 20, color: 'white', padding: 20}}>Submit code</button>
+            <button onClick={this.onSubmitCode} className="button" style={{backgroundColor: 'blue', fontSize: 20, color: 'white', padding: 20}}>Submit code</button>
         </section>
       </div>
     );

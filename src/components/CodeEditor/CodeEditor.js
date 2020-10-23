@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // Redux
 import store from '../../redux/store';
 import { connect } from 'react-redux';
-import { addTodo } from '../../redux/actions';
 
 // CodeMirror React wrapper
 import { Controlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper

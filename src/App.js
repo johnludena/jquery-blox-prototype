@@ -16,29 +16,6 @@ class App extends React.Component {
     super();
   }
 
-  componentDidMount = () => {
-    window.addEventListener('message', this.catchIframeEvent);
-  }
-
-  catchIframeEvent = (event) => {
-
-    // check to make sure messages being sent from other windows are not gonna interfere with our app
-    // TODO: Switch to complex string to prevent issues
-    if (!event.data.internalSignal) {
-      return;
-    }
-
-    // check for source of event to make sure it's from our iframe window and nothing else
-    let lessonStatusData = event.data;
-    console.log({lessonStatusData});
-
-    if (lessonStatusData.validated) {
-      alert(lessonStatusData.message);
-    } else {
-      alert(lessonStatusData.message);
-    }
-    
-  }
 
   render = () => {
 
