@@ -27,11 +27,30 @@ import "codemirror/mode/javascript/javascript";
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
+
+    this.lessonIndex = this.props.lessonKey;
+
   }
+
+  componentDidMount = () => {
+    this.setData();
+  }
+
+  componentDidUpdate = () => {
+    this.setData();
+  }
+
+  setData = () => {
+    console.log('========= CodeEditor.js setData ============')
+    // data vars
+    this.lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
+    console.log(this.lessonData);
+  }
+
 
   handleChange = (codeType, content) => {
     
-    const lessonIndex = this.props.lessonKey;
+    const lessonIndex = this.lessonIndex;
 
     this.props.dispatch({
       type: 'CODE_UPDATED',
@@ -42,7 +61,7 @@ class CodeEditor extends React.Component {
   }
 
   render = () => {
-    const { html, js, css } = this.props.lessonsReducer.lessons[this.props.lessonKey];
+    const { html, js, css } = this.props.lessonsReducer.lessons[this.lessonIndex];
 
     const codeMirrorOptions = {
       theme: "material-ocean",

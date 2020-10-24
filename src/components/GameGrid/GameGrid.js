@@ -14,15 +14,13 @@ class GameGrid extends React.Component {
 
     console.log('======== CONSTRUCTOR ===========')
 
-    // refs variables
+    // vars
     this.iframe = React.createRef(); // iframe node (new React 'refs' format)
     this.audioFile = React.createRef();
+    this.lessonIndex = this.props.lessonKey;
 
-    // this.state = {
-    //   lessonSubmitted: false,
-    //   lessonPassed: false,
-    // };
   }
+
 
   componentDidMount = () => {
     // console.log("===== componentDidMount =======");
@@ -32,6 +30,16 @@ class GameGrid extends React.Component {
 
     window.addEventListener("message", this.catchIframeEvent);
   };
+
+  setData = () => {
+
+    console.log('========= setData ===============')
+
+    // data vars
+    this.lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
+
+    console.log(this.lessonData);
+  }
 
   shouldComponentUpdate = () => {
     console.log("======= shouldComponentUpdate =========");
@@ -51,14 +59,7 @@ class GameGrid extends React.Component {
     this.displayGameGrid();
   };
 
-  setData = () => {
-
-    console.log('========= setData ===============')
-
-    // data vars
-    this.lessonIndex = this.props.lessonKey;
-    this.lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
-  }
+  
 
   catchIframeEvent = (event) => {
     // check to make sure messages being sent from other windows are not gonna interfere with our app
@@ -93,10 +94,6 @@ class GameGrid extends React.Component {
       }
     });
 
-    // this.setState({
-    //   lessonSubmitted: true,
-    //   lessonPassed: true,
-    // });
   };
 
   incorrectSubmission = () => {
@@ -106,18 +103,14 @@ class GameGrid extends React.Component {
 
     let lessonIndex = this.lessonIndex;
     let lessonPassedStatus = false;
+    let lessonSubmittedStatus = false
 
     this.props.dispatch({
-      type: 'LESSON_PASSED',
+      type: 'LESSON_SUBMITTED',
       payload: {
-        lessonPassedStatus, lessonIndex
+        lessonSubmittedStatus, lessonIndex
       }
     });
-
-    // this.setState({
-    //   lessonSubmitted: false,
-    //   lessonPassed: false,
-    // });
   };
 
   onSubmitCode = () => {
@@ -167,7 +160,7 @@ class GameGrid extends React.Component {
 
         ${this.lessonData.lessonSubmitted && !this.lessonData.lessonPassed ? userScriptCode : ""}
 
-        ${this.lessonData && !this.lessonData ? validationScriptCode : ""}
+        ${this.lessonData.lessonSubmitted && !this.lessonData.lessonPassed ? validationScriptCode : ""}
 
       </body>
       </html>
