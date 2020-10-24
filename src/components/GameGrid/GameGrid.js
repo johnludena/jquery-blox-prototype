@@ -27,7 +27,18 @@ class GameGrid extends React.Component {
 
     this.displayGameGrid();
 
-    // window.addEventListener('message', this.catchIframeEvent);
+    window.addEventListener('message', this.catchIframeEvent);
+  }
+
+  shouldComponentUpdate = () => {
+    console.log('======= shouldComponentUpdate =========');
+    // if lesson hasn't been passed yet, keep updating the component
+    if (!this.state.lessonPassed) {
+      return true;
+    }
+
+    // otherwise exit to prevent an infinite loop
+    return false;
   }
 
   componentDidUpdate = () => {
@@ -45,12 +56,21 @@ class GameGrid extends React.Component {
     }
 
     let lessonStatusData = event.data;
-    console.log({lessonStatusData});
 
     if (lessonStatusData.validated) {
       alert(lessonStatusData.message);
+      console.log('PASS')
+      this.setState({
+        lessonSubmitted: true,
+        lessonPassed: true
+      })
     } else {
       alert(lessonStatusData.message);
+      console.log('FAIL')
+      this.setState({
+        lessonSubmitted: false,
+        lessonPassed: false
+      })
     }
     
   }
@@ -70,7 +90,7 @@ class GameGrid extends React.Component {
       lessonSubmitted: true
     });
 
-    
+
   }
 
   displayGameGrid = () => {

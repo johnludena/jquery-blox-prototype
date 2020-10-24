@@ -16,7 +16,6 @@ class App extends React.Component {
     super();
   }
 
-
   render = () => {
 
     let routesArr = this.props.lessonsReducer.lessons.map((lesson, index)=>{

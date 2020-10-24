@@ -15,7 +15,8 @@ import { Controlled as CodeMirror } from "react-codemirror2"; // CodeMirror Reac
 
 // CodeMirror CSS imports
 import "codemirror/lib/codemirror.css";
-import "codemirror/theme/material.css";
+// import "codemirror/theme/material.css";
+import "codemirror/theme/material-ocean.css";
 
 import "codemirror/mode/htmlmixed/htmlmixed";
 import "codemirror/mode/css/css";
@@ -46,7 +47,7 @@ class CodeEditor extends React.Component {
     const { html, js, css } = this.props.lessonsReducer.lessons[this.props.lessonKey];
 
     const codeMirrorOptions = {
-      theme: "material",
+      theme: "material-ocean",
       lineNumbers: true,
       scrollbarStyle: null,
       lineWrapping: true,

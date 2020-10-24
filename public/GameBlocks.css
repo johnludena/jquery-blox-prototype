@@ -21,7 +21,7 @@ body .block {
 	justify-content: center;
 	align-items: center;
   background: #444444;
-  transition: 0.2s ease-out all;
+  /* transition: 0.2s ease-out all; */
   color: white;
   border-style: solid;
   border-width: 5px;
