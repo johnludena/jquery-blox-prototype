@@ -10,18 +10,41 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case LESSON_PASSED: {
+      
+      const { lessonPassedStatus, lessonIndex } = action.payload; // destructure payload properties
+
       let newState =  {
         ...state,
-        lessons: [...state.lessons, action.payload],
+
+        // map through all lessons and return new array with modified object
+        lessons: state.lessons.map((lesson, index)=> {
+          if (index === lessonIndex) {
+            return {...lesson, lessonPassed: lessonPassedStatus }
+          }
+          else {
+            return lesson;
+          }
+        })  
       }
 
       return newState;
     }
 
     case LESSON_SUBMITTED: {
+      const { lessonSubmittedStatus, lessonIndex } = action.payload; // destructure payload properties
+
       let newState =  {
         ...state,
-        lessons: [...state.lessons, action.payload],
+
+        // map through all lessons and return new array with modified object
+        lessons: state.lessons.map((lesson, index)=> {
+          if (index === lessonIndex) {
+            return {...lesson, lessonSubmitted: lessonSubmittedStatus }
+          }
+          else {
+            return lesson;
+          }
+        })  
       }
 
       return newState;

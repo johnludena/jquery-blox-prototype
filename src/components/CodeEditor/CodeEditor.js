@@ -39,9 +39,7 @@ class CodeEditor extends React.Component {
         codeType, content, lessonIndex
       }
     });
-
   }
-
 
   render = () => {
     const { html, js, css } = this.props.lessonsReducer.lessons[this.props.lessonKey];
@@ -101,9 +99,9 @@ class CodeEditor extends React.Component {
           
 
           <section className="bottom-navigation">
-            <Link style={{marginRight: 30}} className="button" to={`/${this.props.lessonKey}`}>
+            {/* <Link style={{marginRight: 30}} className="button" to={`/${this.props.lessonKey}`}>
               Go to previous challenge
-            </Link>
+            </Link> */}
             <Link className="button" to={`/${this.props.lessonKey + 2}`}>
               Go to next challenge
             </Link>

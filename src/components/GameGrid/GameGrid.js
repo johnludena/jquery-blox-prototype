@@ -12,18 +12,22 @@ class GameGrid extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log('======== CONSTRUCTOR ===========')
+
+    // refs variables
     this.iframe = React.createRef(); // iframe node (new React 'refs' format)
     this.audioFile = React.createRef();
 
-    this.state = {
-      lessonSubmitted: false,
-      lessonPassed: false,
-    };
+    // this.state = {
+    //   lessonSubmitted: false,
+    //   lessonPassed: false,
+    // };
   }
 
   componentDidMount = () => {
     // console.log("===== componentDidMount =======");
 
+    this.setData();
     this.displayGameGrid();
 
     window.addEventListener("message", this.catchIframeEvent);
@@ -32,7 +36,7 @@ class GameGrid extends React.Component {
   shouldComponentUpdate = () => {
     console.log("======= shouldComponentUpdate =========");
     // if lesson hasn't been passed yet, keep updating the component
-    if (!this.state.lessonPassed) {
+    if (!this.lessonData.lessonPassed) {
       return true;
     }
 
@@ -43,8 +47,18 @@ class GameGrid extends React.Component {
   componentDidUpdate = () => {
     console.log("===== componentDidUpdate =======");
 
+    this.setData();
     this.displayGameGrid();
   };
+
+  setData = () => {
+
+    console.log('========= setData ===============')
+
+    // data vars
+    this.lessonIndex = this.props.lessonKey;
+    this.lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
+  }
 
   catchIframeEvent = (event) => {
     // check to make sure messages being sent from other windows are not gonna interfere with our app
@@ -53,13 +67,14 @@ class GameGrid extends React.Component {
       return;
     }
 
-    let lessonStatusData = event.data;
+    // TODO: Rename these variables to something else, getting a bit confusing...
+    let iframeData = event.data;
 
-    if (lessonStatusData.validated) {
-      alert(lessonStatusData.message);
+    if (iframeData.validated) {
+      alert(iframeData.message);
       this.correctSubmission();
     } else {
-      alert(lessonStatusData.message);
+      alert(iframeData.message);
       this.incorrectSubmission();
     }
   };
@@ -67,35 +82,64 @@ class GameGrid extends React.Component {
   correctSubmission = () => {
     console.log("======== correctSubmission ==========");
     console.log("PASS");
-    this.setState({
-      lessonSubmitted: true,
-      lessonPassed: true,
+
+    let lessonIndex = this.lessonIndex;
+    let lessonPassedStatus = true;
+
+    this.props.dispatch({
+      type: 'LESSON_PASSED',
+      payload: {
+        lessonPassedStatus, lessonIndex
+      }
     });
+
+    // this.setState({
+    //   lessonSubmitted: true,
+    //   lessonPassed: true,
+    // });
   };
 
   incorrectSubmission = () => {
     console.log(" ========== incorrectSubmission ============");
 
     console.log("FAIL");
-    this.setState({
-      lessonSubmitted: false,
-      lessonPassed: false,
+
+    let lessonIndex = this.lessonIndex;
+    let lessonPassedStatus = false;
+
+    this.props.dispatch({
+      type: 'LESSON_PASSED',
+      payload: {
+        lessonPassedStatus, lessonIndex
+      }
     });
+
+    // this.setState({
+    //   lessonSubmitted: false,
+    //   lessonPassed: false,
+    // });
   };
 
   onSubmitCode = () => {
     console.log("===== onSubmitCode =======");
 
-    this.setState({
-      lessonSubmitted: true,
+    let lessonIndex = this.lessonIndex;
+    let lessonSubmittedStatus = true;
+
+    this.props.dispatch({
+      type: 'LESSON_SUBMITTED',
+      payload: {
+        lessonSubmittedStatus, lessonIndex
+      }
     });
+    // this.setState({
+    //   lessonSubmitted: true,
+    // });
   };
 
   displayGameGrid = () => {
     // console.log("===== displayGameGrid =======");
-    const { html, css, js, js_validation } = this.props.lessonsReducer.lessons[
-      this.props.lessonKey
-    ];
+    const { html, css, js, js_validation } = this.lessonData;
 
     const iframe = this.iframe.current;
     const document = iframe.contentDocument;
@@ -121,9 +165,9 @@ class GameGrid extends React.Component {
       <body>
         ${html}
 
-        ${this.state.lessonSubmitted && !this.state.lessonPassed ? userScriptCode : ""}
+        ${this.lessonData.lessonSubmitted && !this.lessonData.lessonPassed ? userScriptCode : ""}
 
-        ${this.state.lessonSubmitted && !this.state.lessonPassed ? validationScriptCode : ""}
+        ${this.lessonData && !this.lessonData ? validationScriptCode : ""}
 
       </body>
       </html>
