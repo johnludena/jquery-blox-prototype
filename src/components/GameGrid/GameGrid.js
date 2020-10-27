@@ -89,6 +89,8 @@ class GameGrid extends React.Component {
       }
     });
 
+    this.audioFile.current.play();
+
   };
 
   incorrectSubmission = () => {
