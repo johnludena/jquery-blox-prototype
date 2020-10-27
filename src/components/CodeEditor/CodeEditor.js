@@ -22,18 +22,14 @@ import "codemirror/mode/htmlmixed/htmlmixed";
 import "codemirror/mode/css/css";
 import "codemirror/mode/javascript/javascript";
 
-// TESTING
 
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
 
     this.lessonIndex = this.props.lessonKey;
+    // this.setData();
 
-  }
-
-  componentDidMount = () => {
-    this.setData();
   }
 
   componentDidUpdate = () => {
@@ -41,12 +37,9 @@ class CodeEditor extends React.Component {
   }
 
   setData = () => {
-    console.log('========= CodeEditor.js setData ============')
     // data vars
     this.lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
-    console.log(this.lessonData);
   }
-
 
   handleChange = (codeType, content) => {
     
@@ -61,7 +54,10 @@ class CodeEditor extends React.Component {
   }
 
   render = () => {
-    const { html, js, css } = this.props.lessonsReducer.lessons[this.lessonIndex];
+
+    this.setData();
+
+    const { html, js, css } = this.lessonData;
 
     const codeMirrorOptions = {
       theme: "material-ocean",
@@ -69,6 +65,14 @@ class CodeEditor extends React.Component {
       scrollbarStyle: null,
       lineWrapping: true,
     };
+
+    const showNextButton = () => {
+      if (this.lessonData.lessonPassed) {
+        return <Link className="button" to={`/${this.props.lessonKey + 2}`}>Go to next challenge</Link>
+      }
+
+      return;
+    }
 
     return (
       <div className="left-col col">
@@ -115,16 +119,9 @@ class CodeEditor extends React.Component {
             </div>
           </section>
 
-          
 
           <section className="bottom-navigation">
-            {/* <Link style={{marginRight: 30}} className="button" to={`/${this.props.lessonKey}`}>
-              Go to previous challenge
-            </Link> */}
-            <Link className="button" to={`/${this.props.lessonKey + 2}`}>
-              Go to next challenge
-            </Link>
-            
+            {showNextButton()}            
           </section>
         </div>
         <div className="results">

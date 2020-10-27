@@ -12,15 +12,12 @@ class GameGrid extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log('======== CONSTRUCTOR ===========')
-
     // vars
     this.iframe = React.createRef(); // iframe node (new React 'refs' format)
     this.audioFile = React.createRef();
     this.lessonIndex = this.props.lessonKey;
 
   }
-
 
   componentDidMount = () => {
     // console.log("===== componentDidMount =======");
@@ -33,16 +30,14 @@ class GameGrid extends React.Component {
 
   setData = () => {
 
-    console.log('========= setData ===============')
+    // console.log('========= setData ===============')
 
     // data vars
     this.lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
-
-    console.log(this.lessonData);
   }
 
   shouldComponentUpdate = () => {
-    console.log("======= shouldComponentUpdate =========");
+    // console.log("======= shouldComponentUpdate =========");
     // if lesson hasn't been passed yet, keep updating the component
     if (!this.lessonData.lessonPassed) {
       return true;
@@ -53,7 +48,7 @@ class GameGrid extends React.Component {
   };
 
   componentDidUpdate = () => {
-    console.log("===== componentDidUpdate =======");
+    // console.log("===== componentDidUpdate =======");
 
     this.setData();
     this.displayGameGrid();
@@ -157,6 +152,8 @@ class GameGrid extends React.Component {
       </head>
       <body>
         ${html}
+
+        <script type="text/javascript" src="${process.env.PUBLIC_URL + "/jquery-3.5.1.mins.js"}"></script>
 
         ${this.lessonData.lessonSubmitted && !this.lessonData.lessonPassed ? userScriptCode : ""}
 

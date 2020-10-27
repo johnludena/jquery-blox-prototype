@@ -2,14 +2,13 @@ try {
     let validatedStatus = null;
     let lessonMessage = null;
     let errorMessage = ''
-    var buttonNode = $('button');
-  if (typeof purpleButton !== "undefined" && purpleButton.isEqualNode(buttonNode)) {
-    console.log("CORRECT: purpleButton is truthy!");
+  if (typeof squareImg !== "undefined") {
+    console.log("CORRECT: squareImg is truthy!");
     validatedStatus = true;
     lessonMessage = "You just passed lesson 1!"
     
   } else {
-    console.log("INCORRECT: purpleButton is not defined");
+    console.log("INCORRECT: squareImg is not defined");
     validatedStatus = false;
     lessonMessage = "Sorry, that's not the right answer"
   }
