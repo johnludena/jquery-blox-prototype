@@ -3,7 +3,7 @@ try {
     let lessonMessage = null;
     let errorMessage = ''
     var buttonNode = $('button');
-  if (typeof purpleButton !== "undefined" && purpleButton.isEqualNode(buttonNode)) {
+  if (typeof purpleButton !== "undefined" && purpleButton[0].isEqualNode(buttonNode[0])) {
     console.log("CORRECT: purpleButton is truthy!");
     validatedStatus = true;
     lessonMessage = "You just passed lesson 1!"

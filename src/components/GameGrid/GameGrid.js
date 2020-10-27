@@ -153,7 +153,7 @@ class GameGrid extends React.Component {
       <body>
         ${html}
 
-        <script type="text/javascript" src="${process.env.PUBLIC_URL + "/jquery-3.5.1.mins.js"}"></script>
+        <script type="text/javascript" src="${process.env.PUBLIC_URL + "/jquery-3.5.1.min.js"}"></script>
 
         ${this.lessonData.lessonSubmitted && !this.lessonData.lessonPassed ? userScriptCode : ""}
 
