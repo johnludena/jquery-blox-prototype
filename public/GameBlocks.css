@@ -27,13 +27,16 @@ body .block {
   border-width: 5px;
   font-size: 30px;
 	/* transition: 0.2s ease-out all; */
-	
 }
 
 button.block {
   border-color: #e84ea7;
   color: #e84ea7;
   background-color: #4f2137;
+}
+
+button.block.active {
+	background-color: red;
 }
 
 div.block {

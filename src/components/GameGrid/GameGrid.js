@@ -10,6 +10,7 @@ import successSound from "../../audio/success.wav";
 
 class GameGrid extends React.Component {
   constructor(props) {
+    console.log('============== constructor ============')
     super(props);
 
     // vars
@@ -37,7 +38,7 @@ class GameGrid extends React.Component {
   }
 
   shouldComponentUpdate = () => {
-    // console.log("======= shouldComponentUpdate =========");
+    console.log("======= shouldComponentUpdate =========");
     // if lesson hasn't been passed yet, keep updating the component
     if (!this.lessonData.lessonPassed) {
       return true;
@@ -48,7 +49,7 @@ class GameGrid extends React.Component {
   };
 
   componentDidUpdate = () => {
-    // console.log("===== componentDidUpdate =======");
+    console.log("===== componentDidUpdate =======");
 
     this.setData();
     this.displayGameGrid();
@@ -57,20 +58,26 @@ class GameGrid extends React.Component {
   
 
   catchIframeEvent = (event) => {
+    
     // check to make sure messages being sent from other windows are not gonna interfere with our app
     // TODO: Switch to complex string to prevent issues
     if (!event.data.internalSignal) {
       return;
     }
 
+    console.log('=========== catchIFrameEvent ==============')
+
     // TODO: Rename these variables to something else, getting a bit confusing...
     let iframeData = event.data;
 
+    // PASS
     if (iframeData.validated) {
-      alert(iframeData.message);
+      // alert(iframeData.message);
       this.correctSubmission();
+    
+    // FAIL
     } else {
-      alert(iframeData.message);
+      // alert(iframeData.message);
       this.incorrectSubmission();
     }
   };
@@ -99,9 +106,9 @@ class GameGrid extends React.Component {
     console.log("FAIL");
 
     let lessonIndex = this.lessonIndex;
-    let lessonPassedStatus = false;
     let lessonSubmittedStatus = false
 
+    // reset lesson submitted status if incorrect
     this.props.dispatch({
       type: 'LESSON_SUBMITTED',
       payload: {
@@ -122,9 +129,7 @@ class GameGrid extends React.Component {
         lessonSubmittedStatus, lessonIndex
       }
     });
-    // this.setState({
-    //   lessonSubmitted: true,
-    // });
+
   };
 
   displayGameGrid = () => {
@@ -157,9 +162,9 @@ class GameGrid extends React.Component {
 
         <script type="text/javascript" src="${process.env.PUBLIC_URL + "/jquery-3.5.1.min.js"}"></script>
 
-        ${this.lessonData.lessonSubmitted && !this.lessonData.lessonPassed ? userScriptCode : ""}
+        ${this.lessonData.lessonSubmitted ? userScriptCode : ""}
 
-        ${this.lessonData.lessonSubmitted && !this.lessonData.lessonPassed ? validationScriptCode : ""}
+        ${this.lessonData.lessonSubmitted ? validationScriptCode : ""}
 
       </body>
       </html>
