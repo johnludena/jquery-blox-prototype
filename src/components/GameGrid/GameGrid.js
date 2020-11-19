@@ -176,7 +176,7 @@ class GameGrid extends React.Component {
   };
 
   render() {
-    const blocksNumber = 25;
+    const blocksNumber = 50;
     let divsArr = [];
 
     for (let i = 0; i < blocksNumber; i++) {
@@ -225,3 +225,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(GameGrid);
+
+// DEV NOTES: Destroy HTML/CSS code editors!
