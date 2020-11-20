@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import { connect } from 'react-redux';
 
 // components
-import GameGrid from "./components/GameGrid/GameGrid";
-import CodeEditor from "./components/CodeEditor/CodeEditor";
+import LeftCol from "./components/LeftCol";
+import RightCol from "./components/RightCol";
 
 // css
 import "./App.scss";
@@ -21,8 +21,8 @@ class App extends React.Component {
     let routesArr = this.props.lessonsReducer.lessons.map((lesson, index)=>{
       return (
         <Route path={`/${index + 1}`} key={index + 1}>
-          <CodeEditor lessonKey={index}  />
-          <GameGrid lessonKey={index} />
+          <LeftCol lessonKey={index}  />
+          <RightCol lessonKey={index} />
         </Route>
       )
     });

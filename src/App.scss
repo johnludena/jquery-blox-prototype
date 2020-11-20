@@ -1,35 +1,11 @@
-// IMPORT ALL COMPONENTS
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import './components//GameGrid/GameGrid.scss';
-@import './components/CodeEditor/CodeEditor.scss';
+// BASE STYLES
+@import './css/base/layout';
+@import './css/base/reset';
+@import './css/base/typography';
 
-body {
-  font-family: 'Roboto', sans-serif;
-  font-family: 16px;
-}
-
-body * {
-  box-sizing: border-box;
-}
-
-#root {
-  display: flex;
-  height: 100vh;
-  background: black;
-  color: white;
-
-  .col {
-    padding: 40px;
-    width: 50%;
-
-    &.left-col {
-      background: #191b25;
-      // height: 100vh;
-    }
-
-    &.right-col {
-      background: #232323;
-      // height: 100vh;
-    }
-  }
-}
+// COMPONENTS
+@import './css/components/LeftCol.scss';
+@import './css/components/RightCol.scss';
+// @import './css/components/GameBlocks.scss';
+@import './css/components/GameGrid.scss';
+@import './css/components/CodeEditor.scss';

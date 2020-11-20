@@ -2,13 +2,12 @@
 import React from "react";
 
 // redux
-import store from "../../redux/store";
 import { connect } from "react-redux";
 
 // assets
-import successSound from "../../audio/success.wav";
+import successSound from "../audio/success.wav";
 
-class GameGrid extends React.Component {
+class RightCol extends React.Component {
   constructor(props) {
     console.log('============== constructor ============')
     super(props);
@@ -187,7 +186,7 @@ class GameGrid extends React.Component {
     }
 
     return (
-      <div className="right-col col">
+      <div className="RightCol col">
         <div className="grids-outter-wrapper">
           <div id="GameGrid">{divsArr}</div>
 
@@ -227,6 +226,6 @@ function mapStateToProps(state) {
   return { lessonsReducer };
 }
 
-export default connect(mapStateToProps)(GameGrid);
+export default connect(mapStateToProps)(RightCol);
 
 

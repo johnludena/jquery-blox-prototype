@@ -1,0 +1,30 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-family: 16px;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  height: 100vh;
+  background: black;
+  color: white;
+
+  .col {
+    padding: 40px;
+    width: 50%;
+
+    &.LeftCol {
+      background: #191b25;
+      // height: 100vh;
+    }
+
+    &.RightCol {
+      background: #232323;
+      // height: 100vh;
+    }
+  }
+}
