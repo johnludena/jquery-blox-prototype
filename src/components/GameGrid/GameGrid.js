@@ -132,6 +132,9 @@ class GameGrid extends React.Component {
 
   };
 
+  // DEV NOTES: Destroy HTML/CSS code editors!
+  // NEW BRANCH - v2
+
   displayGameGrid = () => {
     // console.log("===== displayGameGrid =======");
     const { html, css, js, js_validation } = this.lessonData;
@@ -226,4 +229,4 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(GameGrid);
 
-// DEV NOTES: Destroy HTML/CSS code editors!
+
