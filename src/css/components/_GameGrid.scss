@@ -8,14 +8,29 @@
 #GameGrid {
   // background: url('../images/gray-square.svg') top left repeat-x;
   display: grid;
-  grid-template-columns:repeat(5, 125px);
-  grid-template-rows: repeat(5, 125px);
+  grid-template-columns:repeat(10, 65px);
+  grid-template-rows: repeat(10, 65px);
   gap: 15px;
   // background: purple;
   padding: 15px;
 
+  // square blocks
   > div {
-    background-color: #3b3939;
+    position: relative;
+    
+    // middle dots
+    &::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #474748;
+      border-radius: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    // background-color: #3b3939;
   }
 
   .row {

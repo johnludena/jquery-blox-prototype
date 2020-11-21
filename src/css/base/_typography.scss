@@ -39,16 +39,30 @@ a {
   }
 }
 
-button {
+.btn, button {
+  font-size: 16px;
+  border-radius: 2px;
+  font-weight: 700;
+  border: none;
   cursor: pointer;
+  padding: 13px 20px;
+  transition: .2s ease-in-out all;
+
+  &.primary-btn {
+    color: black;
+    background: $yellow;
+
+    &:hover {
+      background: #e84ea7;
+      color: white;
+    }
+  }
+
+  &.secondary-btn {
+    color: white;
+    background: $blue-light;
+  }
 }
 
-.primary-btn {
-  background: $yellow;
-  color: black;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: none;
-  font-weight: 700;
-  border-radius: 2px;
-}
+
+

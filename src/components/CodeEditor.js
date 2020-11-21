@@ -44,6 +44,21 @@ class CodeEditor extends React.Component {
     });
   };
 
+  onSubmitCode = () => {
+    console.log('======== CodeEditor.js submitCode ===========');
+
+    let lessonIndex = this.lessonIndex;
+    let lessonSubmittedStatus = true;
+
+    this.props.dispatch({
+      type: 'LESSON_SUBMITTED',
+      payload: {
+        lessonSubmittedStatus, lessonIndex
+      }
+    });
+
+  };
+
   render() {
     console.log("========= CodeEditor.js render ===========");
     this.setData();
@@ -60,7 +75,7 @@ class CodeEditor extends React.Component {
     const showNextButton = () => {
       if (this.lessonData.lessonPassed) {
         return (
-          <Link className="primary-btn" to={`/${this.props.lessonKey + 2}`}>
+          <Link className="btn secondary-btn" to={`/${this.props.lessonKey + 2}`}>
             Go to next challenge
           </Link>
         );
@@ -85,11 +100,11 @@ class CodeEditor extends React.Component {
           }}
         />
 
-        <div className="d-flex justify-content-end bg-purple-pale padding-30">
-          <button className="primary-btn" onClick={this.onSubmitCode}>Submit code</button>
+        <div className="flex justify-content-between bg-purple-pale padding-30">
+          <button className="primary-btn btn" onClick={this.onSubmitCode}>Submit code</button>
+          {showNextButton()}
         </div>
 
-        <div className="bottom-navigation">{showNextButton()}</div>
       </div>
     );
   }

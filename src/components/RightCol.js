@@ -117,24 +117,6 @@ class RightCol extends React.Component {
     });
   };
 
-  onSubmitCode = () => {
-    console.log("===== onSubmitCode =======");
-
-    let lessonIndex = this.lessonIndex;
-    let lessonSubmittedStatus = true;
-
-    this.props.dispatch({
-      type: 'LESSON_SUBMITTED',
-      payload: {
-        lessonSubmittedStatus, lessonIndex
-      }
-    });
-
-  };
-
-  // DEV NOTES: Destroy HTML/CSS code editors!
-  // NEW BRANCH - v2
-
   displayGameGrid = () => {
     // console.log("===== displayGameGrid =======");
     const { html, css, js, js_validation } = this.lessonData;
@@ -179,7 +161,7 @@ class RightCol extends React.Component {
   };
 
   render() {
-    const blocksNumber = 50;
+    const blocksNumber = 100;
     let divsArr = [];
 
     for (let i = 0; i < blocksNumber; i++) {
