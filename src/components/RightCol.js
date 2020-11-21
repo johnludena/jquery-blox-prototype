@@ -2,6 +2,7 @@
 import React from "react";
 
 // redux
+import store from "../redux/store";
 import { connect } from "react-redux";
 
 // assets
@@ -186,7 +187,7 @@ class RightCol extends React.Component {
     }
 
     return (
-      <div className="RightCol col">
+      <div className="right-col col">
         <div className="grids-outter-wrapper">
           <div id="GameGrid">{divsArr}</div>
 
@@ -202,20 +203,7 @@ class RightCol extends React.Component {
             <audio src={successSound} ref={this.audioFile}></audio>
           </div>
         </div>
-        <section style={{ display: "flex", justifyContent: "center" }}>
-          <button
-            onClick={this.onSubmitCode}
-            className="button"
-            style={{
-              backgroundColor: "blue",
-              fontSize: 20,
-              color: "white",
-              padding: 20,
-            }}
-          >
-            Submit code
-          </button>
-        </section>
+        
       </div>
     );
   }

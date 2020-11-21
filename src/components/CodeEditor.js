@@ -60,7 +60,7 @@ class CodeEditor extends React.Component {
     const showNextButton = () => {
       if (this.lessonData.lessonPassed) {
         return (
-          <Link className="button" to={`/${this.props.lessonKey + 2}`}>
+          <Link className="primary-btn" to={`/${this.props.lessonKey + 2}`}>
             Go to next challenge
           </Link>
         );
@@ -71,21 +71,25 @@ class CodeEditor extends React.Component {
 
     return (
       <div className="CodeEditor">
-          <ul className="tabs">
-            <li>Javascript</li>
-          </ul>
-          <CodeMirror
-            value={js}
-            options={{
-              mode: "javascript",
-              ...codeMirrorOptions,
-            }}
-            onBeforeChange={(editor, data, js) => {
-              this.handleChange("js", js);
-            }}
-          />
+        <ul className="tabs">
+          <li>Javascript</li>
+        </ul>
+        <CodeMirror
+          value={js}
+          options={{
+            mode: "javascript",
+            ...codeMirrorOptions,
+          }}
+          onBeforeChange={(editor, data, js) => {
+            this.handleChange("js", js);
+          }}
+        />
 
-          <div className="bottom-navigation">{showNextButton()}</div>
+        <div className="d-flex justify-content-end bg-purple-pale padding-30">
+          <button className="primary-btn" onClick={this.onSubmitCode}>Submit code</button>
+        </div>
+
+        <div className="bottom-navigation">{showNextButton()}</div>
       </div>
     );
   }

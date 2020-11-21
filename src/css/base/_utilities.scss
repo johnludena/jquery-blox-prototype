@@ -1,0 +1,185 @@
+// Responsive utility classes
+// =================================================
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+// Utility classes/modifiers
+// =========================
+
+// Margin/padding
+// Margin and Padding
+// =============================================
+$unitpropsMarginPadding: (
+    0: 0,
+    1: 1px,
+    2: 2px,
+    3: 3px,
+    4: 4px,
+    5: 5px,
+    6: 6px,
+    7: 7px,
+    8: 8px,
+    9: 9px,
+    10: 10px,
+    11: 11px,
+    12: 12px,
+    13: 13px,
+    14: 14px,
+    15: 15px,
+    16: 16px,
+    17: 17px,
+    18: 18px,
+    19: 19px,
+    20: 20px,
+    25: 25px,
+    30: 30px,
+    35: 35px,
+    40: 40px,
+    45: 45px,
+    50: 50px,
+    55: 55px,
+    60: 60px,
+    65: 65px,
+    70: 70px,
+    75: 75px,
+    80: 80px,
+    85: 85px,
+    90: 90px,
+    95: 95px,
+    100: 100px,
+    105: 105px,
+    110: 110px,
+    115: 115px,
+    120: 120px,
+    125: 125px,
+    150: 150px,
+    175: 175px,
+    200: 200px,
+    250: 250px,
+    300: 300px,
+    350: 350px,
+    400: 400px,
+    450: 450px,
+    500: 500px,
+);
+
+@each $i in $unitpropsMarginPadding {
+    .margin-#{nth($i, 1)} {
+        margin: #{nth($i, 2)} !important;
+    }
+
+    .margin-top-#{nth($i, 1)} {
+        margin-top: #{nth($i, 2)} !important;
+    }
+
+    .margin-bottom-#{nth($i, 1)} {
+        margin-bottom: #{nth($i, 2)} !important;
+    }
+
+    .margin-top-bottom-#{nth($i, 1)} {
+        margin-top: #{nth($i, 2)} !important;
+        margin-bottom: #{nth($i, 2)} !important;
+    }
+
+    .margin-left-#{nth($i, 1)} {
+        margin-left: #{nth($i, 2)} !important;
+    }
+
+    .margin-right-#{nth($i, 1)} {
+        margin-right: #{nth($i, 2)} !important;
+    }
+
+    .margin-left-right-#{nth($i, 1)} {
+        margin-right: #{nth($i, 2)} !important;
+        margin-left: #{nth($i, 2)} !important;
+    }
+
+    .padding-#{nth($i, 1)} {
+        padding: #{nth($i, 2)} !important;
+    }
+
+    .padding-top-#{nth($i, 1)} {
+        padding-top: #{nth($i, 2)} !important;
+    }
+
+    .padding-bottom-#{nth($i, 1)} {
+        padding-bottom: #{nth($i, 2)} !important;
+    }
+
+    .padding-top-bottom-#{nth($i, 1)} {
+        padding-top: #{nth($i, 2)} !important;
+        padding-bottom: #{nth($i, 2)} !important;
+    }
+
+    .padding-left-#{nth($i, 1)} {
+        padding-left: #{nth($i, 2)} !important;
+    }
+
+    .padding-right-#{nth($i, 1)} {
+        padding-right: #{nth($i, 2)} !important;
+    }
+
+    .padding-left-right-#{nth($i, 1)} {
+        padding-left: #{nth($i, 2)} !important;
+        padding-right: #{nth($i, 2)} !important;
+    }
+}
+
+
+// Text colors
+$colors: (
+
+  purple: (
+    dark: $purple-dark,
+    pale: $purple-pale,
+  ),
+
+);
+
+
+@mixin color-modifiers($attribute: 'color', $prefix: '-', $separator: '-') {
+  @each $name, $color in $colors {
+    &#{$prefix}#{"" + $name} {
+      @each $tone, $hex in $color {
+        &#{$separator}#{"" + $tone} {
+          #{$attribute}: $hex !important;
+        }
+      }
+    }
+  }
+}
+
+.text {
+  @include color-modifiers;
+}
+
+// Background colors
+// ========================
+@mixin background-modifiers($attribute: 'background', $prefix: '-', $separator: '-') {
+  @each $name, $background in $colors {
+    &#{$prefix}#{"" + $name} {
+      @each $tone, $hex in $background {
+        &#{$separator}#{"" + $tone} {
+          #{$attribute}: $hex !important;
+        }
+      }
+    }
+  }
+}
+
+.bg {
+  @include background-modifiers;
+}
