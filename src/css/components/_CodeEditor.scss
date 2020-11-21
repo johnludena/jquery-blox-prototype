@@ -1,27 +1,27 @@
-.code-editor-wrapper {
-  margin-top: 20px;
+.CodeEditor {
 
-  .code-editor {
-    margin-top: 40px;
-
-    &:first-child {
-      margin-top: 0;
+  // Editor tabs
+  ul.tabs {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    
+    li {
+      background: $purple-pale;
+      padding: 15px 20px;
+      display: inline-block;
     }
+  }
+  
+  // React component wrapper
+  .CodeMirror {
+    font-size: 16px;
+    // height: 200px;
+    background: $purple-pale;
 
-    // React component wrapper
-    .CodeMirror {
-      font-size: 16px;
-      height: 200px;
+    .CodeMirror-gutters {
+      background: $purple-pale;
     }
-
-   
   }
-
-  .button {
-    background: red;
-    padding: 20px;
-    margin: 10px 0;
-    color: white;
-    display: inline-block;
-  }
+  
 }

@@ -1,7 +1,7 @@
 // Libraries
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { Controlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
 
 // CodeMirror CSS imports
@@ -11,28 +11,27 @@ import "codemirror/theme/material-ocean.css";
 // import "codemirror/mode/css/css";
 import "codemirror/mode/javascript/javascript";
 
-
 class CodeEditor extends React.Component {
   constructor(props) {
-    console.log('========= CodeEditor.js constructor ===========');
+    console.log("========= CodeEditor.js constructor ===========");
     super(props);
 
     this.lessonIndex = this.props.lessonKey;
   }
 
   componentDidUpdate = () => {
-    console.log('========= CodeEditor.js componentDidUpdate ===========')
+    console.log("========= CodeEditor.js componentDidUpdate ===========");
     this.setData();
   };
 
   setData = () => {
-    console.log('========= CodeEditor.js setData ===========')
+    console.log("========= CodeEditor.js setData ===========");
     // data vars
     this.lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
   };
 
   handleChange = (codeType, content) => {
-    console.log('========= CodeEditor.js handleChange ===========')
+    console.log("========= CodeEditor.js handleChange ===========");
     const lessonIndex = this.lessonIndex;
 
     this.props.dispatch({
@@ -46,7 +45,7 @@ class CodeEditor extends React.Component {
   };
 
   render() {
-    console.log('========= CodeEditor.js render ===========')
+    console.log("========= CodeEditor.js render ===========");
     this.setData();
 
     const { html, js, css } = this.lessonData;
@@ -72,25 +71,21 @@ class CodeEditor extends React.Component {
 
     return (
       <div className="CodeEditor">
-        <div className="code-editor-wrapper">
-          <div className="panel playground">
-            <div className="code-editor js-code">
-              <div className="editor-header">JavaScript</div>
-              <CodeMirror
-                value={js}
-                options={{
-                  mode: "javascript",
-                  ...codeMirrorOptions,
-                }}
-                onBeforeChange={(editor, data, js) => {
-                  this.handleChange("js", js);
-                }}
-              />
-            </div>
-          </div>
+          <ul className="tabs">
+            <li>Javascript</li>
+          </ul>
+          <CodeMirror
+            value={js}
+            options={{
+              mode: "javascript",
+              ...codeMirrorOptions,
+            }}
+            onBeforeChange={(editor, data, js) => {
+              this.handleChange("js", js);
+            }}
+          />
 
           <div className="bottom-navigation">{showNextButton()}</div>
-        </div>
       </div>
     );
   }

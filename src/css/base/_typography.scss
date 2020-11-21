@@ -1,1 +1,40 @@
+// HEADLINES
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap');
+
+// BODY
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Red Hat Display', sans-serif;
+  margin-top: 0;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 35px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid $blue-light;
+  transition: .2s ease-in-out all;
+
+  &:hover {
+    background: $blue-light;
+    color: white;
+  }
+}

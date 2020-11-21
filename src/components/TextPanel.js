@@ -15,7 +15,7 @@ class TextPanel extends React.Component {
 
         <p>
           As we write JavaScript, we can write comments in our code that the
-          computer will ignore as our program runs. These comments exist just
+          computer will ignore <a href="http://www.google.com">as our program runs</a>. These comments exist just
           for human readers.
         </p>
 

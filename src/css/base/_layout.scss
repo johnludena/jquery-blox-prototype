@@ -1,16 +1,22 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-family: 16px;
+  margin: 0;
+  background: $purple-dark;
 }
 
 body * {
   box-sizing: border-box;
+  
+}
+
+p {
+  margin-top: 0;
 }
 
 #root {
   display: flex;
   height: 100vh;
-  background: black;
   color: white;
 
   .col {
@@ -18,12 +24,10 @@ body * {
     width: 50%;
 
     &.LeftCol {
-      background: #191b25;
       // height: 100vh;
     }
 
     &.RightCol {
-      background: #232323;
       // height: 100vh;
     }
   }
