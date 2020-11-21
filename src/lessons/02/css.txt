@@ -1,4 +1,9 @@
+button.one {
+  grid-column-start: 5;
+  grid-row-start: 5;
+}
+
 div.block {
-  grid-column-start: 3;
-  grid-row-start: 3;
+  grid-column-start: 6;
+  grid-row-start: 5;
 }

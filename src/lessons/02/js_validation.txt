@@ -2,13 +2,15 @@ try {
     let validatedStatus = null;
     let lessonMessage = null;
     let errorMessage = ''
-  if (typeof blueDiv !== "undefined") {
-    console.log("CORRECT: blueDiv is truthy!");
+    var divNode = $('div');
+  if (typeof divNode !== "undefined" && divNode[0].isEqualNode(divNode[0])) {
+    divNode.addClass('active');
+    console.log("CORRECT: purpleButton is truthy!");
     validatedStatus = true;
     lessonMessage = "You just passed lesson 1!"
     
   } else {
-    console.log("INCORRECT: blueDiv is not defined");
+    console.log("INCORRECT: purpleButton is not defined");
     validatedStatus = false;
     lessonMessage = "Sorry, that's not the right answer"
   }

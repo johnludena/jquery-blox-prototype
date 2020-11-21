@@ -1,1 +1,1 @@
-// Lesson 2: Do something with this button
+// Lesson 2: Create a variable called 'divNode' and assign it to the 'div' element with class 'block' on the page

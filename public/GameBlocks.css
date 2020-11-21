@@ -45,7 +45,11 @@ button.block.active {
 div.block {
   border-color: #9db1f5;
   color: #9db1f5;
-  background-color: #342a67;
+  background-color: transparent;
+}
+
+div.block.active {
+	background-color: #9db1f5
 }
 
 p.block {
