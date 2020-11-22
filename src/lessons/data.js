@@ -20,6 +20,12 @@ const lesson_03_js_validation = raw("./03/js_validation.txt");
 
 const lessons = [
   {
+    blockElements: [
+      {
+        blockClass: '.button',
+        blockPosition: 54
+      },
+    ],
     html: lesson_01_html,
     css: lesson_01_css,
     js: lesson_01_js,
@@ -28,6 +34,16 @@ const lessons = [
     lessonPassed: false,
   },
   {
+    blockElements: [
+      {
+        blockClass: '.button',
+        blockPosition: 20
+      },
+      {
+        blockClass: '.div',
+        blockPosition: 21
+      },
+    ],
     html: lesson_02_html,
     css: lesson_02_css,
     js: lesson_02_js,

@@ -5,71 +5,64 @@
 }
 
 // UI elements behind user grid canvas
-#GameGrid {
-  // background: url('../images/gray-square.svg') top left repeat-x;
-  display: grid;
-  grid-template-columns:repeat(10, 65px);
-  grid-template-rows: repeat(10, 65px);
-  gap: 15px;
-  // background: purple;
-  padding: 15px;
+.GameGrid {
+  .grid {
+    display: grid;
 
-  // square blocks
-  > div {
-    position: relative;
-    
-    // middle dots
-    &::after {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: #474748;
-      border-radius: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    // background-color: #3b3939;
-  }
+    // square blocks
+    > div {
+      position: relative;
 
-  .row {
-    display: flex;
-
-    .block {
-      background: #444444;
-      width: 125px;
-      height: 125px;
-      margin: 10px;
-      transition: 0.2s ease-out all;
-      border: 2px solid #444444;
-      // display: inline-block;
-
-      &.pink {
-        border: 2px dashed #de7186;
+      // middle dots
+      &::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: #474748;
+        border-radius: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
+      // background-color: #3b3939;
+    }
 
-      &.completed {
-        background: #de7186;
+    .row {
+      display: flex;
+
+      .block {
+        background: #444444;
+        width: 125px;
+        height: 125px;
+        margin: 10px;
+        transition: 0.2s ease-out all;
+        border: 2px solid #444444;
+        // display: inline-block;
+
+        &.pink {
+          border: 2px dashed #de7186;
+        }
+
+        &.completed {
+          background: #de7186;
+        }
       }
     }
   }
 
-  
-}
-
-// iFrame contents based on user's input or lesson
-#iFrameWrapper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  iframe {
+  // iFrame contents based on user's input or lesson
+  #iFrameWrapper {
     width: 100%;
     height: 100%;
-    border: none;
-  }
+    position: absolute;
+    top: 0;
+    left: 0;
 
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
 }
