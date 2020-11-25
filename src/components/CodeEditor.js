@@ -2,13 +2,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Controlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
+import { UnControlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
+import chai from 'chai';
 
 // CodeMirror CSS imports
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material-ocean.css";
-// import "codemirror/mode/htmlmixed/htmlmixed";
-// import "codemirror/mode/css/css";
 import "codemirror/mode/javascript/javascript";
 
 class CodeEditor extends React.Component {
@@ -30,40 +29,34 @@ class CodeEditor extends React.Component {
     this.lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
   };
 
-  handleChange = (codeType, content) => {
+  handleCodeUpdates = (codeType, content) => {
     console.log("========= CodeEditor.js handleChange ===========");
     const lessonIndex = this.lessonIndex;
 
     this.props.dispatch({
-      type: "CODE_UPDATED",
+      type: 'CODE_UPDATED',
       payload: {
-        codeType,
-        content,
-        lessonIndex,
-      },
-    });
-  };
-
-  onSubmitCode = () => {
-    console.log('======== CodeEditor.js submitCode ===========');
-
-    let lessonIndex = this.lessonIndex;
-    let lessonSubmittedStatus = true;
-
-    this.props.dispatch({
-      type: 'LESSON_SUBMITTED',
-      payload: {
-        lessonSubmittedStatus, lessonIndex
+        codeType, content, lessonIndex
       }
     });
+  };
+
+  handleCodeSubmission = () => {
+    console.log('======== CodeEditor.js submitCode ===========');
+
+    console.log('here is the current JS value');
+    let jsCode = this.lessonData.js;
+
+
+    chai.assert.notEqual(3, 4, 'these numbers are not equal');
 
   };
 
-  render() {
+  render = () => {
     console.log("========= CodeEditor.js render ===========");
     this.setData();
 
-    const { html, js, css } = this.lessonData;
+    const { js } = this.lessonData;
 
     const codeMirrorOptions = {
       theme: "material-ocean",
@@ -95,13 +88,13 @@ class CodeEditor extends React.Component {
             mode: "javascript",
             ...codeMirrorOptions,
           }}
-          onBeforeChange={(editor, data, js) => {
-            this.handleChange("js", js);
+          onChange={(editor, data, js) => {
+            this.handleCodeUpdates("js", js);
           }}
         />
 
         <div className="flex justify-content-between bg-purple-pale padding-30">
-          <button className="primary-btn btn" onClick={this.onSubmitCode}>Submit code</button>
+          <button className="primary-btn btn" onClick={this.handleCodeSubmission}>Submit code</button>
           {showNextButton()}
         </div>
 

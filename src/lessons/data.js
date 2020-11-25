@@ -26,10 +26,10 @@ const lessons = [
         blockPosition: 54
       },
     ],
-    html: lesson_01_html,
-    css: lesson_01_css,
+    // html: lesson_01_html,
+    // css: lesson_01_css,
     js: lesson_01_js,
-    js_validation: lesson_01_js_validation,
+    // js_validation: lesson_01_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
   },
@@ -37,25 +37,39 @@ const lessons = [
     blockElements: [
       {
         blockClass: '.button',
-        blockPosition: 20
+        blockPosition: 54
       },
       {
         blockClass: '.div',
-        blockPosition: 21
+        blockPosition: 55
       },
     ],
-    html: lesson_02_html,
-    css: lesson_02_css,
+    // html: lesson_02_html,
+    // css: lesson_02_css,
     js: lesson_02_js,
-    js_validation: lesson_02_js_validation,
+    // js_validation: lesson_02_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
   },
   {
-    html: lesson_03_html,
-    css: lesson_03_css,
+    blockElements: [
+      {
+        blockClass: '.button',
+        blockPosition: 54
+      },
+      {
+        blockClass: '.div',
+        blockPosition: 55
+      },
+      {
+        blockClass: '.div',
+        blockPosition: 56
+      },
+    ],
+    // html: lesson_03_html,
+    // css: lesson_03_css,
     js: lesson_03_js,
-    js_validation: lesson_03_js_validation,
+    // js_validation: lesson_03_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
   },
