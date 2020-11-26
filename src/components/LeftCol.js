@@ -3,6 +3,7 @@ import React from "react";
 
 // Components
 import Header from './Header';
+import Testing from './Testing';
 import TextPanel from './TextPanel';
 import CodeEditor from './CodeEditor';
 
@@ -17,6 +18,7 @@ class LeftCol extends React.Component {
       <div className="LeftCol col">
 
         <Header />
+        <Testing />
         <TextPanel />
         <CodeEditor lessonKey={this.props.lessonKey} />
 
