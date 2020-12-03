@@ -1,4 +1,8 @@
 .ValidatorIframe {
-  margin-top: 20px;
-  width: 100%;
+  iframe {
+    margin-top: 20px;
+    width: 100%;
+    background: white;
+    height: 500px;
+  }
 }
