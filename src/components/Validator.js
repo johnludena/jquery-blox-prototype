@@ -33,28 +33,43 @@ class Validator extends React.Component {
 				<div id="mocha"></div>
 				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
 				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.4.5/mocha.js"></script>
+				<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsdom@16.4.0/lib/api.min.js"></script>
+				<script type="text/javascript">
+					let firstName = 'John Ludena';
+					let age = 36;
+					let employed = true;
+
+					let fruits = ["apple", "mango", "pineapple"];
+				</script>
 				<script type="text/javascript">
 				// Setup
 				mocha.setup('bdd');
-
-				console.log(chai)
 				
-				// Let's test this function
-				const addr = (a, b) =>  a + b;
+				console.log('jsdom', jsdom)
+				console.log(firstName);
 				
 				// Assertion made below
-				describe('Addr adds two numbers', () => {
+				describe('Lesson checks', () => {
 				
-				  it('Adds two numbers', function() {
-				    chai.assert.equal(addr(2, 2), 3);
-				  });
-				
-				  it('Lesson 2 Tests', function() {
-				
-				    chai.expect("John").to.be.a('string'); // Recommended
-				
-				  });
-				
+				  it('Name is a string', function() {
+				    chai.expect(firstName).to.be.a('string'); // Recommended	
+					});
+					
+					it('Age is an integer', function() {
+				    chai.expect(age).to.be.a('number'); // Recommended	
+					});
+
+					it('Employment status is a boolean', function() {
+				    chai.expect(employed).to.be.a('boolean'); // Recommended	
+					});
+
+					it('Fruits is an array', function() {
+				    chai.expect(fruits).to.be.a('array'); // Recommended	
+					});
+
+					it('Array has 3 items', function() {
+				    chai.expect(fruits).to.have.lengthOf(3); // Recommended	
+					});
 				});
 				
 				mocha.run();
