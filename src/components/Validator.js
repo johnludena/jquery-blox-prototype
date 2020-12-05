@@ -33,7 +33,6 @@ class Validator extends React.Component {
 				<div id="mocha"></div>
 				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
 				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.4.5/mocha.js"></script>
-				<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsdom@16.4.0/lib/api.min.js"></script>
 				<script type="text/javascript">
 					let firstName = 'John Ludena';
 					let age = 36;
@@ -42,10 +41,10 @@ class Validator extends React.Component {
 					let fruits = ["apple", "mango", "pineapple"];
 				</script>
 				<script type="text/javascript">
+
 				// Setup
 				mocha.setup('bdd');
 				
-				console.log('jsdom', jsdom)
 				console.log(firstName);
 				
 				// Assertion made below
