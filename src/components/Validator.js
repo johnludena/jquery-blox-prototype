@@ -25,54 +25,53 @@ class Validator extends React.Component {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Your Awesome Game!</title>
+				<title>Your Awesome Game!</title>
       
       </head>
 			<body>
 				<h1>Heading test</h1>
-				<div id="mocha"></div>
-				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
-				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.4.5/mocha.js"></script>
-				<script type="text/javascript">
-					let firstName = 'John Ludena';
-					let age = 36;
-					let employed = true;
 
-					let fruits = ["apple", "mango", "pineapple"];
+				<div id="jest-lite-wrapper"></div>
+				
+				<script
+					crossorigin
+					src="https://unpkg.com/react@16/umd/react.production.min.js"
+				></script>
+				<script
+					crossorigin
+					src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+				></script>
+				<script
+					crossorigin
+					src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/core.js"
+				></script>
+				<script
+					crossorigin
+					src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/enzyme.js"
+				></script>
+				<script
+					crossorigin
+					src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.js"
+				></script>
+				<script>
+					let fruits = ['Pineapple', 'Mangoes', 'Bananas']
 				</script>
-				<script type="text/javascript">
+				<script>
+					const {
+						core: {describe, it, expect, run},
+						enzyme: {mount},
+						prettify,
+					} = window.jestLite;
 
-				// Setup
-				mocha.setup('bdd');
-				
-				console.log(firstName);
-				
-				// Assertion made below
-				describe('Lesson checks', () => {
-				
-				  it('Name is a string', function() {
-				    chai.expect(firstName).to.be.a('string'); // Recommended	
-					});
-					
-					it('Age is an integer', function() {
-				    chai.expect(age).to.be.a('number'); // Recommended	
+					describe('Array', () => {
+						it('has three items', () => {
+						
+							expect(fruits).toHaveLength(3);
+						});
+						
 					});
 
-					it('Employment status is a boolean', function() {
-				    chai.expect(employed).to.be.a('boolean'); // Recommended	
-					});
-
-					it('Fruits is an array', function() {
-				    chai.expect(fruits).to.be.a('array'); // Recommended	
-					});
-
-					it('Array has 3 items', function() {
-				    chai.expect(fruits).to.have.lengthOf(3); // Recommended	
-					});
-				});
-				
-				mocha.run();
-				
+					prettify.toHTML(run(), document.getElementById('jest-lite-wrapper'));
 				</script>
 				
       </body>

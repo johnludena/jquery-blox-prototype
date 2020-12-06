@@ -9,7 +9,6 @@ import successSound from "../audio/success.wav";
 
 class GameGrid extends React.Component {
   constructor(props) {
-    console.log("========= GameGrid.js constructor ==========");
     super(props);
 
     this.audioFile = React.createRef();
@@ -17,8 +16,6 @@ class GameGrid extends React.Component {
   }
 
   render() {
-
-    console.log("======== GameGrid.js render ==========");
     
     // CSS grid settings
     const numberOfRows = 12;

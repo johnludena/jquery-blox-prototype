@@ -1,2 +1,2 @@
-// create a node for the button element and assign it to a variable called 'purpleButton'
-var purpleButton = $('button');
+// create an array with three items
+let fruits = ['Pineapple', 'Mangoes', 'Bananas']

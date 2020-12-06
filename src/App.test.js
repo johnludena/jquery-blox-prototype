@@ -27,22 +27,10 @@ test('displays a user after a click', () => {
   });
 
   // Use jquery to emulate a click on our button
-  $('#button').click();
+  $('#button').trigger('click');
 
   // Assert that the fetchCurrentUser function was called, and that the
   // #username span's inner text was updated as we'd expect it to.
   expect(fetchCurrentUser).toBeCalled();
   expect($('#username').text()).toEqual('John Ludena - Logged Out');
-});
-
-test('variable has correct value', () => {
-  // Set up our document body
-  document.body.innerHTML =
-    '<div>' +
-    '  <p class="adcetera">Adcetera Design Group</p>' +
-    '</div>';
-
-  const $ = require('jquery');
-  
-  expect($('.adcetera').text()).toBe('Adcetera Design Group');
 });

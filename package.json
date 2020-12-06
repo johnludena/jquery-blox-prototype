@@ -1,6 +1,6 @@
 {
   "name": "jquery-blox-prototype",
-  "version": "0.1.0",
+  "version": "1.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "chai": "^4.2.0",
     "codemirror": "^5.57.0",
+    "jest-lite": "^1.0.0-alpha.4",
     "jquery": "^3.5.1",
     "jsdom": "^16.4.0",
     "mocha": "^8.2.1",

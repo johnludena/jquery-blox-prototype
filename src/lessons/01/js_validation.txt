@@ -1,29 +1,15 @@
-try {
-    let validatedStatus = null;
-    let lessonMessage = null;
-    let errorMessage = ''
-    var buttonNode = $('button');
-  if (typeof purpleButton !== "undefined" && purpleButton[0].isEqualNode(buttonNode[0])) {
-    purpleButton.addClass('active');
-    console.log("CORRECT: purpleButton is truthy!");
-    validatedStatus = true;
-    lessonMessage = "You just passed lesson 1!"
-    
-  } else {
-    console.log("INCORRECT: purpleButton is not defined");
-    validatedStatus = false;
-    lessonMessage = "Sorry, that's not the right answer"
-  }
+const {
+  core: {describe, it, expect, run},
+  enzyme: {mount},
+  prettify,
+} = window.jestLite;
 
-    // send data to app's outter window
-    window.top.postMessage({
-        internalSignal: true,
-        validated: validatedStatus,
-        message: lessonMessage
-    },
-    window.location.origin
-    );
-} catch (error) {
-  console.log(error);
-}
+describe('Array', () => {
+  it('has three items', () => {
+  
+    expect(fruits).toHaveLength(3);
+  });
+  
+});
 
+prettify.toHTML(run(), document.getElementById('jest-lite-wrapper'));

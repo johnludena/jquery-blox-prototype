@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { UnControlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
-import chai from 'chai';
+// import chai from 'chai';
 
 // CodeMirror CSS imports
 import "codemirror/lib/codemirror.css";
@@ -12,25 +12,20 @@ import "codemirror/mode/javascript/javascript";
 
 class CodeEditor extends React.Component {
   constructor(props) {
-    console.log("========= CodeEditor.js constructor ===========");
     super(props);
 
     this.lessonIndex = this.props.lessonKey;
   }
 
   componentDidUpdate = () => {
-    console.log("========= CodeEditor.js componentDidUpdate ===========");
     this.setData();
   };
 
   setData = () => {
-    console.log("========= CodeEditor.js setData ===========");
-    // data vars
     this.lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
   };
 
   handleCodeUpdates = (codeType, content) => {
-    console.log("========= CodeEditor.js handleChange ===========");
     const lessonIndex = this.lessonIndex;
 
     this.props.dispatch({
@@ -42,18 +37,19 @@ class CodeEditor extends React.Component {
   };
 
   handleCodeSubmission = () => {
-    console.log('======== CodeEditor.js submitCode ===========');
+    // let jsCode = this.lessonData.js;
 
-    console.log('here is the current JS value');
-    let jsCode = this.lessonData.js;
-
-
-    chai.assert.notEqual(3, 4, 'these numbers are not equal');
+    this.props.dispatch({
+      type: 'LESSON_SUBMITTED',
+      payload: {
+         lessonSubmittedStatus: true,
+         lessonIndex: this.lessonIndex,
+      }
+    });
 
   };
 
   render = () => {
-    console.log("========= CodeEditor.js render ===========");
     this.setData();
 
     const { js } = this.lessonData;

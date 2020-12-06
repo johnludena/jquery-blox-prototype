@@ -1,13 +1,13 @@
 // libs
 import React from "react";
-import store from "../redux/store";
-import { connect } from "react-redux";
+// import store from "../redux/store";
+// import { connect } from "react-redux";
 
 // components
 import GameGrid from './GameGrid';
 
 // assets
-import successSound from "../audio/success.wav";
+// import successSound from "../audio/success.wav";
 
 class RightCol extends React.Component {
 

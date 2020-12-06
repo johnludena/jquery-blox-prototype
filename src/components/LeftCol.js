@@ -4,6 +4,7 @@ import React from "react";
 // Components
 import Header from './Header';
 import Validator from './Validator';
+import ValidatorIframe from './ValidatorIframe';
 import TextPanel from './TextPanel';
 import CodeEditor from './CodeEditor';
 
@@ -20,7 +21,8 @@ class LeftCol extends React.Component {
         <Header />
         <TextPanel />
         <CodeEditor lessonKey={this.props.lessonKey} />
-        <Validator />
+        {/* <Validator lessonKey={this.props.lessonKey} /> */}
+        <ValidatorIframe lessonKey={this.props.lessonKey} />
 
       </div>
     );
