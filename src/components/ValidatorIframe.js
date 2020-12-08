@@ -2,6 +2,8 @@ import React from "react";
 // import { createPortal } from "react-dom";
 import { connect } from "react-redux";
 // import store from "../redux/store";
+import { Helmet } from "react-helmet";
+
 import IFrame from "./IFrame";
 
 import $ from "jquery";
@@ -17,7 +19,6 @@ class ValidatorIframe extends React.Component {
 	}
 
 	componentDidMount = () => {
-		console.log('store:', this.props.lessons);
 		this.runValidator();
 	}
 
@@ -26,7 +27,6 @@ class ValidatorIframe extends React.Component {
 	}
 
 	runValidator = () => {
-		console.log('runValidator');
 		let lessonData = this.props.lessons[this.props.lessonKey];
 
 		if(lessonData.lessonSubmitted) {
@@ -38,9 +38,7 @@ class ValidatorIframe extends React.Component {
   render = () => {
 		let lessonData = this.props.lessons[this.props.lessonKey];
 
-		let userScript = <script type="text/javascript">
-			{lessonData.js}
-		</script>;
+		let userScript = <script type="text/javascript">{lessonData.js}</script>;
 
 		let validationScript = <script type="text/javascript">
 			{lessonData.js_validation}
@@ -51,14 +49,10 @@ class ValidatorIframe extends React.Component {
 				<IFrame>
 					<h1>Heading for IFrame component</h1>
 					<div id="jest-lite-wrapper"></div>
-					<script	crossOrigin="true"	src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-					<script	crossOrigin="true"	src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-					<script	crossOrigin="true"	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/core.js"></script>
-					<script	crossOrigin="true"	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/enzyme.js"></script>
-					<script	crossOrigin="true"	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.js"></script>
+					
 
 					{lessonData.lessonSubmitted ? userScript : ''}
-					{lessonData.lessonSubmitted ? validationScript : ''}
+					{/* {lessonData.lessonSubmitted ? validationScript : ''} */}
 				</IFrame>
         
       </div>

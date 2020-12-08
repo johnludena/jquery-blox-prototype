@@ -1,23 +1,97 @@
 import React from "react";
+import { connect } from "react-redux";
 import { createPortal } from "react-dom";
 import IFrame from "./IFrame";
 
 class Validator extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.iframe = React.createRef();
+		this.lessonIndex = this.props.lessonKey;
+	}
+
+	setData = () => {
+		this.lessonData = this.props.lessons[this.props.lessonKey];
+	}
+
+	catchIframeEvent = (event) => {
+		
+		// exit for any other event that where the data property 'lessonPassed' is falsy
+    if (!event.data.lessonPassed) {
+      return;
+		}
+
+		let lessonPassedStatus = true;
+		let lessonIndex = this.lessonIndex;
+
+		// otherwise, lessonPassed is 'true' and therefore we can update state
+		this.props.dispatch({
+      type: 'LESSON_PASSED',
+      payload: {
+				lessonPassedStatus,
+         lessonIndex,
+      }
+    });
 	}
 
 	componentDidMount = () => {
+		this.setData();
+		this.renderIframe();
+
+		window.addEventListener("message", this.catchIframeEvent);
+	}
+
+	componentDidUpdate = () => {
+		this.setData();
 		this.renderIframe();
 	}
 
 	renderIframe = () => {
 
 		const iframe = this.iframe.current;
-    const document = iframe.contentDocument;
+		const document = iframe.contentDocument;
+		
+		const userScript = `<script type="text/javascript">${this.lessonData.js}</script>`;
+
+		const validationScript = `<script>
+			const {
+				core: {describe, it, expect, run, afterAll, afterEach},
+				enzyme: {mount},
+				prettify,
+			} = window.jestLite;
+
+			let testStatus = false;
+			let passTests = 0;
+			let failedTest = 0;
+
+			${this.lessonData.js_validation}
+
+			afterEach(() => {
+					if (testStatus) {
+						passTests += 1;
+					} else {
+						failedTest += 1;
+					}
+			
+					testStatus = false;
+			});
+
+			afterAll(() => {
+				if (failedTest === 0) {
+					window.top.postMessage({
+						lessonPassed: true,
+					},
+					window.location.origin
+					);
+				} else {
+					console.log('YOU FAILED ONE OR MORE TESTS. Check your code and try it again!');
+				}
+			});
+
+			prettify.toHTML(run(), document.body);
+		</script>`;
 
 		const documentContents = `<!DOCTYPE html>
       <html lang="en">
@@ -29,50 +103,16 @@ class Validator extends React.Component {
       
       </head>
 			<body>
-				<h1>Heading test</h1>
+				<link rel="stylesheet" href="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.css"/>
+				<script	crossorigin	src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+				<script	crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+				<script crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/core.js"></script>
+				<script	crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/enzyme.js"></script>
+				<script	crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.js"></script>
 
-				<div id="jest-lite-wrapper"></div>
-				
-				<script
-					crossorigin
-					src="https://unpkg.com/react@16/umd/react.production.min.js"
-				></script>
-				<script
-					crossorigin
-					src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
-				></script>
-				<script
-					crossorigin
-					src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/core.js"
-				></script>
-				<script
-					crossorigin
-					src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/enzyme.js"
-				></script>
-				<script
-					crossorigin
-					src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.js"
-				></script>
-				<script>
-					let fruits = ['Pineapple', 'Mangoes', 'Bananas']
-				</script>
-				<script>
-					const {
-						core: {describe, it, expect, run},
-						enzyme: {mount},
-						prettify,
-					} = window.jestLite;
+				${this.lessonData.lessonSubmitted ? userScript : ''}
 
-					describe('Array', () => {
-						it('has three items', () => {
-						
-							expect(fruits).toHaveLength(3);
-						});
-						
-					});
-
-					prettify.toHTML(run(), document.getElementById('jest-lite-wrapper'));
-				</script>
+				${this.lessonData.lessonSubmitted ? validationScript : ''}
 				
       </body>
       </html>
@@ -99,4 +139,9 @@ class Validator extends React.Component {
   }
 }
 
-export default Validator;
+const mapStateToProps = function (state) {
+  const { lessons } = state.lessonsReducer;
+  return { lessons };
+};
+
+export default connect(mapStateToProps)(Validator);

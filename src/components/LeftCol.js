@@ -21,8 +21,8 @@ class LeftCol extends React.Component {
         <Header />
         <TextPanel />
         <CodeEditor lessonKey={this.props.lessonKey} />
-        {/* <Validator lessonKey={this.props.lessonKey} /> */}
-        <ValidatorIframe lessonKey={this.props.lessonKey} />
+        <Validator lessonKey={this.props.lessonKey} />
+        {/* <ValidatorIframe lessonKey={this.props.lessonKey} /> */}
 
       </div>
     );

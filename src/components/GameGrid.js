@@ -15,6 +15,16 @@ class GameGrid extends React.Component {
     this.lessonIndex = this.props.lessonKey;
   }
 
+  componentDidUpdate = () => {
+    console.log('this is where our success sound will trigger!');
+
+    // play chime on successful submission
+    if (this.props.lessonsReducer.lessons[this.lessonIndex].lessonPassed) {
+      this.audioFile.current.play();
+    }
+
+  }
+
   render() {
     
     // CSS grid settings

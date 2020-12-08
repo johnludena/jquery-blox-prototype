@@ -1,15 +1,13 @@
-const {
-  core: {describe, it, expect, run},
-  enzyme: {mount},
-  prettify,
-} = window.jestLite;
-
-describe('Array', () => {
-  it('has three items', () => {
+describe('Array tests', () => {
   
+  it('has three items', () => {
     expect(fruits).toHaveLength(3);
+    testStatus = true;
+  });
+
+  it('is defined', () => {
+    expect(fruits).toBeDefined();
+    testStatus = true;
   });
   
 });
-
-prettify.toHTML(run(), document.getElementById('jest-lite-wrapper'));

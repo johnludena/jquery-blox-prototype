@@ -1,2 +1,3 @@
 // create an array with three items
-let fruits = ['Pineapple', 'Mangoes', 'Bananas']
+let fruits = ['Pineapple', 'Mangoes', 'Bananas'];
+console.log('fruits:', fruits);
