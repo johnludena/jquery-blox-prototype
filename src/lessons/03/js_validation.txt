@@ -1,27 +1,13 @@
-try {
-    let validatedStatus = null;
-    let lessonMessage = null;
-    let errorMessage = ''
-  if (typeof squareImg !== "undefined") {
-    console.log("CORRECT: squareImg is truthy!");
-    validatedStatus = true;
-    lessonMessage = "You just passed lesson 1!"
-    
-  } else {
-    console.log("INCORRECT: squareImg is not defined");
-    validatedStatus = false;
-    lessonMessage = "Sorry, that's not the right answer"
-  }
+describe('Lesson 2 Tests', () => {
+  
+  it('is defined', () => {
+    expect(havingFunYet).toBeDefined();
+    testStatus = true;
+  });
 
-    // send data to app's outter window
-    window.top.postMessage({
-        internalSignal: true,
-        validated: validatedStatus,
-        message: lessonMessage
-    },
-    window.location.origin
-    );
-} catch (error) {
-  console.log(error);
-}
+  it('is a boolean', () => {
+    expect(havingFunYet).toBe(true);
+    testStatus = true;
+  });
 
+});

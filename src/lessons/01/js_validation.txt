@@ -1,13 +1,8 @@
-describe('Array tests', () => {
+describe('Lesson 1 Tests', () => {
   
-  it('has three items', () => {
-    expect(fruits).toHaveLength(3);
+  it('variable "firstName" is defined', () => {
+    expect(firstName).toBeDefined();
     testStatus = true;
   });
 
-  it('is defined', () => {
-    expect(fruits).toBeDefined();
-    testStatus = true;
-  });
-  
 });

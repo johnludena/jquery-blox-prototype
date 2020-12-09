@@ -1,1 +1,1 @@
-// Lesson 3
+// Create a variable called 'havingFunYet' and set it to the correct boolean ;)

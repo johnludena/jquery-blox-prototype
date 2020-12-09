@@ -1,17 +1,19 @@
-.grids-outter-wrapper {
-  position: relative;
-  width: 800px;
-  height: auto;
-}
-
 // UI elements behind user grid canvas
 .GameGrid {
   .grid {
     display: grid;
 
-    // square blocks
-    > div {
+    .block {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      transition: 0.2s ease-out all;
+      border: 1px solid #1a1856;
+      font-size: 0;
+      border-radius: 20%;
       position: relative;
+      /* transition: 0.2s ease-out all; */
 
       // middle dots
       &::after {
@@ -25,44 +27,38 @@
         left: 50%;
         transform: translate(-50%, -50%);
       }
-      // background-color: #3b3939;
-    }
 
-    .row {
-      display: flex;
-
-      .block {
-        background: #444444;
-        width: 125px;
-        height: 125px;
-        margin: 10px;
-        transition: 0.2s ease-out all;
-        border: 2px solid #444444;
-        // display: inline-block;
-
-        &.pink {
-          border: 2px dashed #de7186;
-        }
-
-        &.completed {
-          background: #de7186;
+      // remove middle dots when block is turned on
+      &.on {
+        &::after {
+          content: none;
         }
       }
+  
+      &.pink {
+        border-color: #e84ea7;
+        color: #e84ea7;
+        background-color: transparent;
+        transition: .2s ease-in-out background;
+  
+        &.on {
+          background-color: #e84ea7;
+  
+        }
+      }
+  
+      &.blue {
+        border-color: #9db1f5;
+        color: #9db1f5;
+        background-color: transparent;
+  
+        &.on {
+          background-color: #9db1f5;
+        }
+      }
+    
     }
+
   }
 
-  // iFrame contents based on user's input or lesson
-  #iFrameWrapper {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  }
 }

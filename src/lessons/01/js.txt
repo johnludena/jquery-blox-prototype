@@ -1,3 +1,1 @@
-// create an array with three items
-let fruits = ['Pineapple', 'Mangoes', 'Bananas'];
-console.log('fruits:', fruits);
+// create a variable called 'firstName' and assign it your first name

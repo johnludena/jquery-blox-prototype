@@ -45,7 +45,10 @@ class Validator extends React.Component {
 
 	componentDidUpdate = () => {
 		this.setData();
-		this.renderIframe();
+		
+		if (!this.lessonData.lessonPassed) {
+			this.renderIframe();
+		}
 	}
 
 	renderIframe = () => {
@@ -80,13 +83,14 @@ class Validator extends React.Component {
 
 			afterAll(() => {
 				if (failedTest === 0) {
+					console.log('PASS!');
 					window.top.postMessage({
 						lessonPassed: true,
 					},
 					window.location.origin
 					);
 				} else {
-					console.log('YOU FAILED ONE OR MORE TESTS. Check your code and try it again!');
+					console.log('FAIL');
 				}
 			});
 
@@ -100,6 +104,9 @@ class Validator extends React.Component {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 				<title>Your Awesome Game!</title>
+				<style>
+					body {margin: 0; background: #15142a};
+				</style>
       
       </head>
 			<body>

@@ -13,14 +13,22 @@ class GameGrid extends React.Component {
 
     this.audioFile = React.createRef();
     this.lessonIndex = this.props.lessonKey;
+
+    this.state = {
+      audioFilePlayedOnce: false,
+      blockOnStatus: '',
+    }
   }
 
   componentDidUpdate = () => {
-    console.log('this is where our success sound will trigger!');
 
-    // play chime on successful submission
-    if (this.props.lessonsReducer.lessons[this.lessonIndex].lessonPassed) {
+    // play chime on successful submission only ONCE per lesson
+    if (this.props.lessonsReducer.lessons[this.lessonIndex].lessonPassed && !this.state.audioFilePlayedOnce) {
       this.audioFile.current.play();
+      this.setState({
+        audioFilePlayedOnce: true,
+        blockOnStatus: 'on',
+      })
     }
 
   }
@@ -46,11 +54,12 @@ class GameGrid extends React.Component {
 
     for (let i = 0; i < blocksNumber; i++) {
       
+      // TODO: Fix static button class
       if (i === lessonData.blockElements[0].blockPosition) {
-        divsArr.push(<div className="block button" key={i}></div>);
+        divsArr.push(<div className={`block pink active ${this.state.blockOnStatus}`} key={i}></div>);
       }
       else {
-        divsArr.push(<div key={i}></div>);
+        divsArr.push(<div className="block" key={i}></div>);
       }
     }
 
