@@ -9,6 +9,9 @@ class Validator extends React.Component {
 
     this.iframe = React.createRef();
 		this.lessonIndex = this.props.lessonKey;
+		this.state = {
+			lessonResetted: false
+		}
 		
   }
 
@@ -62,7 +65,13 @@ class Validator extends React.Component {
 					lessonPassedStatus,
 					lessonIndex,
 				},
+
+				// TODO: Add same re-set here
 			});
+		} else {
+			this.setState({
+				lessonResetted: true
+			})
 		} 
 	};
 

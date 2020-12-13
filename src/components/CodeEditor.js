@@ -29,6 +29,7 @@ class CodeEditor extends React.Component {
     const lessonIndex = this.lessonIndex;
     // let jsCode = this.lessonData.js;
     let lessonSubmittedStatus = false;
+    console.log('lessonSubmitted is FALSE');
 
     this.props.dispatch({
       type: 'CODE_UPDATED',
