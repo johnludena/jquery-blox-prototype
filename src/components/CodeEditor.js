@@ -27,11 +27,21 @@ class CodeEditor extends React.Component {
 
   handleCodeUpdates = (codeType, content) => {
     const lessonIndex = this.lessonIndex;
+    // let jsCode = this.lessonData.js;
+    let lessonSubmittedStatus = false;
 
     this.props.dispatch({
       type: 'CODE_UPDATED',
       payload: {
         codeType, content, lessonIndex
+      }
+    });
+
+    this.props.dispatch({
+      type: 'LESSON_SUBMITTED',
+      payload: {
+         lessonSubmittedStatus,
+         lessonIndex,
       }
     });
   };

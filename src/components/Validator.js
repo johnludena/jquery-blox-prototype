@@ -8,14 +8,14 @@ function Validator(props) {
 
 	const dispatch = useDispatch();
 
-	function catchIframeEvent(event) {
+	function validateScript(event) {
 
 		// exit if lessonPassed is false or if message originates from other windows
 		if (!event.data.lessonPassed || event.origin !== window.location.origin) {
 			return;
 		}
 
-		console.log('catchIframeEvent fn after internal check');
+		console.log('validateScript fn after internal check');
 
 		let lessonPassedStatus = true;
 		let lessonIndex = props.lessonKey;
@@ -33,13 +33,13 @@ function Validator(props) {
 	}
 
 	// set listener once component has been mounted
-	useLayoutEffect(() => {
+	useEffect(() => {
 		console.log('useEffect triggered');
 		
-		window.addEventListener("message", catchIframeEvent);
+		window.addEventListener("message", validateScript);
 
 		// clean up
-		return () => window.removeEventListener("message", catchIframeEvent)
+		return () => window.removeEventListener("message", validateScript)
     
 	}, [lessonData.lessonSubmitted]);
 
