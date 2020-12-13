@@ -3,8 +3,8 @@ import React from "react";
 
 // Components
 import Header from './Header';
-import Validator from './Validator';
-import ValidatorIframe from './ValidatorIframe';
+import Validator from './ValidatorClass';
+// import ValidatorIframe from './ValidatorIframe';
 import TextPanel from './TextPanel';
 import CodeEditor from './CodeEditor';
 

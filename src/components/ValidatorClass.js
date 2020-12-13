@@ -1,51 +1,58 @@
-import React, { useState , useEffect, useLayoutEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { connect } from "react-redux";
+import { createPortal } from "react-dom";
+// import IFrame from "./IFrame";
 
+class Validator extends React.Component {
+  constructor(props) {
+    super(props);
 
-function Validator(props) {
+    this.iframe = React.createRef();
+    this.lessonIndex = this.props.lessonKey;
+  }
 
-	const lessonData = useSelector(state => state.lessonsReducer.lessons[props.lessonKey]);
+  setData = () => {
+    this.lessonData = this.props.lessons[this.props.lessonKey];
+  };
 
-	const dispatch = useDispatch();
+  catchIframeEvent = (event) => {
+    // exit for any other event that where the data property 'lessonPassed' is falsy
+    if (!event.data.lessonPassed) {
+      return;
+    }
 
-	function catchIframeEvent(event) {
+    let lessonPassedStatus = true;
+    let lessonIndex = this.lessonIndex;
 
-		// exit if lessonPassed is false or if message originates from other windows
-		if (!event.data.lessonPassed || event.origin !== window.location.origin) {
-			return;
-		}
-
-		console.log('catchIframeEvent fn after internal check');
-
-		let lessonPassedStatus = true;
-		let lessonIndex = props.lessonKey;
-
-		console.log({lessonPassedStatus, lessonIndex});
-
-		// otherwise, lessonPassed is 'true' and therefore we can update state
-		dispatch({
-			type: 'LESSON_PASSED',
-			payload: {
-				lessonPassedStatus,
-				 lessonIndex,
-			}
-		});
+    // otherwise, lessonPassed is 'true' and therefore we can update state
+    this.props.dispatch({
+      type: "LESSON_PASSED",
+      payload: {
+        lessonPassedStatus,
+        lessonIndex,
+      },
+    });
+	};
+	
+	componentWillMount = () => {
+		window.addEventListener("message", this.catchIframeEvent);
 	}
 
-	// set listener once component has been mounted
-	useLayoutEffect(() => {
-		console.log('useEffect triggered');
-		
-		window.addEventListener("message", catchIframeEvent);
+  componentDidMount = () => {
+    this.setData();
+  };
 
-		// clean up
-		return () => window.removeEventListener("message", catchIframeEvent)
-    
-	}, [lessonData.lessonSubmitted]);
+  componentDidUpdate = () => {
+    this.setData();
+  };
 
-	const userScript = `<script type="text/javascript">${lessonData.js}</script>`;
+  render = () => {
 
-	const validationScript = `<script type="text/javascript">
+		let lessonData = this.props.lessons[this.props.lessonKey];
+
+    let userScript = `<script type="text/javascript">${lessonData.js}</script>`;
+
+    let validationScript = `<script type="text/javascript">
 			console.log('init all iframe validation scripts');
 			const {
 				core: {describe, it, expect, run, afterAll, afterEach},
@@ -84,11 +91,11 @@ function Validator(props) {
 
 			prettify.toHTML(run(), document.body);
 		</script>`;
-	
-	return (
-    <div className="ValidatorIframe">
-      <iframe
-        srcDoc={`
+
+    return (
+      <div className="ValidatorIframe">
+        <iframe ref={this.iframe}
+          srcDoc={`
         <!DOCTYPE html>
       <html lang="en">
       <head>
@@ -116,9 +123,15 @@ function Validator(props) {
       </body>
       </html>
       `}
-      />
-    </div>
-  )
+        />
+      </div>
+    );
+  };
 }
 
-export default Validator;
+const mapStateToProps = function (state) {
+  const { lessons } = state.lessonsReducer;
+  return { lessons };
+};
+
+export default connect(mapStateToProps)(Validator);
