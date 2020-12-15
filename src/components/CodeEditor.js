@@ -26,10 +26,7 @@ class CodeEditor extends React.Component {
   };
 
   handleCodeUpdates = (codeType, content) => {
-    const lessonIndex = this.lessonIndex;
-    // let jsCode = this.lessonData.js;
-    let lessonSubmittedStatus = false;
-    console.log('lessonSubmitted is FALSE');
+    let lessonIndex = this.lessonIndex;
 
     this.props.dispatch({
       type: 'CODE_UPDATED',
@@ -38,19 +35,24 @@ class CodeEditor extends React.Component {
       }
     });
 
+    // switch lessonSubmitted status to off when re-editing to prevent re-render of validation
+    // IS THIS EVEN GETTING UPDATED?
+    let lessonSubmittedStatus = false;
     this.props.dispatch({
       type: 'LESSON_SUBMITTED',
       payload: {
          lessonSubmittedStatus,
          lessonIndex,
       }
-    });
+    }); 
   };
 
   handleCodeSubmission = () => {
-    // let jsCode = this.lessonData.js;
-    let lessonSubmittedStatus = true;
+    
     let lessonIndex = this.lessonIndex;
+    let lessonSubmittedStatus = true;
+
+    console.log('handleCodeSubmission')
 
     this.props.dispatch({
       type: 'LESSON_SUBMITTED',
@@ -59,7 +61,6 @@ class CodeEditor extends React.Component {
          lessonIndex,
       }
     });
-
   };
 
   render = () => {

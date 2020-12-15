@@ -1,6 +1,6 @@
 import lessonsArr from '../../lessons/data'
 
-import { CODE_UPDATED, LESSON_PASSED, LESSON_SUBMITTED  } from "../actions";
+import { CODE_UPDATED, LESSON_PASSED, LESSON_SUBMITTED, SHOWING_FEEDBACK  } from "../actions";
 // import { ADD_USER, TOGGLE_TODO } from "../actionTypes";
 
 const initialState = {
@@ -60,6 +60,26 @@ export default function(state = initialState, action) {
         lessons: state.lessons.map((lesson, index)=> {
           if (index === lessonIndex) {
             return {...lesson, [codeType]: content }
+          }
+          else {
+            return lesson;
+          }
+        })  
+      }
+
+      return newState;
+    }
+
+    case SHOWING_FEEDBACK: {
+      const { showingFeedbackStatus, lessonIndex } = action.payload; // destructure payload properties
+
+      let newState =  {
+        ...state,
+
+        // map through all lessons and return new array with modified object
+        lessons: state.lessons.map((lesson, index)=> {
+          if (index === lessonIndex) {
+            return {...lesson, showingFeedback: showingFeedbackStatus }
           }
           else {
             return lesson;

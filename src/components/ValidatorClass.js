@@ -9,28 +9,13 @@ class Validator extends React.Component {
 
     this.iframe = React.createRef();
 		this.lessonIndex = this.props.lessonKey;
-		this.state = {
-			lessonResetted: false
-		}
-		
+	
   }
 
   setData = () => {
     this.lessonData = this.props.lessons[this.props.lessonKey];
 	};
 
-	shouldComponentUpdate = () => {
-
-		let lessonData = this.props.lessons[this.props.lessonKey]; // replace with setData?
-
-		if (lessonData.lessonSubmitted) {
-			
-			return false;
-		}
-
-		console.log('Validator re-render');
-		return true;
-	}
 
 	componentWillUnmount = () => {
 		window.removeEventListener("message", this.catchIframeEvent);
@@ -45,6 +30,19 @@ class Validator extends React.Component {
 		this.setData();
 		window.addEventListener("message", this.catchIframeEvent);
 	};
+
+
+	shouldComponentUpdate = () => {
+
+		let lessonData = this.props.lessons[this.props.lessonKey]; // replace with setData?
+
+		// if lesson has already been submitted, stop re-rendering
+		if (lessonData.lessonSubmitted) {
+			return false;	
+		}
+
+		return true;
+	}
 	
 	catchIframeEvent = (event) => {
 		// exit for any other Message event coming from third parties (e.g. Redux Dev Tools, etc.)
@@ -52,12 +50,12 @@ class Validator extends React.Component {
       return;
 		}
 
-		console.log(event);
-
 		let lessonPassedStatus = event.data.lessonComplete;
-    let lessonIndex = this.lessonIndex;
+		let lessonIndex = this.lessonIndex;
+		let lessonSubmittedStatus = false;
 
 		if (event.data.lessonComplete) {
+			console.log('LESSON COMPLETE: TRUE')
 			 // otherwise, lessonPassed is 'true' and therefore we can update state
 			 this.props.dispatch({
 				type: "LESSON_PASSED",
@@ -65,13 +63,11 @@ class Validator extends React.Component {
 					lessonPassedStatus,
 					lessonIndex,
 				},
-
-				// TODO: Add same re-set here
 			});
+		
 		} else {
-			this.setState({
-				lessonResetted: true
-			})
+			
+			console.log('LESSON COMPLETE: FALSE')
 		} 
 	};
 
@@ -110,9 +106,7 @@ class Validator extends React.Component {
 					window.top.postMessage({
 						jqueryBloxApp: true,
 						lessonComplete: true,
-					},
-					window.location.origin
-					);
+					});
 				} else {
 					console.log('iFrame says: FAIL');
 					window.top.postMessage({

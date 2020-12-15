@@ -1,6 +1,7 @@
 export const LESSON_PASSED = "LESSON_PASSED";
 export const LESSON_SUBMITTED = "LESSON_SUBMITTED";
 export const CODE_UPDATED = "CODE_UPDATED";
+export const SHOWING_FEEDBACK = "SHOWING_FEEDBACK";
 
 export const lessonPassed = (lessonPassedStatus, lessonIndex) => ({
   type: LESSON_PASSED,
@@ -25,6 +26,14 @@ export const codeUpdated = (codeType, content, lessonIndex,) => ({
     content,
     lessonIndex
   }  
+});
+
+export const showingFeedback = (showingFeedbackStatus, lessonIndex) => ({
+  type: SHOWING_FEEDBACK,
+  payload: {
+    showingFeedbackStatus,
+    lessonIndex
+  }
 });
 
 // export const setFilter = filter => ({ type: SET_FILTER, payload: { filter } });

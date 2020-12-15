@@ -32,6 +32,7 @@ const lessons = [
     js_validation: lesson_01_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
+    showingFeedback: false,
   },
   {
     blockElements: [
@@ -50,6 +51,7 @@ const lessons = [
     js_validation: lesson_02_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
+    showingFeedback: false,
   },
   {
     blockElements: [
@@ -72,6 +74,7 @@ const lessons = [
     js_validation: lesson_03_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
+    showingFeedback: false,
   },
 ];
 
