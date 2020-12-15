@@ -16,29 +16,29 @@ class GameGrid extends React.Component {
 
     this.state = {
       audioFilePlayedOnce: false,
-      blockOnStatus: '',
     }
   }
 
   componentDidUpdate = () => {
 
+    let lessonData = this.props.lessonsReducer.lessons[this.lessonIndex]
+
     // play chime on successful submission only ONCE per lesson
-    if (this.props.lessonsReducer.lessons[this.lessonIndex].lessonPassed && !this.state.audioFilePlayedOnce) {
+    if (lessonData.lessonPassed && !this.state.audioFilePlayedOnce) {
       this.audioFile.current.play();
       this.setState({
         audioFilePlayedOnce: true,
-        blockOnStatus: 'on',
-      })
+      });
     }
-
   }
 
-  render() {
+  render = () => {
     
     // CSS grid settings
     const numberOfRows = 12;
     const numberOfColumns = 10;
     const blocksNumber = numberOfRows * numberOfColumns;
+    console.log(blocksNumber)
     const blockSize = '65px';
 
     const gridStyle = {
@@ -52,15 +52,31 @@ class GameGrid extends React.Component {
 
     let lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
 
+    // loop through all blocks to render complete grid
     for (let i = 0; i < blocksNumber; i++) {
-      
-      // TODO: Fix static button class
-      if (i === lessonData.blockElements[0].blockPosition) {
-        divsArr.push(<div className={`block pink active ${this.state.blockOnStatus}`} key={i}></div>);
+
+      console.log('i:', i);
+
+      // check for which blocks need to be set to active or completed in another loop
+
+      for (let y = 0; y < lessonData.blockElements.length; y++) {
+
+        console.log(lessonData.blockElements[y])
+
+        let currentBlockElement = lessonData.blockElements[y]
+
+        // if we find a match, break out of inner loop
+        if (currentBlockElement.blockPosition === i) {
+          console.log('MATCH! Breaking out of inner loop...');
+          let blockClasses = lessonData.blockElements[y].blockClasses;
+          divsArr.push(<div className={`block ${blockClasses}`} key={i}></div>);
+          break;
+          
+        }
+
       }
-      else {
-        divsArr.push(<div className="block" key={i}></div>);
-      }
+
+      divsArr.push(<div className="block" key={i}></div>); 
     }
 
     return (
