@@ -16,6 +16,7 @@ class GameGrid extends React.Component {
 
     this.state = {
       audioFilePlayedOnce: false,
+      blockOnClass: 'yo' // empty block 'active' or 'on' class for successful submission
     }
   }
 
@@ -28,6 +29,7 @@ class GameGrid extends React.Component {
       this.audioFile.current.play();
       this.setState({
         audioFilePlayedOnce: true,
+        blockOnClass: 'on'
       });
     }
   }
@@ -38,7 +40,6 @@ class GameGrid extends React.Component {
     const numberOfRows = 12;
     const numberOfColumns = 10;
     const blocksNumber = numberOfRows * numberOfColumns;
-    console.log(blocksNumber)
     const blockSize = '65px';
 
     const gridStyle = {
@@ -66,14 +67,13 @@ class GameGrid extends React.Component {
         // if we find a match, break out of inner loop
         if (currentBlockElement.blockPosition === i) {
           let blockClasses = lessonData.blockElements[y].blockClasses;
-          divsArr.push(<div className={`block ${blockClasses}`} key={i}></div>);
+          divsArr.push(<div className={`block ${blockClasses} ${this.state.blockOnClass}`} key={i}></div>);
           foundMatch = true;
         } 
       }
 
       // only render empty block if no match was found
       if (!foundMatch) {
-        console.log('No matches found, rendering an empty div')
         divsArr.push(<div className="block" key={i}></div>); 
       }
     }
