@@ -50,16 +50,20 @@ const lessons = [
   {
     blockElements: [
       {
-        blockClasses: '.button',
+        blockClasses: 'pink on',
         blockPosition: 54
       },
       {
-        blockClasses: '.div',
+        blockClasses: 'blue on',
         blockPosition: 55
       },
       {
-        blockClasses: '.div',
+        blockClasses: 'blue on',
         blockPosition: 56
+      },
+      {
+        blockClasses: 'green',
+        blockPosition: 57
       },
     ],
     // html: lesson_03_html,

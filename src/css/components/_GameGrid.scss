@@ -36,24 +36,34 @@
       }
   
       &.pink {
-        border-color: #e84ea7;
-        color: #e84ea7;
+        border-color: $pink-light;
+        color: $pink-light;
         background-color: transparent;
         transition: .2s ease-in-out background;
   
         &.on {
-          background-color: #e84ea7;
+          background-color: $pink-light;
   
         }
       }
   
       &.blue {
-        border-color: #9db1f5;
-        color: #9db1f5;
+        border-color: $blue-pale;
+        color: $blue-pale;
         background-color: transparent;
   
         &.on {
-          background-color: #9db1f5;
+          background-color: $blue-pale;
+        }
+      }
+
+      &.green {
+        border-color: #57F3E6;
+        color: #57F3E6;
+        background-color: transparent;
+  
+        &.on {
+          background-color: $blue-pale;
         }
       }
     
@@ -62,3 +72,38 @@
   }
 
 }
+
+
+	
+// 	// p.block {
+// 	// 	
+// 	// 	color: #57F3E6;
+// 	// 	background: #30415D;
+// 	// 	display: flex;
+// 	// }
+	
+// 	// img.block {
+// 	// 	border-color: #8BED06;
+// 	// 	color: #8BED06;
+// 	// 	background: #324629;
+// 	// }
+	
+// 	// a.block {
+// 	// 	border-color: #FA7F31;
+// 	// 	color: #FA7F31;
+// 	// 	background: #673824
+// 	// }
+	
+// 	// // TODO: For combination of arrays
+// 	// ul {
+// 	// 	outline: 1px dashed #4e5fa4;
+// 	// 	outline-offset: 5px;
+// 	// 	/* padding: 5px; */
+// 	// }
+	
+// 	// li.block {
+// 	// 	border-color: #74C8E8;
+// 	// 	color: #74C8E8;
+// 	// 	background: #212C5A;
+// 	// }
+// }
