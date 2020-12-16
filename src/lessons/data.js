@@ -36,6 +36,10 @@ const lessons = [
         blockClasses: 'blue',
         blockPosition: 55
       },
+      {
+        blockClasses: 'blue',
+        blockPosition: 56
+      },
     ],
     js: lesson_02_js,
     js_validation: lesson_02_js_validation,

@@ -52,37 +52,35 @@ class GameGrid extends React.Component {
 
     let lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
 
-    // loop through all blocks to render complete grid
+    // loop through all blocks to render complete grid (using 'labels')
     for (let i = 0; i < blocksNumber; i++) {
 
-      console.log('i:', i);
+
+      let foundMatch = false;
 
       // check for which blocks need to be set to active or completed in another loop
-
       for (let y = 0; y < lessonData.blockElements.length; y++) {
-
-        console.log(lessonData.blockElements[y])
 
         let currentBlockElement = lessonData.blockElements[y]
 
         // if we find a match, break out of inner loop
         if (currentBlockElement.blockPosition === i) {
-          console.log('MATCH! Breaking out of inner loop...');
           let blockClasses = lessonData.blockElements[y].blockClasses;
           divsArr.push(<div className={`block ${blockClasses}`} key={i}></div>);
-          break;
-          
-        }
-
+          foundMatch = true;
+        } 
       }
 
-      divsArr.push(<div className="block" key={i}></div>); 
+      // only render empty block if no match was found
+      if (!foundMatch) {
+        console.log('No matches found, rendering an empty div')
+        divsArr.push(<div className="block" key={i}></div>); 
+      }
     }
 
     return (
       <div className="GameGrid">
         <div className="grid" style={gridStyle}>{divsArr}</div>
-
         <audio src={successSound} ref={this.audioFile}></audio>
 
       </div>
