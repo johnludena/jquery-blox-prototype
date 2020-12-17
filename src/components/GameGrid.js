@@ -16,7 +16,7 @@ class GameGrid extends React.Component {
 
     this.state = {
       audioFilePlayedOnce: false,
-      blockOnClass: 'yo' // empty block 'active' or 'on' class for successful submission
+      blockOnClass: '' // empty block 'active' or 'on' class for successful submission
     }
   }
 
