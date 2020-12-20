@@ -1,15 +1,47 @@
 .CodeEditor {
 
-  // Editor tabs
-  ul.tabs {
+  // Tab list
+  ul.react-tabs__tab-list {
     list-style: none;
     padding-left: 0;
     margin-bottom: 0;
     
     li {
-      background: $purple-pale;
       padding: 15px 30px;
       display: inline-block;
+      cursor: pointer;
+
+      // Active tab
+      &.react-tabs__tab--selected {
+        background: $purple-pale;
+      }
+
+      // Pass/fail icons
+      svg {
+        margin-right: 5px;
+
+        &.fa-check-circle {
+          path {
+            fill: $green-lime;
+          }
+        }
+
+        &.fa-times-circle {
+          path {
+            fill: $red;
+          }
+        }
+      }
+    }
+  }
+
+  // tab content
+  .react-tabs__tab-panel {
+    display: none;
+
+    // only show active tab content
+    &.react-tabs__tab-panel--selected {
+      display: block;
     }
   }
   
