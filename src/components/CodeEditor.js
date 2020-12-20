@@ -3,7 +3,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { UnControlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
-// import chai from 'chai';
+import Validator from './Validator';
+
 
 // CodeMirror CSS imports
 import "codemirror/lib/codemirror.css";
@@ -63,6 +64,11 @@ class CodeEditor extends React.Component {
     });
   };
 
+  handleTabChange = (event) => {
+    console.log('handleTabChange');
+    console.log(event)
+  }
+
   render = () => {
     this.setData();
 
@@ -90,24 +96,30 @@ class CodeEditor extends React.Component {
     return (
       <div className="CodeEditor">
         <ul className="tabs">
-          <li>Javascript</li>
+          <li><a href="#tab-code-editor" className="active" onClick={this.handleTabChange}>Javascript</a></li>
+          <li><a href="#tab-results" onClick={this.handleTabChange}>View results</a></li>
         </ul>
-        <CodeMirror
-          value={js}
-          options={{
-            mode: "javascript",
-            ...codeMirrorOptions,
-          }}
-          onChange={(editor, data, js) => {
-            this.handleCodeUpdates("js", js);
-          }}
-        />
+        <div id="tab-code-editor">
+          <CodeMirror
+            value={js}
+            options={{
+              mode: "javascript",
+              ...codeMirrorOptions,
+            }}
+            onChange={(editor, data, js) => {
+              this.handleCodeUpdates("js", js);
+            }}
+          />
 
-        <div className="flex justify-content-between bg-purple-pale padding-30">
-          <button className="primary-btn btn" onClick={this.handleCodeSubmission}>Submit code</button>
-          {showNextButton()}
+          <div className="flex justify-content-between bg-purple-pale padding-30">
+            <button className="primary-btn btn" onClick={this.handleCodeSubmission}>Submit code</button>
+            {showNextButton()}
+          </div>
         </div>
 
+        <div id="tab-results">
+          <Validator lessonKey={this.props.lessonKey} />
+        </div>
       </div>
     );
   }

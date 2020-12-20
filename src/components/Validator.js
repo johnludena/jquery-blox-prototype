@@ -1,52 +1,83 @@
-import React, { useState , useEffect, useLayoutEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { connect } from "react-redux";
+import { createPortal } from "react-dom";
+// import IFrame from "./IFrame";
+
+class Validator extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.iframe = React.createRef();
+		this.lessonIndex = this.props.lessonKey;
+	
+  }
+
+  setData = () => {
+    this.lessonData = this.props.lessons[this.props.lessonKey];
+	};
 
 
-function Validator(props) {
-
-	const lessonData = useSelector(state => state.lessonsReducer.lessons[props.lessonKey]);
-
-	const dispatch = useDispatch();
-
-	function validateScript(event) {
-
-		// exit if lessonPassed is false or if message originates from other windows
-		if (!event.data.lessonPassed || event.origin !== window.location.origin) {
-			return;
-		}
-
-		console.log('validateScript fn after internal check');
-
-		let lessonPassedStatus = true;
-		let lessonIndex = props.lessonKey;
-
-		console.log({lessonPassedStatus, lessonIndex});
-
-		// otherwise, lessonPassed is 'true' and therefore we can update state
-		dispatch({
-			type: 'LESSON_PASSED',
-			payload: {
-				lessonPassedStatus,
-				 lessonIndex,
-			}
-		});
+	componentWillUnmount = () => {
+		window.removeEventListener("message", this.catchIframeEvent);
 	}
 
-	// set listener once component has been mounted
-	useEffect(() => {
-		console.log('useEffect triggered');
+  componentDidMount = () => {
+		this.setData();
+		window.addEventListener("message", this.catchIframeEvent);
+  };
+
+  componentDidUpdate = () => {
+		this.setData();
+		window.addEventListener("message", this.catchIframeEvent);
+	};
+
+
+	shouldComponentUpdate = () => {
+
+		let lessonData = this.props.lessons[this.props.lessonKey]; // replace with setData?
+
+		// if lesson has already been submitted, stop re-rendering
+		if (lessonData.lessonSubmitted) {
+			return false;	
+		}
+
+		return true;
+	}
+	
+	catchIframeEvent = (event) => {
+		// exit for any other Message event coming from third parties (e.g. Redux Dev Tools, etc.)
+    if (!event.data.jqueryBloxApp) {
+      return;
+		}
+
+		let lessonPassedStatus = event.data.lessonComplete;
+		let lessonIndex = this.lessonIndex;
+		let lessonSubmittedStatus = false;
+
+		if (event.data.lessonComplete) {
+			console.log('LESSON COMPLETE: TRUE')
+			 // otherwise, lessonPassed is 'true' and therefore we can update state
+			 this.props.dispatch({
+				type: "LESSON_PASSED",
+				payload: {
+					lessonPassedStatus,
+					lessonIndex,
+				},
+			});
 		
-		window.addEventListener("message", validateScript);
+		} else {
+			
+			console.log('LESSON COMPLETE: FALSE')
+		} 
+	};
 
-		// clean up
-		return () => window.removeEventListener("message", validateScript)
-    
-	}, [lessonData.lessonSubmitted]);
+  render = () => {
 
-	const userScript = `<script type="text/javascript">${lessonData.js}</script>`;
+		let lessonData = this.props.lessons[this.props.lessonKey];
 
-	const validationScript = `<script type="text/javascript">
-			console.log('init all iframe validation scripts');
+    let userScript = `<script type="text/javascript">${lessonData.js}</script>`;
+
+    let validationScript = `<script type="text/javascript">
 			const {
 				core: {describe, it, expect, run, afterAll, afterEach},
 				enzyme: {mount},
@@ -73,22 +104,25 @@ function Validator(props) {
 				if (failedTest === 0) {
 					console.log('iFrame says: PASS!');
 					window.top.postMessage({
-						lessonPassed: true,
-					},
-					window.location.origin
-					);
+						jqueryBloxApp: true,
+						lessonComplete: true,
+					});
 				} else {
 					console.log('iFrame says: FAIL');
+					window.top.postMessage({
+						jqueryBloxApp: true,
+						lessonComplete: false,
+					});
 				}
 			});
 
 			prettify.toHTML(run(), document.body);
 		</script>`;
-	
-	return (
-    <div className="ValidatorIframe">
-      <iframe
-        srcDoc={`
+
+    return (
+      <div className="ValidatorIframe">
+        <iframe ref={this.iframe}
+          srcDoc={`
         <!DOCTYPE html>
       <html lang="en">
       <head>
@@ -97,7 +131,8 @@ function Validator(props) {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 				<title>Your Awesome Game!</title>
 				<style>
-					body {margin: 0; background: #15142a};
+					body {margin: 0; background: #15142a}
+					.jest-lite-report {background: none !important}
 				</style>
       
       </head>
@@ -109,16 +144,22 @@ function Validator(props) {
 				<script	crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/enzyme.js"></script>
 				<script	crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.js"></script>
 
-				${userScript}
+				${lessonData.lessonSubmitted ? userScript : ''}
 
-				${validationScript}
+				${lessonData.lessonSubmitted ? validationScript : ''}
 				
       </body>
       </html>
       `}
-      />
-    </div>
-  )
+        />
+      </div>
+    );
+  };
 }
 
-export default Validator;
+const mapStateToProps = function (state) {
+  const { lessons } = state.lessonsReducer;
+  return { lessons };
+};
+
+export default connect(mapStateToProps)(Validator);
