@@ -102,13 +102,11 @@ class Validator extends React.Component {
 
 			afterAll(() => {
 				if (failedTest === 0) {
-					console.log('iFrame says: PASS!');
 					window.top.postMessage({
 						jqueryBloxApp: true,
 						lessonComplete: true,
 					});
 				} else {
-					console.log('iFrame says: FAIL');
 					window.top.postMessage({
 						jqueryBloxApp: true,
 						lessonComplete: false,

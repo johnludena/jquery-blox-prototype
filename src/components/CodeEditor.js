@@ -126,7 +126,7 @@ class CodeEditor extends React.Component {
 
     return (
       <div className="CodeEditor">
-        <Tabs forceRenderTabPanel="true">
+        <Tabs forceRenderTabPanel={true}>
           <TabList>
             <Tab>Javascript</Tab>
             <Tab>{resultsIcon()} View Results</Tab>
