@@ -15,7 +15,7 @@ class LeftCol extends React.Component {
       <div className="LeftCol col">
 
         <Header />
-        <TextPanel />
+        <TextPanel lessonKey={this.props.lessonKey} />
         <CodeEditor lessonKey={this.props.lessonKey} />
 
       </div>

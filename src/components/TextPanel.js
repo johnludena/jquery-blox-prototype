@@ -1,7 +1,7 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import ReactPaginate from 'react-paginate';
-
-const dataArr = ['Yoooooooo', 'Hello World', 'Sike!']
+import { connect } from 'react-redux';
 
 class TextPanel extends React.Component {
 
@@ -9,8 +9,9 @@ class TextPanel extends React.Component {
 
     super(props);
 
+
     this.state = {
-      data: dataArr,
+      markDownData: this.props.lessons[this.props.lessonKey].textPanelsMd,
       activePageIndex: 0,
       pageCount: 10
     }
@@ -24,10 +25,14 @@ class TextPanel extends React.Component {
     });
   }
 
-  render() {
+  render = () => {
     return (
         <div className="TextPanel">
-          {this.state.data[this.state.activePageIndex]}
+          <div className="ReactMarkDown">
+            <ReactMarkdown>
+              {this.state.markDownData[this.state.activePageIndex]}
+            </ReactMarkdown>
+          </div>
 
           <ReactPaginate
           previousLabel={'previous'}
@@ -48,4 +53,9 @@ class TextPanel extends React.Component {
   }
 }
 
-export default TextPanel;
+const mapStateToProps = function (state) {
+  const { lessons } = state.lessonsReducer;
+  return { lessons };
+};
+
+export default connect(mapStateToProps)(TextPanel);

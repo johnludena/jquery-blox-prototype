@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createPortal } from "react-dom";
-// import IFrame from "./IFrame";
 
 class Validator extends React.Component {
   constructor(props) {

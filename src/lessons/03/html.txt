@@ -1,1 +1,0 @@
-<img class="block" src="https://picsum.photos/125/125" />

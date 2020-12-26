@@ -1,4 +1,0 @@
-button.one {
-  grid-column-start: 5;
-  grid-row-start: 5;
-}

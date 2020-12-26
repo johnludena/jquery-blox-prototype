@@ -1,3 +1,0 @@
-<button class="block one active">btn</button>
-
-<div class="block">div</div>
