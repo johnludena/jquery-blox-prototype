@@ -24,7 +24,6 @@ class TextPanel extends React.Component {
 
   render = () => {
     return (
-      <div className="TextPanelWrapper">
         <div className="TextPanel">
           <div className="ReactMarkDown">
             <ReactMarkdown>
@@ -32,10 +31,7 @@ class TextPanel extends React.Component {
             </ReactMarkdown>
           </div>
 
-          
-        </div>
-
-        <ReactPaginate
+          <ReactPaginate
             previousLabel={"previous"}
             nextLabel={"next"}
             breakLabel={"..."}
@@ -44,11 +40,14 @@ class TextPanel extends React.Component {
             marginPagesDisplayed={1}
             pageRangeDisplayed={3}
             onPageChange={this.handlePageClick}
-            containerClassName={"pagination"}
+            containerClassName={"ReactPaginate"}
             subContainerClassName={"pages pagination"}
             activeClassName={"active"}
           />
-      </div>
+
+        </div>
+
+        
     );
   };
 }

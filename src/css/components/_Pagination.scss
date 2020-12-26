@@ -1,6 +1,7 @@
 // Pagination inside TextPanel component
-ul.pagination {
+.ReactPaginate {
   display: flex;
+  align-items: center;
   list-style: none;
   padding-left: 0;
   justify-content: space-between;
@@ -9,14 +10,36 @@ ul.pagination {
   li {
     a {
       cursor: pointer;
+      padding: 10px;
+
+      &:hover {
+        border: none;
+        background: none;
+      }
     }
 
     // Active state
     &.active {
       a {
         background: $blue-light;
-        padding: 10px;
+        // padding: 10px;
         border-radius: 2px;
+      }
+    }
+
+    // Previous
+    &.previous {
+      a {
+        @extend .btn;
+        @extend .secondary-btn;
+      }
+    }
+
+    // Previous
+    &.next {
+      a {
+        @extend .btn;
+        @extend .secondary-btn;
       }
     }
 
@@ -24,6 +47,11 @@ ul.pagination {
     &.disabled {
       a {
         cursor: not-allowed;
+        background: #50565d;
+
+        &:hover {
+          background: #50565d;
+        }
       }
     }
   }
