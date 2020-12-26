@@ -69,8 +69,6 @@ class CodeEditor extends React.Component {
     let lessonIndex = this.lessonIndex;
     let lessonSubmittedStatus = true;
 
-    console.log("handleCodeSubmission");
-
     this.props.dispatch({
       type: "LESSON_SUBMITTED",
       payload: {

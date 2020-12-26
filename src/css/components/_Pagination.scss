@@ -10,5 +10,21 @@ ul.pagination {
     a {
       cursor: pointer;
     }
+
+    // Active state
+    &.active {
+      a {
+        background: $blue-light;
+        padding: 10px;
+        border-radius: 2px;
+      }
+    }
+
+    // Disabled state
+    &.disabled {
+      a {
+        cursor: not-allowed;
+      }
+    }
   }
 }
