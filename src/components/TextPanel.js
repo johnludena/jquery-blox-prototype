@@ -1,32 +1,30 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import ReactPaginate from 'react-paginate';
-import { connect } from 'react-redux';
+import ReactPaginate from "react-paginate";
+import { connect } from "react-redux";
 
 class TextPanel extends React.Component {
-
   constructor(props) {
-
     super(props);
-
 
     this.state = {
       markDownData: this.props.lessons[this.props.lessonKey].textPanelsMd,
       activePageIndex: 0,
-      pageCount: 10
-    }
+      pageCount: 10,
+    };
   }
 
   handlePageClick = (data) => {
     let selectedPage = data.selected;
 
-    this.setState({ 
+    this.setState({
       activePageIndex: selectedPage,
     });
-  }
+  };
 
   render = () => {
     return (
+      <div className="TextPanelWrapper">
         <div className="TextPanel">
           <div className="ReactMarkDown">
             <ReactMarkdown>
@@ -34,23 +32,25 @@ class TextPanel extends React.Component {
             </ReactMarkdown>
           </div>
 
-          <ReactPaginate
-          previousLabel={'previous'}
-          nextLabel={'next'}
-          breakLabel={'...'}
-          breakClassName={'break-me'}
-          pageCount={this.state.pageCount}
-          marginPagesDisplayed={1}
-          pageRangeDisplayed={3}
-          onPageChange={this.handlePageClick}
-          containerClassName={'pagination'}
-          subContainerClassName={'pages pagination'}
-          activeClassName={'active'}
-        />
+          
         </div>
 
+        <ReactPaginate
+            previousLabel={"previous"}
+            nextLabel={"next"}
+            breakLabel={"..."}
+            breakClassName={"break-me"}
+            pageCount={this.state.pageCount}
+            marginPagesDisplayed={1}
+            pageRangeDisplayed={3}
+            onPageChange={this.handlePageClick}
+            containerClassName={"pagination"}
+            subContainerClassName={"pages pagination"}
+            activeClassName={"active"}
+          />
+      </div>
     );
-  }
+  };
 }
 
 const mapStateToProps = function (state) {
