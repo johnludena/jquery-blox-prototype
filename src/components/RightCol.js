@@ -14,7 +14,7 @@ class RightCol extends React.Component {
   render() {
 
     return (
-      <div className="right-col col">
+      <div className="RightCol col">
         <div className="grids-outter-wrapper">
             <GameGrid lessonKey={this.props.lessonKey} />
         </div>

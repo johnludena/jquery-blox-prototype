@@ -11,12 +11,15 @@ const lesson_01_md_3 = raw("./01/md/3.md");
 // lesson 2
 const lesson_02_js = raw("./02/js.txt");
 const lesson_02_js_validation = raw("./02/js_validation.txt");
+const lesson_02_md_0 = raw("./02/md/0.md");
+const lesson_02_md_1 = raw("./02/md/1.md");
 
 // lesson 3
 const lesson_03_js = raw("./03/js.txt");
 const lesson_03_js_validation = raw("./03/js_validation.txt");
 
 const lessons = [
+  // LESSON 1
   {
     blockElements: [
       {
@@ -29,8 +32,9 @@ const lessons = [
     js_validation: lesson_01_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
-    showingFeedback: false,
   },
+
+  // LESSON 2
   {
     blockElements: [
       {
@@ -46,12 +50,14 @@ const lessons = [
         blockPosition: 56
       },
     ],
+    textPanelsMd: [lesson_02_md_0, lesson_02_md_1],
     js: lesson_02_js,
     js_validation: lesson_02_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
-    showingFeedback: false,
   },
+
+  // lESSON 3
   {
     blockElements: [
       {
@@ -89,7 +95,6 @@ const lessons = [
     js_validation: lesson_03_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
-    showingFeedback: false,
   },
 ];
 

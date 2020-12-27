@@ -9,10 +9,12 @@ class TextPanel extends React.Component {
   constructor(props) {
     super(props);
 
+    let lessonData = this.props.lessons[this.props.lessonKey]
+
     this.state = {
-      markDownData: this.props.lessons[this.props.lessonKey].textPanelsMd,
+      markDownData: lessonData.textPanelsMd,
       activePageIndex: 0,
-      pageCount: this.props.lessons[this.props.lessonKey].textPanelsMd.length,
+      pageCount: lessonData.textPanelsMd.length,
     };
   }
 

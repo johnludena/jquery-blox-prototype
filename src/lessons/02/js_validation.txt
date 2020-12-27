@@ -1,12 +1,22 @@
-describe('Lesson 2 Tests', () => {
+describe('Lesson 2 Test', () => {
   
-  it('is defined', () => {
+  it('variable myAge is defined', () => {
     expect(myAge).toBeDefined();
     testStatus = true;
   });
 
-  it('is an integer', () => {
+  it('variable myAge is an integer', () => {
     expect(myAge).toBe(36);
+    testStatus = true;
+  });
+
+  it('variable "programmingExp" is defined', () => {
+    expect(programmingExp).toBeDefined();
+    testStatus = true;
+  });
+
+  it('variable "programmingExp" is a boolean', () => {
+    expect(myAge).toBe(boolean);
     testStatus = true;
   });
 
