@@ -21,9 +21,10 @@
     // Active state
     &.active {
       a {
-        background: $blue-light;
+        background: #1065c0;
         // padding: 10px;
         border-radius: 2px;
+        border: none;
       }
     }
 
