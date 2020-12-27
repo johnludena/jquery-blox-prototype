@@ -5,6 +5,7 @@ const lesson_01_js = raw("./01/js.txt");
 const lesson_01_js_validation = raw("./01/js_validation.txt");
 const lesson_01_md_0 = raw("./01/md/0.md");
 const lesson_01_md_1 = raw("./01/md/1.md");
+const lesson_01_md_2 = raw("./01/md/2.md");
 
 // lesson 2
 const lesson_02_js = raw("./02/js.txt");
@@ -22,7 +23,7 @@ const lessons = [
         blockPosition: 54
       },
     ],
-    textPanelsMd: [lesson_01_md_0, lesson_01_md_1],
+    textPanelsMd: [lesson_01_md_0, lesson_01_md_1, lesson_01_md_2],
     js: lesson_01_js,
     js_validation: lesson_01_js_validation,
     lessonSubmitted: false,

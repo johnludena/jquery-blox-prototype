@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createPortal } from "react-dom";
 
 class Validator extends React.Component {
   constructor(props) {
@@ -51,7 +50,7 @@ class Validator extends React.Component {
 
 		let lessonPassedStatus = event.data.lessonComplete;
 		let lessonIndex = this.lessonIndex;
-		let lessonSubmittedStatus = false;
+		// let lessonSubmittedStatus = false;
 
 		if (event.data.lessonComplete) {
 			console.log('LESSON COMPLETE: TRUE')
