@@ -5,8 +5,8 @@ describe('Lesson 2 Test', () => {
     testStatus = true;
   });
 
-  it('variable myAge is an integer', () => {
-    expect(myAge).toBe(36);
+  it('variable myAge is a number', () => {
+    expect(typeof myAge === 'number').toBeTruthy();
     testStatus = true;
   });
 
@@ -16,7 +16,7 @@ describe('Lesson 2 Test', () => {
   });
 
   it('variable "programmingExp" is a boolean', () => {
-    expect(myAge).toBe(boolean);
+    expect(typeof programmingExp === 'boolean').toBeTruthy();
     testStatus = true;
   });
 

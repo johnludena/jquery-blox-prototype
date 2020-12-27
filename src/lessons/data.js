@@ -17,6 +17,7 @@ const lesson_02_md_1 = raw("./02/md/1.md");
 // lesson 3
 const lesson_03_js = raw("./03/js.txt");
 const lesson_03_js_validation = raw("./03/js_validation.txt");
+const lesson_03_md_0 = raw("./03/md/0.md");
 
 const lessons = [
   // LESSON 1
@@ -76,21 +77,8 @@ const lessons = [
         blockClasses: 'green',
         blockPosition: 57
       },
-      {
-        blockClasses: 'green-lime',
-        blockPosition: 58
-      },
-      {
-        blockClasses: 'yellow',
-        blockPosition: 59
-      },
-      {
-        blockClasses: 'blue',
-        blockPosition: 60
-      },
     ],
-    // html: lesson_03_html,
-    // css: lesson_03_css,
+    textPanelsMd: [lesson_03_md_0],
     js: lesson_03_js,
     js_validation: lesson_03_js_validation,
     lessonSubmitted: false,
