@@ -52,9 +52,8 @@ class Validator extends React.Component {
 		let lessonIndex = this.lessonIndex;
 		// let lessonSubmittedStatus = false;
 
+		// otherwise, lessonComplete is 'true' and therefore we can update state
 		if (event.data.lessonComplete) {
-			console.log('LESSON COMPLETE: TRUE')
-			 // otherwise, lessonPassed is 'true' and therefore we can update state
 			 this.props.dispatch({
 				type: "LESSON_PASSED",
 				payload: {
@@ -65,7 +64,7 @@ class Validator extends React.Component {
 		
 		} else {
 			
-			console.log('LESSON COMPLETE: FALSE')
+			console.log('Incorrect answer.')
 		} 
 	};
 
@@ -129,6 +128,28 @@ class Validator extends React.Component {
 				<style>
 					body {margin: 0; background: #15142a}
 					.jest-lite-report {background: none !important}
+					.jest-lite-report__errors {display: none !important}
+
+					// Custom scrollbar
+					::-webkit-scrollbar {
+						width: 20px;
+					}
+
+					::-webkit-scrollbar-track {
+						background-color: transparent;
+					}
+
+					::-webkit-scrollbar-thumb {
+						background-color: #403e65;
+						border-radius: 20px;
+						border: 6px solid transparent;
+						background-clip: content-box;
+					}
+
+					// Hover
+					::-webkit-scrollbar-thumb:hover {
+						background-color: #a8bbbf;
+					}
 				</style>
       
       </head>

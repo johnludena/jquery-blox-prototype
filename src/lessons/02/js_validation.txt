@@ -1,11 +1,11 @@
 describe('Lesson 2 Test', () => {
   
-  it('variable myAge is defined', () => {
+  it('variable "myAge" is defined', () => {
     expect(myAge).toBeDefined();
     testStatus = true;
   });
 
-  it('variable myAge is a number', () => {
+  it('variable "myAge" is a number', () => {
     expect(typeof myAge === 'number').toBeTruthy();
     testStatus = true;
   });

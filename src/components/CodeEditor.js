@@ -2,7 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { UnControlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
+import { Controlled as CodeMirror } from "react-codemirror2"; // CodeMirror React wrapper
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
@@ -24,16 +24,10 @@ class CodeEditor extends React.Component {
     this.lessonIndex = this.props.lessonKey;
     this.editorTab = React.createRef();
     this.resultsTab = React.createRef();
-
-    this.state = {
-      codeEditorTab: "active",
-      resultsTab: "",
-      codeEditorTabContent: "active",
-      resultsTabContent: "",
-    };
   }
 
   componentDidUpdate = () => {
+    console.log('componentDidUpdate')
     this.setData();
   };
 
@@ -53,16 +47,32 @@ class CodeEditor extends React.Component {
       },
     });
 
-    // switch lessonSubmitted status to off when re-editing to prevent re-render of validation
-    // IS THIS EVEN GETTING UPDATED?
-    let lessonSubmittedStatus = false;
+    // reset submission status on code change to keep validating user's code in case they want to keep
+    // playing around with different other options after their first successful submission
+    let lessonPassedStatus = false;
+
     this.props.dispatch({
-      type: "LESSON_SUBMITTED",
+      type: "LESSON_PASSED",
       payload: {
-        lessonSubmittedStatus,
+        lessonPassedStatus,
         lessonIndex,
       },
     });
+
+    // if lesson data has been submitted already, reset it to prevent constant re-rendering of component
+    // and avoid flickering of iframe 
+    if (this.lessonData.lessonSubmitted) {
+      console.log('Lesson has already been submitted, resetting...')
+      let lessonSubmittedStatus = false;
+      this.props.dispatch({
+        type: "LESSON_SUBMITTED",
+        payload: {
+          lessonSubmittedStatus,
+          lessonIndex,
+        },
+      });
+      
+    }
   };
 
   handleCodeSubmission = () => {
@@ -76,13 +86,6 @@ class CodeEditor extends React.Component {
         lessonIndex,
       },
     });
-  };
-
-  handleTabChange = (event) => {
-    event.preventDefault();
-    console.log("handleTabChange");
-
-    console.log(event);
   };
 
   render = () => {
@@ -112,7 +115,7 @@ class CodeEditor extends React.Component {
       return;
     };
 
-    const resultsIcon = () => {
+    const showResultsIcon = () => {
       if (this.lessonData.lessonSubmitted && this.lessonData.lessonPassed) {
         return <FontAwesomeIcon icon={faCheckCircle} />;
       } else if (this.lessonData.lessonSubmitted && !this.lessonData.lessonPassed) {
@@ -127,7 +130,7 @@ class CodeEditor extends React.Component {
         <Tabs forceRenderTabPanel={true}>
           <TabList>
             <Tab>Javascript</Tab>
-            <Tab>{resultsIcon()} View Results</Tab>
+            <Tab>{showResultsIcon()} View Results</Tab>
           </TabList>
 
           <TabPanel>
@@ -137,8 +140,8 @@ class CodeEditor extends React.Component {
                 mode: "javascript",
                 ...codeMirrorOptions,
               }}
-              onChange={(editor, data, js) => {
-                this.handleCodeUpdates("js", js);
+              onBeforeChange={(editor, data, value) => {
+                this.handleCodeUpdates("js", value);
               }}
             />
 
