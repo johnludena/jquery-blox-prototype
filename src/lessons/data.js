@@ -33,6 +33,7 @@ const lessons = [
     js_validation: lesson_01_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
+    lessonCompleted: false,
   },
 
   // LESSON 2
@@ -56,6 +57,7 @@ const lessons = [
     js_validation: lesson_02_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
+    lessonCompleted: false,
   },
 
   // lESSON 3
@@ -83,6 +85,7 @@ const lessons = [
     js_validation: lesson_03_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
+    lessonCompleted: false,
   },
 ];
 

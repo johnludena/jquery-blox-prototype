@@ -1,13 +1,15 @@
-export const LESSON_PASSED = "LESSON_PASSED";
-export const LESSON_SUBMITTED = "LESSON_SUBMITTED";
 export const CODE_UPDATED = "CODE_UPDATED";
+export const LESSON_SUBMITTED = "LESSON_SUBMITTED";
+export const LESSON_PASSED = "LESSON_PASSED"; // TODO: Re-name this to something better
+export const LESSON_COMPLETED = "LESSON_COMPLETED";
 
-export const lessonPassed = (lessonPassedStatus, lessonIndex) => ({
-  type: LESSON_PASSED,
+export const codeUpdated = (codeType, content, lessonIndex,) => ({
+  type: CODE_UPDATED,
   payload: {
-    lessonPassedStatus,
+    codeType,
+    content,
     lessonIndex
-  }
+  }  
 });
 
 export const lessonSubmitted = (lessonSubmittedStatus, lessonIndex) => ({
@@ -18,12 +20,24 @@ export const lessonSubmitted = (lessonSubmittedStatus, lessonIndex) => ({
   }
 });
 
-export const codeUpdated = (codeType, content, lessonIndex,) => ({
-  type: CODE_UPDATED,
+export const lessonPassed = (lessonPassedStatus, lessonIndex) => ({
+  type: LESSON_PASSED,
   payload: {
-    codeType,
-    content,
+    lessonPassedStatus,
     lessonIndex
-  }  
+  }
 });
+
+
+export const lessonCompleted = (lessonCompletedStatus, lessonIndex) => ({
+  type: LESSON_COMPLETED,
+  payload: {
+    lessonCompletedStatus,
+    lessonIndex
+  }
+});
+
+
+
+
 

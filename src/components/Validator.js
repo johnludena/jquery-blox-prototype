@@ -6,71 +6,75 @@ class Validator extends React.Component {
     super(props);
 
     this.iframe = React.createRef();
-		this.lessonIndex = this.props.lessonKey;
-	
+    this.lessonIndex = this.props.lessonKey;
   }
 
   setData = () => {
     this.lessonData = this.props.lessons[this.props.lessonKey];
-	};
+  };
 
-
-	componentWillUnmount = () => {
-		window.removeEventListener("message", this.catchIframeEvent);
-	}
+  componentWillUnmount = () => {
+    window.removeEventListener("message", this.catchIframeEvent);
+  };
 
   componentDidMount = () => {
-		this.setData();
-		window.addEventListener("message", this.catchIframeEvent);
+    this.setData();
+    window.addEventListener("message", this.catchIframeEvent);
   };
 
   componentDidUpdate = () => {
-		this.setData();
-		window.addEventListener("message", this.catchIframeEvent);
-	};
+    this.setData();
+    window.addEventListener("message", this.catchIframeEvent);
+  };
 
+  shouldComponentUpdate = () => {
+    let lessonData = this.props.lessons[this.props.lessonKey]; // replace with setData?
 
-	shouldComponentUpdate = () => {
+    // if lesson has already been submitted, stop re-rendering
+    if (lessonData.lessonSubmitted) {
+      return false;
+    }
 
-		let lessonData = this.props.lessons[this.props.lessonKey]; // replace with setData?
+    return true;
+  };
 
-		// if lesson has already been submitted, stop re-rendering
-		if (lessonData.lessonSubmitted) {
-			return false;	
-		}
-
-		return true;
-	}
-	
-	catchIframeEvent = (event) => {
-		// exit for any other Message event coming from third parties (e.g. Redux Dev Tools, etc.)
+  catchIframeEvent = (event) => {
+    // exit for any other Message event coming from third parties (e.g. Redux Dev Tools, etc.)
     if (!event.data.jqueryBloxApp) {
       return;
-		}
+    }
 
-		let lessonPassedStatus = event.data.lessonComplete;
-		let lessonIndex = this.lessonIndex;
-		// let lessonSubmittedStatus = false;
+    let lessonPassedStatus = event.data.lessonComplete;
+    let lessonIndex = this.lessonIndex;
+    // let lessonSubmittedStatus = false;
 
-		// otherwise, lessonComplete is 'true' and therefore we can update state
-		if (event.data.lessonComplete) {
-			 this.props.dispatch({
-				type: "LESSON_PASSED",
+    // otherwise, lessonComplete is 'true' and therefore we can update state
+    if (event.data.lessonComplete) {
+      // first mark submission as complete
+      this.props.dispatch({
+        type: "LESSON_PASSED",
+        payload: {
+          lessonPassedStatus,
+          lessonIndex,
+        },
+			});
+
+			let lessonCompletedStatus = true;
+			
+			this.props.dispatch({
+				type: "LESSON_COMPLETED",
 				payload: {
-					lessonPassedStatus,
+					lessonCompletedStatus,
 					lessonIndex,
 				},
 			});
-		
-		} else {
-			
-			console.log('Incorrect answer.')
-		} 
-	};
+    } else {
+      console.log("Incorrect answer.");
+    }
+  };
 
   render = () => {
-
-		let lessonData = this.props.lessons[this.props.lessonKey];
+    let lessonData = this.props.lessons[this.props.lessonKey];
 
     let userScript = `<script type="text/javascript">${lessonData.js}</script>`;
 
@@ -116,7 +120,8 @@ class Validator extends React.Component {
 
     return (
       <div className="ValidatorIframe">
-        <iframe ref={this.iframe}
+        <iframe
+          ref={this.iframe}
           srcDoc={`
         <!DOCTYPE html>
       <html lang="en">
@@ -161,9 +166,9 @@ class Validator extends React.Component {
 				<script	crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/enzyme.js"></script>
 				<script	crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.js"></script>
 
-				${lessonData.lessonSubmitted ? userScript : ''}
+				${lessonData.lessonSubmitted ? userScript : ""}
 
-				${lessonData.lessonSubmitted ? validationScript : ''}
+				${lessonData.lessonSubmitted ? validationScript : ""}
 				
       </body>
       </html>

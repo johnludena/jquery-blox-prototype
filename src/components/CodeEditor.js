@@ -62,7 +62,6 @@ class CodeEditor extends React.Component {
     // if lesson data has been submitted already, reset it to prevent constant re-rendering of component
     // and avoid flickering of iframe 
     if (this.lessonData.lessonSubmitted) {
-      console.log('Lesson has already been submitted, resetting...')
       let lessonSubmittedStatus = false;
       this.props.dispatch({
         type: "LESSON_SUBMITTED",
@@ -101,7 +100,7 @@ class CodeEditor extends React.Component {
     };
 
     const showNextButton = () => {
-      if (this.lessonData.lessonPassed) {
+      if (this.lessonData.lessonCompleted) {
         return (
           <Link
             className="btn secondary-btn"
