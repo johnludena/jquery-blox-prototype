@@ -8,9 +8,12 @@
   margin-top: 50px;
 
   li {
+    // margin: 0 10px;
+
     a {
       cursor: pointer;
       padding: 10px;
+      border: none;
 
       &:hover {
         border: none;
@@ -21,10 +24,9 @@
     // Active state
     &.active {
       a {
-        background: #1065c0;
         // padding: 10px;
-        border-radius: 2px;
-        border: none;
+        border-radius: 0px;
+        border-bottom: 2px solid $blue-light;
       }
     }
 

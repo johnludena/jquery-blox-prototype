@@ -2,7 +2,6 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import ReactPaginate from "react-paginate";
 import { connect } from "react-redux";
-import firstLessonPanel from '../lessons/01/md/0.md';
 
 
 class TextPanel extends React.Component {
@@ -14,7 +13,7 @@ class TextPanel extends React.Component {
     this.state = {
       markDownData: lessonData.textPanelsMd,
       activePageIndex: 0,
-      pageCount: lessonData.textPanelsMd.length,
+      pageCount: lessonData.textPanelsMd.length || 0,
     };
   }
 
