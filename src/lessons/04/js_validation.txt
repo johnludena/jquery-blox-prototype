@@ -15,8 +15,8 @@ describe('Lesson 4 Test', () => {
     testStatus = true;
   });
 
-  it('variable "numeroFour" is defined', () => {
-    expect(numeroFour).toBeDefined();
+  it('variable "numerTres" is defined', () => {
+    expect(numeroTres).toBeDefined();
     testStatus = true;
   });
 

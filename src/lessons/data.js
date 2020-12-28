@@ -25,6 +25,7 @@ const lesson_03_md_2 = raw("./03/md/2.md");
 const lesson_04_js = raw("./04/js.txt");
 const lesson_04_js_validation = raw("./04/js_validation.txt");
 const lesson_04_md_0 = raw("./04/md/0.md");
+const lesson_04_md_1 = raw("./04/md/1.md");
 
 const lessons = [
   // LESSON 1
@@ -115,7 +116,7 @@ const lessons = [
         blockPosition: 57
       },
     ],
-    textPanelsMd: [lesson_04_md_0],
+    textPanelsMd: [lesson_04_md_0, lesson_04_md_1],
     js: lesson_04_js,
     js_validation: lesson_04_js_validation,
     lessonSubmitted: false,
