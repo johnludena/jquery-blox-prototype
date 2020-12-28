@@ -1,7 +1,7 @@
-describe('Lesson 2 Tests', () => {
+describe('Lesson 3 Test', () => {
   
-  it('is defined', () => {
-    expect(havingFunYet).toBeDefined();
+  it('var "myDreamCar" is defined', () => {
+    expect(myDreamCar).toBeDefined();
     testStatus = true;
   });
 

@@ -35,8 +35,8 @@ class TextPanel extends React.Component {
           </div>
 
           <ReactPaginate
-            previousLabel={"previous"}
-            nextLabel={"next"}
+            previousLabel={"←"}
+            nextLabel={"→"}
             breakLabel={"..."}
             breakClassName={"break-me"}
             pageCount={this.state.pageCount}

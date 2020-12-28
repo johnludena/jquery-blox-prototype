@@ -1,1 +1,1 @@
-// Create a variable called 'havingFunYet' and set it to the correct boolean ;)
+// Create a variable called 'myDreamCar' and set set it to an object with your dream car's properties

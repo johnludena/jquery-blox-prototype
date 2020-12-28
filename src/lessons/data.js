@@ -18,6 +18,13 @@ const lesson_02_md_1 = raw("./02/md/1.md");
 const lesson_03_js = raw("./03/js.txt");
 const lesson_03_js_validation = raw("./03/js_validation.txt");
 const lesson_03_md_0 = raw("./03/md/0.md");
+const lesson_03_md_1 = raw("./03/md/1.md");
+const lesson_03_md_2 = raw("./03/md/2.md");
+
+// lesson 4
+const lesson_04_js = raw("./04/js.txt");
+const lesson_04_js_validation = raw("./04/js_validation.txt");
+const lesson_04_md_0 = raw("./04/md/0.md");
 
 const lessons = [
   // LESSON 1
@@ -80,9 +87,37 @@ const lessons = [
         blockPosition: 57
       },
     ],
-    textPanelsMd: [lesson_03_md_0],
+    textPanelsMd: [lesson_03_md_0, lesson_03_md_1, lesson_03_md_2],
     js: lesson_03_js,
     js_validation: lesson_03_js_validation,
+    lessonSubmitted: false,
+    lessonPassed: false,
+    lessonCompleted: false,
+  },
+
+  // lESSON 4
+  {
+    blockElements: [
+      {
+        blockClasses: 'pink',
+        blockPosition: 54
+      },
+      {
+        blockClasses: 'purple-light',
+        blockPosition: 55
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 56
+      },
+      {
+        blockClasses: 'green',
+        blockPosition: 57
+      },
+    ],
+    textPanelsMd: [lesson_04_md_0],
+    js: lesson_04_js,
+    js_validation: lesson_04_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
     lessonCompleted: false,

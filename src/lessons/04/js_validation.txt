@@ -1,0 +1,23 @@
+describe('Lesson 4 Test', () => {
+  
+  it('variable "fruits" is defined', () => {
+    expect(fruits).toBeDefined();
+    testStatus = true;
+  });
+
+  it('variable "fruits" is an array', () => {
+    expect(fruits).toBe(true);
+    testStatus = true;
+  });
+
+  it('variable "fruits" is an array with length of 3', () => {
+    expect(fruits).toBe(true);
+    testStatus = true;
+  });
+
+  it('variable "numeroFour" is defined', () => {
+    expect(numeroFour).toBeDefined();
+    testStatus = true;
+  });
+
+});
