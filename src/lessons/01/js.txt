@@ -1,1 +1,1 @@
-// Create a variable called 'firstName' and assign it your first name. You may or may not be called this for the rest of the game ;)
+// Create a variable called 'firstName' and assign it your first name.

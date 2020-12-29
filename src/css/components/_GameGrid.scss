@@ -91,6 +91,14 @@
           background-color: $purple-light;
         }
       }
+
+      &.red {
+        border-color: $red;
+  
+        &.on {
+          background-color: $red;
+        }
+      }
     
     }
 

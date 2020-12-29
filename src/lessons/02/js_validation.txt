@@ -15,9 +15,4 @@ describe('Lesson 2 Test', () => {
     testStatus = true;
   });
 
-  it('variable "programmingExp" is a boolean', () => {
-    expect(typeof programmingExp === 'boolean').toBeTruthy();
-    testStatus = true;
-  });
-
 });

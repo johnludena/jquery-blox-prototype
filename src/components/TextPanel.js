@@ -2,6 +2,8 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import ReactPaginate from "react-paginate";
 import { connect } from "react-redux";
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import {atomDark as syntaxHighlighterTheme} from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 
 class TextPanel extends React.Component {
@@ -26,12 +28,20 @@ class TextPanel extends React.Component {
   };
 
   render = () => {
+
+    // markdown with JS code highlights renderer
+    const renderers = {
+      code: ({language, value}) => {
+        return <SyntaxHighlighter style={syntaxHighlighterTheme} language={language} children={value} />
+      }
+    }
+
+    const markDownData = this.state.markDownData[this.state.activePageIndex];
+
     return (
         <div className="TextPanel">
           <div className="ReactMarkDown">
-            <ReactMarkdown>
-              {this.state.markDownData[this.state.activePageIndex]}
-            </ReactMarkdown>
+            <ReactMarkdown renderers={renderers} children={markDownData} />
           </div>
 
           <ReactPaginate

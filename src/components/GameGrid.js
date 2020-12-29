@@ -37,7 +37,7 @@ class GameGrid extends React.Component {
   render = () => {
     
     // CSS grid settings
-    const numberOfRows = 10;
+    const numberOfRows = 9;
     const numberOfColumns = 9;
     const blocksNumber = numberOfRows * numberOfColumns;
     const blockSize = '65px';

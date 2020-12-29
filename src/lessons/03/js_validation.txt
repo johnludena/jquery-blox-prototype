@@ -5,9 +5,4 @@ describe('Lesson 3 Test', () => {
     testStatus = true;
   });
 
-  it('is a boolean', () => {
-    expect(havingFunYet).toBe(true);
-    testStatus = true;
-  });
-
 });
