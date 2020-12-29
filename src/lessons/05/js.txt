@@ -1,1 +1,1 @@
-// Create an array called 'fruits' with your 5 favorite types of fruits and one called 'numeroFour' and set it to the fourth member item of the array
+// Create a jQuery object for a 'button' element with class 'btn'
