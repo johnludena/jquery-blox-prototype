@@ -35,6 +35,12 @@ const lesson_05_md_1 = raw("./05/md/1.md");
 const lesson_05_md_2 = raw("./05/md/2.md");
 const lesson_05_md_3 = raw("./05/md/3.md");
 
+// lesson 6
+const lesson_06_js = raw("./06/js.txt");
+const lesson_06_js_validation = raw("./06/js_validation.txt");
+const lesson_06_md_0 = raw("./06/md/0.md");
+const lesson_06_md_1 = raw("./06/md/1.md");
+
 const lessons = [
   // LESSON 1
   {
@@ -232,6 +238,72 @@ const lessons = [
     textPanelsMd: [lesson_05_md_0, lesson_05_md_1, lesson_05_md_2, lesson_05_md_3],
     js: lesson_05_js,
     js_validation: lesson_05_js_validation,
+    lessonSubmitted: false,
+    lessonPassed: false,
+    lessonCompleted: false,
+  },
+
+  // lESSON 6
+  {
+    blockElements: [
+      {
+        blockClasses: 'pink on',
+        blockPosition: 40
+      },
+      {
+        blockClasses: 'blue on',
+        blockPosition: 41
+      },
+      {
+        blockClasses: 'blue on',
+        blockPosition: 39
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 49
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 50
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 58
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 42
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 51
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 60
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 69
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 78
+      },
+      {
+        blockClasses: 'red',
+        blockPosition: 59
+      },
+      {
+        blockClasses: 'red',
+        blockPosition: 68
+      },
+      
+      
+    ],
+    textPanelsMd: [lesson_06_md_0, lesson_06_md_1],
+    js: lesson_06_js,
+    js_validation: lesson_06_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
     lessonCompleted: false,
