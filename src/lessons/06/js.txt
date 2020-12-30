@@ -1,1 +1,1 @@
-// Add a 'click' event to a button element with the class 'btn'. After the user clicks it, a console.log statement should read "You clicked me"
+// Create a function called 'showMyName' that logs to the console the words... [** EDIT **]
