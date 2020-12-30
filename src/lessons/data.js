@@ -47,6 +47,12 @@ const lesson_07_js_validation = raw("./07/js_validation.txt");
 const lesson_07_md_0 = raw("./07/md/0.md");
 const lesson_07_md_1 = raw("./07/md/1.md");
 
+// lesson 8
+const lesson_08_js = raw("./08/js.txt");
+const lesson_08_js_validation = raw("./08/js_validation.txt");
+const lesson_08_md_0 = raw("./08/md/0.md");
+const lesson_08_md_1 = raw("./08/md/1.md");
+
 const lessons = [
   // LESSON 1
   {
@@ -376,6 +382,76 @@ const lessons = [
     textPanelsMd: [lesson_07_md_0, lesson_07_md_1],
     js: lesson_07_js,
     js_validation: lesson_07_js_validation,
+    lessonSubmitted: false,
+    lessonPassed: false,
+    lessonCompleted: false,
+  },
+
+  // lESSON 8
+  {
+    blockElements: [
+      {
+        blockClasses: 'pink on',
+        blockPosition: 40
+      },
+      {
+        blockClasses: 'blue on',
+        blockPosition: 41
+      },
+      {
+        blockClasses: 'blue on',
+        blockPosition: 39
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 49
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 50
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 58
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 42
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 51
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 60
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 69
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 78
+      },
+      {
+        blockClasses: 'red',
+        blockPosition: 59
+      },
+      {
+        blockClasses: 'red',
+        blockPosition: 68
+      },
+      {
+        blockClasses: 'red',
+        blockPosition: 77
+      },
+      
+      
+    ],
+    textPanelsMd: [lesson_08_md_0, lesson_08_md_1],
+    js: lesson_08_js,
+    js_validation: lesson_08_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
     lessonCompleted: false,
