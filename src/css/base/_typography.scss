@@ -66,6 +66,16 @@ a {
       background: #4c29b9;
     }
   }
+
+  &.disabled {
+    cursor: not-allowed;
+    background: #50565d;
+    pointer-events: none;
+
+      &:hover {
+        background: #50565d;
+      }
+  }
 }
 
 
