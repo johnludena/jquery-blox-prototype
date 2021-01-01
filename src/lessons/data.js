@@ -77,6 +77,13 @@ const lesson_11_md_0 = raw("./11/md/0.md");
 const lesson_11_md_1 = raw("./11/md/1.md");
 const lesson_11_md_2 = raw("./11/md/2.md");
 
+// lesson 12
+const lesson_12_js = raw("./12/js.txt");
+const lesson_12_js_validation = raw("./12/js_validation.txt");
+const lesson_12_md_0 = raw("./12/md/0.md");
+const lesson_12_md_1 = raw("./12/md/1.md");
+const lesson_12_md_2 = raw("./12/md/2.md");
+
 const lessons = [
   // LESSON 1
   {
@@ -678,6 +685,74 @@ const lessons = [
     textPanelsMd: [lesson_11_md_0, lesson_11_md_1, lesson_11_md_2],
     js: lesson_11_js,
     js_validation: lesson_11_js_validation,
+    lessonSubmitted: false,
+    lessonPassed: false,
+    lessonCompleted: false,
+  },
+
+  // lESSON 12
+  {
+    blockElements: [
+      {
+        blockClasses: 'pink on',
+        blockPosition: 40
+      },
+      {
+        blockClasses: 'blue on',
+        blockPosition: 41
+      },
+      {
+        blockClasses: 'blue on',
+        blockPosition: 39
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 49
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 50
+      },
+      {
+        blockClasses: 'orange on',
+        blockPosition: 58
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 42
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 51
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 60
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 69
+      },
+      {
+        blockClasses: 'green on',
+        blockPosition: 78
+      },
+      {
+        blockClasses: 'red',
+        blockPosition: 59
+      },
+      {
+        blockClasses: 'red',
+        blockPosition: 68
+      },
+      {
+        blockClasses: 'red',
+        blockPosition: 77
+      },
+    ],
+    textPanelsMd: [lesson_12_md_0, lesson_12_md_1, lesson_12_md_2],
+    js: lesson_12_js,
+    js_validation: lesson_12_js_validation,
     lessonSubmitted: false,
     lessonPassed: false,
     lessonCompleted: false,
