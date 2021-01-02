@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import logo from "../images/logo.svg"
 
 class Header extends React.Component {
   constructor(props) {
@@ -41,8 +42,8 @@ class Header extends React.Component {
     let nextButton = this.setNextButton();
 
     return (
-        <div className="Header flex justify-content-between">
-            <a id="logo" href="/">jQueryBlox</a>
+        <div className="Header flex justify-content-between align-items-center">
+            <a id="logo" href="/"><img src={logo} alt="jQueryBlox: A Javascript Puzzle Game" /></a>
             <div className="top-navigation">
                 {prevButton}
                 {nextButton}

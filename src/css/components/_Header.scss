@@ -1,3 +1,17 @@
 .Header {
   padding-bottom: 40px;
+
+  #logo {
+    border: none;
+
+    img {
+      width: auto;
+      height: 50px;
+      max-width: 300px;
+    }
+
+    &:hover {
+      background: none;
+    }
+  }
 }
