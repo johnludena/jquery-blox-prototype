@@ -1,11 +1,8 @@
 // Libraries
 import React from "react";
-
-// Components
 import Header from './Header';
 import TextPanel from './TextPanel';
 import CodeEditor from './CodeEditor';
-
 
 class LeftCol extends React.Component {
   
@@ -17,6 +14,7 @@ class LeftCol extends React.Component {
         <Header lessonKey={this.props.lessonKey} />
         <TextPanel lessonKey={this.props.lessonKey} />
         <CodeEditor lessonKey={this.props.lessonKey} />
+      
 
       </div>
     );
