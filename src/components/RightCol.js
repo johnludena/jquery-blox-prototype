@@ -3,6 +3,7 @@ import React from "react";
 import GameGrid from './GameGrid';
 import Modal from 'react-modal';
 import ChatBubble from './ChatBubble';
+import FeedbackForm from './FeedbackForm';
 
 const customModalStyles = {
   content : {
@@ -52,6 +53,8 @@ class RightCol extends React.Component {
             <button onClick={this.closeModal}>close modal</button>
             <h1>Modal content test</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa repellendus culpa exercitationem. Exercitationem explicabo sed quidem? Hic amet, reiciendis omnis, deleniti odio, voluptatem eos totam corporis ipsum illo fugit vel!</p>
+
+            <FeedbackForm />
         </Modal>
 
         <button onClick={this.openModal}>Open Modal</button>
