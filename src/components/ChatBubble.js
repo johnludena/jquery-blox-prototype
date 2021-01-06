@@ -18,6 +18,8 @@ class ChatBubble extends React.Component {
 
   render = () => {
 
+    // Test commit
+
     return (
         <div className="ChatBubble">
             <div className={`${this.state.displayMessages ? 'active' : ''} messages-wrapper`}>
