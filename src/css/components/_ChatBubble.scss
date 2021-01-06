@@ -1,0 +1,43 @@
+.ChatBubble {
+
+  // chat bubble
+  .chat-bubble-wrapper {
+    // background: red;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    .bubble {
+      width: 70px;
+      height: 70px;
+      border-radius: 100%;
+      background: blue;
+      cursor: pointer;
+    }
+
+    .alerts {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      padding: 14px;
+      background: red;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  // messages
+  .messages-wrapper {
+    background: white;
+    color: black;
+    padding: 30px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    max-width: 400px;
+  }
+}

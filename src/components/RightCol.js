@@ -2,6 +2,7 @@
 import React from "react";
 import GameGrid from './GameGrid';
 import Modal from 'react-modal';
+import ChatBubble from './ChatBubble';
 
 const customModalStyles = {
   content : {
@@ -54,6 +55,8 @@ class RightCol extends React.Component {
         </Modal>
 
         <button onClick={this.openModal}>Open Modal</button>
+
+        <ChatBubble />
       </div>
     );
   }
