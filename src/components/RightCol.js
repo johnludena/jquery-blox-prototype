@@ -14,6 +14,7 @@ const customModalStyles = {
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
     maxWidth              : '800px',
+    padding               : '30px'
   }
 };
 
@@ -49,7 +50,7 @@ class RightCol extends React.Component {
             <GameGrid lessonKey={this.props.lessonKey} />
         </div>
 
-        <Modal isOpen={this.state.modalActiveStatus} style={customModalStyles}>
+        <Modal isOpen={this.state.modalActiveStatus} style={customModalStyles} onRequestClose={this.closeModal}>
             <button onClick={this.closeModal}>close modal</button>
             <h1>Modal content test</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa repellendus culpa exercitationem. Exercitationem explicabo sed quidem? Hic amet, reiciendis omnis, deleniti odio, voluptatem eos totam corporis ipsum illo fugit vel!</p>
