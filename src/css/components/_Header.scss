@@ -1,17 +1,27 @@
 .Header {
-  padding-bottom: 40px;
+  padding: 30px 40px;
 
-  #logo {
-    border: none;
+  .brand {
+    display: flex;
 
-    img {
-      width: auto;
-      height: 50px;
-      max-width: 300px;
-    }
-
-    &:hover {
-      background: none;
+    a#logo {
+      display: inline-block;
+      border: none;
+      margin-right: 20px;
+      padding-right: 20px;
+      border-right: 1px solid rgba($blue-pale, .25);
+  
+      img {
+        width: auto;
+        height: 30px;
+        max-width: 300px;
+      }
+  
+      &:hover {
+        background: none;
+      }
     }
   }
+
+  
 }

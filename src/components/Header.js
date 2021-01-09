@@ -43,7 +43,10 @@ class Header extends React.Component {
 
     return (
         <div className="Header flex justify-content-between align-items-center">
-            <a id="logo" href="/"><img src={logo} alt="jQueryBlox: A Javascript Puzzle Game" /></a>
+            <div className="brand">
+              <a id="logo" href="/"><img src={logo} alt="jQueryBlox" /></a>
+              <span>An Interactive Javascript + jQuery Course for Beginners</span>
+            </div> 
             <div className="top-navigation">
                 {prevButton}
                 {nextButton}

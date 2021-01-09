@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 // components
 import LeftCol from "./components/LeftCol";
 import RightCol from "./components/RightCol";
+import Header from "./components/Header";
 
 // css
 import "./App.scss";
@@ -21,8 +22,11 @@ class App extends React.Component {
     let routesArr = this.props.lessonsReducer.lessons.map((lesson, index)=>{
       return (
         <Route path={`/${index + 1}`} key={index + 1}>
-          <LeftCol lessonKey={index}  />
-          <RightCol lessonKey={index} />
+          <Header lessonKey={index}  />
+          <main>
+            <LeftCol lessonKey={index}  />
+            <RightCol lessonKey={index} />
+          </main>
         </Route>
       )
     });

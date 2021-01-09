@@ -10,18 +10,22 @@ body * {
   
 }
 
+main {
+  display: flex;
+}
+
 p {
   margin-top: 0;
 }
 
 #root {
-  display: flex;
+  // display: flex;
   height: 100vh;
   color: white;
 }
 
 .col {
-  padding: 40px;
+  padding: 0 40px;
   width: 50%;
 }
 

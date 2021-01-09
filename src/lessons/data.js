@@ -104,10 +104,6 @@ const lessons = [
   {
     blockElements: [
       {
-        blockClasses: 'pink on',
-        blockPosition: 40
-      },
-      {
         blockClasses: 'blue',
         blockPosition: 41
       },
