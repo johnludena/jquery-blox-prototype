@@ -1,23 +1,18 @@
 describe('Lesson 4 Test', () => {
   
-  it('variable "fruits" is defined', () => {
-    expect(fruits).toBeDefined();
+  it('variable "topFive" is defined', () => {
+    expect(topFive).toBeDefined();
     testStatus = true;
   });
 
-  // it('variable "fruits" is an array', () => {
-  //   expect(fruits).toBe(true);
-  //   testStatus = true;
-  // });
+  it('"topFive" array has 5 items', () => {
+    expect(topFive.length).toBe(5);
+    testStatus = true;
+  });
 
-  // it('variable "fruits" is an array with length of 5', () => {
-  //   expect(fruits).toBe(true);
-  //   testStatus = true;
-  // });
-
-  // it('variable "numeroTres" is defined', () => {
-  //   expect(numeroTres).toBeDefined();
-  //   testStatus = true;
-  // });
+  it('"middleFriend" has value of the third array member', () => {
+    expect(middleFriend).toBe(topFive[2]);
+    testStatus = true;
+  });
 
 });

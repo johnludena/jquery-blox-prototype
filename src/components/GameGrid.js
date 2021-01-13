@@ -16,7 +16,7 @@ class GameGrid extends React.Component {
 
     this.state = {
       audioFilePlayedOnce: false,
-      blockOnClass: '' // empty block 'active' or 'on' class for successful submission
+      blocksCompleted: false // empty block 'active' or 'on' class for successful submission
     }
   }
 
@@ -25,11 +25,11 @@ class GameGrid extends React.Component {
     let lessonData = this.props.lessonsReducer.lessons[this.lessonIndex]
 
     // play chime on successful submission only ONCE per lesson
-    if (lessonData.lessonPassed && !this.state.audioFilePlayedOnce) {
-      this.audioFile.current.play();
+    if (lessonData.lessonCompleted && this.state.audioFilePlayedOnce === false) {
+      // this.audioFile.current.play();
       this.setState({
         audioFilePlayedOnce: true,
-        blockOnClass: 'on'
+        blocksCompleted: true
       });
     }
   }
@@ -49,34 +49,32 @@ class GameGrid extends React.Component {
       padding: '15px',
     }
 
-    let divsArr = [];
-
     let lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
 
-    // loop through all blocks to render complete grid (using 'labels')
+    // First we'll get all the visible blocks up to this lesson from our state obj and create a master object out of them
+    // with the keys as the grid numbers where we'll show our block.
+    let totalCurrentLessons = this.lessonIndex;
+    let masterObj = {};
+
+    for (let i = 0; i <= totalCurrentLessons; i++) {
+      let lessonData = this.props.lessonsReducer.lessons[i];
+      let currentObj = lessonData.blockElements;
+      masterObj = {...masterObj, ...currentObj};
+    }
+
+    // Now we can start looping through a total amount of needed squares and as we do so, checking if their index
+    // matches any of they keys in our master object. If so, we can apply the matching classes to the 'div' element
+    // and push empty array that we'll render at the end.
+    let divsArr = [];
+
     for (let i = 0; i < blocksNumber; i++) {
 
-
-      let foundMatch = false;
-
-      // check for which blocks need to be set to active or completed in another loop
-      for (let y = 0; y < lessonData.blockElements.length; y++) {
-
-        let currentBlockElement = lessonData.blockElements[y]
-
-        // if we find a match, break out of inner loop
-        if (currentBlockElement.blockPosition === i) {
-          let blockClasses = lessonData.blockElements[y].blockClasses;
-          divsArr.push(<div className={`block ${blockClasses} ${this.state.blockOnClass}`} key={i}></div>);
-          foundMatch = true;
-        } 
-      }
-
-      // only render empty block if no match was found
-      if (!foundMatch) {
+      if (masterObj[i]) {
+        divsArr.push(<div className={`block ${masterObj[i]} ${lessonData.lessonCompleted ? 'on' : ''}`} key={i}></div>); 
+      } else {
         divsArr.push(<div className="block" key={i}></div>); 
       }
-    }
+    }    
 
     return (
       <div className="GameGrid">

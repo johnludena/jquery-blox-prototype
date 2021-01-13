@@ -58,7 +58,7 @@ class RightCol extends React.Component {
             <FeedbackForm />
         </Modal>
 
-        <button onClick={this.openModal}>Open Modal</button>
+        {/* <button onClick={this.openModal}>Open Modal</button> */}
 
         <ChatBubble />
       </div>

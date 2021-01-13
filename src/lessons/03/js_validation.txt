@@ -5,4 +5,24 @@ describe('Lesson 3 Test', () => {
     testStatus = true;
   });
 
+   it('property "year" is a number', () => {
+    expect(typeof myDreamCar.year).toBe('number');
+    testStatus = true;
+  });
+
+  it('property "make" has a string value', () => {
+    expect(typeof myDreamCar.make).toBe('string');
+    testStatus = true;
+  });
+
+  it('property "model" has a string value', () => {
+    expect(typeof myDreamCar.model).toBe('string');
+    testStatus = true;
+  });
+
+  it('property "color" has a string value', () => {
+    expect(typeof myDreamCar.color).toBe('string');
+    testStatus = true;
+  });
+
 });

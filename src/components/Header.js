@@ -24,10 +24,7 @@ class Header extends React.Component {
 
     let totalLessons = this.props.lessons.length;
     let currentLessonIndex = this.props.lessonKey;
-
-    console.log({totalLessons, currentLessonIndex})
-
-    
+   
     // disable next button if we are already on last lesson
     if (currentLessonIndex === totalLessons - 1) {
       return <Link className="btn secondary-btn margin-left-20 disabled" to={`/${this.props.lessonKey + 2}`}>Next</Link>

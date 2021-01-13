@@ -25,6 +25,7 @@ const lesson_04_js = raw("./04/js.txt");
 const lesson_04_js_validation = raw("./04/js_validation.txt");
 const lesson_04_md_0 = raw("./04/md/0.md");
 const lesson_04_md_1 = raw("./04/md/1.md");
+const lesson_04_md_2 = raw("./04/md/2.md");
 
 // lesson 5
 const lesson_05_js = raw("./05/js.txt");
@@ -86,12 +87,9 @@ const lesson_12_md_2 = raw("./12/md/2.md");
 const lessons = [
   // LESSON 1
   {
-    blockElements: [
-      {
-        blockClasses: 'pink',
-        blockPosition: 40
-      },
-    ],
+    blockElements: {
+      40: 'pink'
+    },
     textPanelsMd: [lesson_01_md_0, lesson_01_md_1, lesson_01_md_2],
     js: lesson_01_js,
     js_validation: lesson_01_js_validation,
@@ -102,16 +100,10 @@ const lessons = [
 
   // LESSON 2
   {
-    blockElements: [
-      {
-        blockClasses: 'blue',
-        blockPosition: 41
-      },
-      {
-        blockClasses: 'blue',
-        blockPosition: 39
-      },
-    ],
+    blockElements: {
+      41: 'blue',
+      39: 'blue',
+    },
     textPanelsMd: [lesson_02_md_0, lesson_02_md_1],
     js: lesson_02_js,
     js_validation: lesson_02_js_validation,
@@ -122,37 +114,12 @@ const lessons = [
 
   // lESSON 3
   {
-    blockElements: [
-      {
-        blockClasses: 'pink on',
-        blockPosition: 40
-      },
-      {
-        blockClasses: 'blue on',
-        blockPosition: 41
-      },
-      {
-        blockClasses: 'blue on',
-        blockPosition: 39
-      },
-      {
-        blockClasses: 'orange',
-        blockPosition: 49
-      },
-      {
-        blockClasses: 'orange',
-        blockPosition: 50
-      },
-      {
-        blockClasses: 'orange',
-        blockPosition: 58
-      },
-      {
-        blockClasses: 'orange',
-        blockPosition: 59
-      },
-      
-    ],
+    blockElements: {
+      49: 'orange',
+      50: 'orange',
+      58: 'orange',
+      59: 'orange',
+    },
     textPanelsMd: [lesson_03_md_0, lesson_03_md_1, lesson_03_md_2],
     js: lesson_03_js,
     js_validation: lesson_03_js_validation,
@@ -163,55 +130,14 @@ const lessons = [
 
   // lESSON 4
   {
-    blockElements: [
-      {
-        blockClasses: 'pink on',
-        blockPosition: 40
-      },
-      {
-        blockClasses: 'blue on',
-        blockPosition: 41
-      },
-      {
-        blockClasses: 'blue on',
-        blockPosition: 39
-      },
-      {
-        blockClasses: 'orange on',
-        blockPosition: 49
-      },
-      {
-        blockClasses: 'orange on',
-        blockPosition: 50
-      },
-      {
-        blockClasses: 'orange on',
-        blockPosition: 58
-      },
-      {
-        blockClasses: 'green',
-        blockPosition: 42
-      },
-      {
-        blockClasses: 'green',
-        blockPosition: 51
-      },
-      {
-        blockClasses: 'green',
-        blockPosition: 60
-      },
-      {
-        blockClasses: 'green',
-        blockPosition: 69
-      },
-      {
-        blockClasses: 'green',
-        blockPosition: 78
-      },
-      
-      
-    ],
-    textPanelsMd: [lesson_04_md_0, lesson_04_md_1],
+    blockElements: {
+      42: 'green',
+      51: 'green',
+      60: 'green',
+      69: 'green',
+      78: 'green',
+    },
+    textPanelsMd: [lesson_04_md_0, lesson_04_md_1, lesson_04_md_2],
     js: lesson_04_js,
     js_validation: lesson_04_js_validation,
     lessonSubmitted: false,
