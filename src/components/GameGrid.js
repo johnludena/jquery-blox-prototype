@@ -49,31 +49,31 @@ class GameGrid extends React.Component {
       padding: '15px',
     }
 
-    let lessonData = this.props.lessonsReducer.lessons[this.lessonIndex];
-
-    // First we'll get all the visible blocks up to this lesson from our state obj and create a master object out of them
-    // with the keys as the grid numbers where we'll show our block.
     let totalCurrentLessons = this.lessonIndex;
-    let masterObj = {};
-
-    for (let i = 0; i <= totalCurrentLessons; i++) {
-      let lessonData = this.props.lessonsReducer.lessons[i];
-      let currentObj = lessonData.blockElements;
-      masterObj = {...masterObj, ...currentObj};
-    }
-
-    // Now we can start looping through a total amount of needed squares and as we do so, checking if their index
-    // matches any of they keys in our master object. If so, we can apply the matching classes to the 'div' element
-    // and push empty array that we'll render at the end.
     let divsArr = [];
 
+    // Loop through the required number of blocks to render...
     for (let i = 0; i < blocksNumber; i++) {
 
-      if (masterObj[i]) {
-        divsArr.push(<div className={`block ${masterObj[i]} ${lessonData.lessonCompleted ? 'on' : ''}`} key={i}></div>); 
-      } else {
+      // set an intitial flag
+      let foundMatchingBlock = false;
+
+      // second loop through all the current lessons up to this point
+      for (let y = 0; y <= totalCurrentLessons; y++) {
+        let lessonData = this.props.lessonsReducer.lessons[y];
+
+        // if key exists in master state data object, we apply those block classes and switch flag to skip empty block render
+        if (lessonData.blockElements[i]) {
+          divsArr.push(<div className={`block ${lessonData.blockElements[i]} ${lessonData.lessonCompleted ? 'on' : ''}`} key={i}></div>); 
+          foundMatchingBlock = true;
+        } 
+      }
+
+      // if no match is found in state object, we simply render an empty block
+      if (!foundMatchingBlock) {
         divsArr.push(<div className="block" key={i}></div>); 
       }
+
     }    
 
     return (
