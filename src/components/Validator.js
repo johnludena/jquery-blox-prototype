@@ -159,12 +159,12 @@ class Validator extends React.Component {
       
       </head>
 			<body>
-				<link rel="stylesheet" href="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.css"/>
+				<link rel="stylesheet" href="https://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.css"/>
 				<script	crossorigin	src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 				<script	crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-				<script crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/core.js"></script>
-				<script	crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/enzyme.js"></script>
-				<script	crossorigin	src="http://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.js"></script>
+				<script crossorigin	src="https://unpkg.com/jest-lite@1.0.0-alpha.4/dist/core.js"></script>
+				<script	crossorigin	src="https://unpkg.com/jest-lite@1.0.0-alpha.4/dist/enzyme.js"></script>
+				<script	crossorigin	src="https://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.js"></script>
 
 				${lessonData.lessonSubmitted ? userScript : ""}
 
