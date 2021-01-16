@@ -65,6 +65,7 @@ class RightCol extends React.Component {
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa repellendus culpa exercitationem. Exercitationem explicabo sed quidem? Hic amet, reiciendis omnis, deleniti odio, voluptatem eos totam corporis ipsum illo fugit vel!</p>
 
             <Mailchimp
+              className="form--submission"
               action='https://boldpixelmedia.us5.list-manage.com/subscribe/post?u=d6c6ce7da87357b90e9859e81&amp;id=2091bdd722'
               fields={[
                 {
@@ -80,6 +81,17 @@ class RightCol extends React.Component {
                   required: true
                 }
               ]}
+
+              messages = {
+                {
+                  sending: "Sending...",
+                  success: "Thank you for subscribing!",
+                  error: "An unexpected internal error has occurred.",
+                  empty: "You must write an e-mail.",
+                  duplicate: "Too many subscribe attempts for this email address",
+                  button: "Subscribe!"
+                }
+              }
               />
         </Modal>
 
