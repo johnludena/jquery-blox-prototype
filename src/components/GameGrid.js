@@ -37,7 +37,7 @@ class GameGrid extends React.Component {
   render = () => {
     
     // CSS grid settings
-    const numberOfRows = 9;
+    const numberOfRows = 14;
     const numberOfColumns = 9;
     const blocksNumber = numberOfRows * numberOfColumns;
     const blockSize = '65px';
@@ -46,7 +46,7 @@ class GameGrid extends React.Component {
       gridTemplateColumns: `repeat(${numberOfColumns}, ${blockSize})`,
       gridTemplateRows: `repeat(${numberOfRows}, ${blockSize})`,
       gap: '15px',
-      padding: '15px',
+      padding: '0px', // 15px?
     }
 
     let totalCurrentLessons = this.lessonIndex;
