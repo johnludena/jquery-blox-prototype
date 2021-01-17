@@ -17,12 +17,7 @@ class RightCol extends React.Component {
       <div className="RightCol col">
 
         <GameGrid lessonKey={this.props.lessonKey} />
-        <ModalFeedback />
-        <ModalSubscribe />
-
-        {/* <button onClick={this.openModal}>Open Modal</button> */}
-
-        <ChatBubble />
+        
       </div>
     );
   }

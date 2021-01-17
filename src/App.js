@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import LeftCol from "./components/LeftCol";
 import RightCol from "./components/RightCol";
 import Header from "./components/Header";
+import ChatBubble from "./components/ChatBubble";
+import ModalFeedback from "./components/ModalFeedback";
+import ModalSubscribe from "./components/ModalSubscribe";
 
 // css
 import "./App.scss";
@@ -39,6 +42,10 @@ class App extends React.Component {
           </Route>
           {routesArr}
         </Switch>
+        <ChatBubble />
+
+        <ModalFeedback />
+        <ModalSubscribe />
       </Router>
     );
   }

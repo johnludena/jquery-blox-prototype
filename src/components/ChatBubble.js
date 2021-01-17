@@ -1,13 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons'
+
 class ChatBubble extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       displayMessages: false,
-      notifications: 2,
+      notifications: 4,
     };
   }
 
@@ -37,59 +40,51 @@ class ChatBubble extends React.Component {
   };
 
   render = () => {
-
     const notificationsCircle = () => {
       if (this.state.notifications > 0) {
-        return  <span className="alerts">{this.state.notifications}</span>;
+        return <span className="alerts">{this.state.notifications}</span>;
       }
 
       return;
-    }
+    };
 
     return (
       <div className="ChatBubble">
         <div
           className={`${
             this.state.displayMessages ? "active" : ""
-          } messages-wrapper`}
-        >
+          } messages-wrapper`}>
           <ul>
+            <li>Hey there! Thanks for checking out jQueryBlox 🙌</li>
             <li>
-              Aenean sed adipiscing diam donec adipiscing tristique risus nec.
-              Dolor morbi non arcu risus quis varius quam.{" "}
-            </li>
-            <li>
-              Magnis dis parturient{" "}
+              If you have 60 seconds,
               <a href="#" onClick={this.openSubscribeModal}>
-                subscribe
+                I'd love to hear your feedback.
               </a>{" "}
-              nascetur.
+              It would mean a LOT to me.{" "}
             </li>
             <li>
-              Nascetur ridiculus mus mauris vitae ultricies. Velit{" "}
+              Also, if you'd like to hear about the NEXT version of jQueryBlox,{" "}
               <a href="#" onClick={this.openFeedbackModal}>
-                submit feedback
+                subscribe to the newsletter
               </a>{" "}
-              id consectetur purus ut.{" "}
+              and I'll send you updates on its progress.
+            </li>
+            <li>
+              PS - You can get in touch with me <a href="mailto: johnludena@gmail.com">here</a> and <a target="_blank" href="https://www.linkedin.com/in/john-ludena/">here</a>.
             </li>
           </ul>
         </div>
         <div
           className={`${
             this.state.displayMessages ? "active" : ""
-          } chat-bubble-wrapper`}
-        >
-          <button onClick={this.openMessages} className="bubble"></button>
+          } chat-bubble-wrapper`}>
+          <button onClick={this.openMessages} className="bubble"><FontAwesomeIcon icon={faEnvelopeOpenText} /></button>
           {notificationsCircle()}
         </div>
       </div>
     );
   };
 }
-
-// const mapStateToProps = (state) => {
-//   const { isVisible } = state.modalsReducer;
-//   return { isVisible };
-// };
 
 export default connect()(ChatBubble);

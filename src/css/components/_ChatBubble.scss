@@ -1,25 +1,86 @@
-.ChatBubble {
+// @import "./fontawesome/scss/fontawesome.scss";
+// @import "./fontawesome/scss/solid.scss";
+// @import "./fontawesome/scss/brands.scss";
 
+
+
+.ChatBubble {
   // chat bubble
   .chat-bubble-wrapper {
-    // background: red;
     position: fixed;
     bottom: 30px;
     right: 30px;
+   
 
-    &.active {
-      display: block;
-      
-      .bubble {
-        background: red;
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 70px;
+      height: 70px;
+      background: #074cff;
+      border-radius: 100%;
+      // opacity: 1;
+      transition: all .2s ease-in-out;
+
+      // icon
+      svg {
+        color: white;
+        width: auto;
+        height: 36px;
       }
     }
 
-    .bubble {
-      width: 70px;
-      height: 70px;
+    // Open state
+    &.active {
+      display: block;
+      background: gray;
+      background: url('../../images/me.jpg') no-repeat center center;
+      background-size: cover;
       border-radius: 100%;
-      background: blue;
+
+      button {
+        background: none;
+
+        svg {
+          display: none;
+        }
+
+        // close icon
+        &::before {
+          content: 'X';
+          opacity: 0;
+          transition: all .25s ease-in-out;
+          color: white;
+          font-size: 20px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+        }
+
+        // black overlay
+        &::after {
+          content: '';
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(black, .5);
+          z-index: 1;
+        }
+
+
+       &:hover {
+        &::before, &::after {
+          opacity: 1;
+        }
+       }
+      }
     }
 
     .alerts {
@@ -39,14 +100,11 @@
 
   // messages
   .messages-wrapper {
-    background: white;
     color: black;
-    padding: 30px;
     position: fixed;
     bottom: 130px;
     right: 30px;
     max-width: 400px;
-    border-radius: 10px;
     display: none;
 
     &.active {
@@ -60,11 +118,41 @@
 
       li {
         margin: 10px 0;
-        background: blue;
-        padding: 10px;
+        background: #074cff;
+        padding: 12px 15px;
         color: white;
-        border-radius: 10px;
+        border-radius: 20px;
 
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 25px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 15px 15px 0 15px;
+            border-color: #074cff transparent transparent transparent;
+          }
+        }
+
+        a {
+          border-color: white;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            border: none;
+            background: none;
+          }
+        }
       }
     }
   }
