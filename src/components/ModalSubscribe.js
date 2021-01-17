@@ -20,32 +20,30 @@ const customModalStyles = {
 };
 
 class ModalSubscribe extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    console.log('ModalSubscribe > constructor > this.props', this.props)
 
     this.state = {
-      modalActiveStatus: false,
-    };
+      modalActiveStatus: this.props.isModalSubscribeVisible,
+    };    
 
-    console.log('this.props:', this.props)
   }
 
-  openModal = () => {
-    this.setState({
-      modalActiveStatus: true,
-    });
-  };
-
   closeModal = () => {
-    this.setState({
-      modalActiveStatus: false,
+    this.props.dispatch({
+      type: "TOGGLE_SUBSCRIBE_MODAL",
+      payload: {
+        isVisible: false,
+      }
     });
   };
 
   render = () => {
     return (
       <Modal
-        isOpen={this.state.modalActiveStatus}
+        isOpen={this.props.isModalSubscribeVisible}
         style={customModalStyles}
         onRequestClose={this.closeModal}
       >
@@ -90,8 +88,9 @@ class ModalSubscribe extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { isVisible } = state.modalsReducer;
-  return { isVisible }
+  console.log('mapStateToProps state', state)
+  const { isModalSubscribeVisible } = state.modalsReducer;
+  return { isModalSubscribeVisible }
 };
 
 export default connect(mapStateToProps)(ModalSubscribe);

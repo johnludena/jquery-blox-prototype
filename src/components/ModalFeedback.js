@@ -19,32 +19,28 @@ const customModalStyles = {
   }
 };
 
-
 class ModalFeedback extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      modalActiveStatus: false
+      modalActiveStatus: this.props.isModalFeedbackVisible,
     }
   }
 
-  openModal = () => {
-    this.setState({
-      modalActiveStatus: true
-    })
-  }
-
   closeModal = () => {
-    this.setState({
-      modalActiveStatus: false
-    })
-  }
+    this.props.dispatch({
+      type: "TOGGLE_FEEDBACK_MODAL",
+      payload: {
+        isVisible: false,
+      }
+    });
+  };
 
   render = () => {
 
     return (
-        <Modal isOpen={this.state.modalActiveStatus} style={customModalStyles} onRequestClose={this.closeModal}>
+        <Modal isOpen={this.props.isModalFeedbackVisible} style={customModalStyles} onRequestClose={this.closeModal}>
             <button onClick={this.closeModal}>close modal</button>
             <h1>Modal content test</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa repellendus culpa exercitationem. Exercitationem explicabo sed quidem? Hic amet, reiciendis omnis, deleniti odio, voluptatem eos totam corporis ipsum illo fugit vel!</p>
@@ -56,8 +52,9 @@ class ModalFeedback extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    const { lessons } = state.lessonsReducer;
-    return { lessons }
-}
+  console.log('mapStateToProps state', state)
+  const { isModalFeedbackVisible } = state.modalsReducer;
+  return { isModalFeedbackVisible }
+};
 
 export default connect(mapStateToProps)(ModalFeedback);

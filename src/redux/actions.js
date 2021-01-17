@@ -50,6 +50,13 @@ export const toggleSubscribeModal = (modalVisibility) => ({
   }
 });
 
+export const toggleFeedbackModal = (modalVisibility) => ({
+  type: TOGGLE_FEEDBACK_MODAL,
+  payload: {
+    isVisible: modalVisibility,
+  }
+});
+
 
 
 

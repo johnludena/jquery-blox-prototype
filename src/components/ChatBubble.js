@@ -19,12 +19,19 @@ class ChatBubble extends React.Component {
   openSubscribeModal = () => {
     this.props.dispatch({
       type: "TOGGLE_SUBSCRIBE_MODAL",
-      isVisible: true,
+      payload: {
+        isVisible: true,
+      },
     });
   };
 
   openFeedbackModal = () => {
-    console.log("openFeedbackModal link click");
+    this.props.dispatch({
+      type: "TOGGLE_FEEDBACK_MODAL",
+      payload: {
+        isVisible: true,
+      },
+    });
   };
 
   render = () => {
@@ -69,9 +76,9 @@ class ChatBubble extends React.Component {
   };
 }
 
-const mapStateToProps = (state) => {
-  const { isVisible } = state.modalsReducer;
-  return { isVisible };
-};
+// const mapStateToProps = (state) => {
+//   const { isVisible } = state.modalsReducer;
+//   return { isVisible };
+// };
 
-export default connect(mapStateToProps)(ChatBubble);
+export default connect()(ChatBubble);
