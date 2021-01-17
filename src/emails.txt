@@ -1,7 +1,12 @@
+FocusMate peeps:
+
 --
 willpaisley65@gmail.com
-First Name: Will 
+Name: Will 
 Reference: FocusMate
 Description: Young dude, mentioned he might be picking up coding next year. Seems like a good kid. Let's help him out.
 --
-
+caroline.ritenour82@gmail.com
+Name: Caroline M.
+Reference: FocusMate
+Description: Cool middle-age lady, owns a nutrition company with company. Mentioned she did some HTML earlier in school and recently has been fiddling with JS on Airtable for their own website. Let's check out Airtable sometime soon, heard about it in the past...

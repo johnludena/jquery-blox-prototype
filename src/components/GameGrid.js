@@ -1,7 +1,4 @@
-// libs
 import React from "react";
-
-// redux
 import { connect } from "react-redux";
 
 // assets
