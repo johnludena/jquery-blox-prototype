@@ -7,12 +7,14 @@ class ChatBubble extends React.Component {
 
     this.state = {
       displayMessages: false,
+      notifications: 2,
     };
   }
 
   openMessages = () => {
     this.setState({
       displayMessages: !this.state.displayMessages,
+      notifications: 0,
     });
   };
 
@@ -35,6 +37,15 @@ class ChatBubble extends React.Component {
   };
 
   render = () => {
+
+    const notificationsCircle = () => {
+      if (this.state.notifications > 0) {
+        return  <span className="alerts">{this.state.notifications}</span>;
+      }
+
+      return;
+    }
+
     return (
       <div className="ChatBubble">
         <div
@@ -69,7 +80,7 @@ class ChatBubble extends React.Component {
           } chat-bubble-wrapper`}
         >
           <button onClick={this.openMessages} className="bubble"></button>
-          <span className="alerts">2</span>
+          {notificationsCircle()}
         </div>
       </div>
     );
