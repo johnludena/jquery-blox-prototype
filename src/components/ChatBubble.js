@@ -59,14 +59,14 @@ class ChatBubble extends React.Component {
             <li>
               If you have 60 seconds,
               <a href="#" onClick={this.openSubscribeModal}>
-                I'd love to hear your feedback.
+                I'd love to know what you think of it.
               </a>{" "}
-              It would mean a LOT to me.{" "}
+              It would help me a LOT to make it even better.{" "}
             </li>
             <li>
               Also, if you'd like to hear about the NEXT version of jQueryBlox,{" "}
               <a href="#" onClick={this.openFeedbackModal}>
-                subscribe to the newsletter
+                you can join my mailing list
               </a>{" "}
               and I'll send you updates on its progress.
             </li>

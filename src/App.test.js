@@ -1,6 +1,10 @@
 // __tests__/displayUser-test.js
 'use strict';
 
+// import $ from 'jquery';
+const $ = require('jquery');
+
+
 // jest.mock('./fetchCurrentUser');
 
 // test('displays a user after a click', () => {
@@ -35,29 +39,32 @@
 //   expect($('#username').text()).toEqual('John Ludena - Logged Out');
 // });
 
-var topFive = ["Berenise", "Josh", "Arpita", "David", "Emre"];
-var middleFriend = topFive[2];
+// Set up our document body
 
-let testStatus = false;
+document.body.innerHTML = `
+  <button class="blue btn">learn more</button>
+  <button class="red btn">learn more</button>
+`
 
-// PASTE test exercises here
+var blueButton = $('.blue');
+var testStatus = false;
 
 describe('Lesson 4 Test', () => {
   
-  it('variable "topFive" is defined', () => {
-    expect(topFive).toBeDefined();
+  test('variable "blueButton" is defined', () => {
+    expect(blueButton[0]).toBeDefined();
     testStatus = true;
   });
 
-  it('"topFive" array has 5 items', () => {
-    expect(topFive.length).toBe(5);
-    testStatus = true;
-  });
+  test('var "blueButton" has the correct DOM node assigned to it', () => {
 
-  it('"middleFriend" has value of the third array member', () => {
-    expect(middleFriend).toBe(topFive[2]);
+    let blueButtonAnswer = $('.btn.blue');
+
+    expect(blueButton).toMatchObject(blueButtonAnswer);
     testStatus = true;
   });
 
 });
+
+
 

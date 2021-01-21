@@ -23,8 +23,6 @@ class ModalSubscribe extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log('ModalSubscribe > constructor > this.props', this.props)
-
     this.state = {
       modalActiveStatus: this.props.isModalSubscribeVisible,
     };    
@@ -88,7 +86,6 @@ class ModalSubscribe extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps state', state)
   const { isModalSubscribeVisible } = state.modalsReducer;
   return { isModalSubscribeVisible }
 };

@@ -52,7 +52,6 @@ class ModalFeedback extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps state', state)
   const { isModalFeedbackVisible } = state.modalsReducer;
   return { isModalFeedbackVisible }
 };

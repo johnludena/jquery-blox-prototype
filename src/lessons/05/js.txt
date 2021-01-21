@@ -1,1 +1,1 @@
-// Create a jQuery object for a 'button' element with class 'btn'
+// Create a jQuery object for a 'button' element with class 'btn' and assign it to a variable called 'blueButton'
