@@ -46,7 +46,7 @@ document.body.innerHTML = `
   <button class="red btn">learn more</button>
 `
 
-var blueButton = $('.blue');
+var blueButton = $('.red');
 var testStatus = false;
 
 describe('Lesson 4 Test', () => {

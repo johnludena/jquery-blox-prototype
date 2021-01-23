@@ -10,3 +10,8 @@ caroline.ritenour82@gmail.com
 Name: Caroline M.
 Reference: FocusMate
 Description: Cool middle-age lady, owns a nutrition company with company. Mentioned she did some HTML earlier in school and recently has been fiddling with JS on Airtable for their own website. Let's check out Airtable sometime soon, heard about it in the past...
+--
+curtisabbott@me.com
+Name: Curtis 
+Reference: FocusMate
+Description: Cool ass middle-age dude with an epic beard! His FocusMate sessions are from inside a beautiful rustic-looking cabin. Has a sabbath Saturday practice during FocusMate sessions. 

@@ -27,7 +27,6 @@ class CodeEditor extends React.Component {
   }
 
   componentDidUpdate = () => {
-    console.log('componentDidUpdate')
     this.setData();
   };
 

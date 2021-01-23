@@ -1,11 +1,14 @@
-describe('Lesson 4 Test', () => {
+describe('Lesson 5 Test', () => {
   
   it('variable "blueButton" is defined', () => {
-    expect(blueButton).toBeDefined();
+    expect(blueButton[0]).toBeDefined();
     testStatus = true;
   });
 
-  // DOM node test!
-
+  it('var "blueButton" has the correct DOM node assigned to it', () => {
+    let blueButtonAnswer = $('.btn.blue');
+    expect(blueButton).toMatchObject(blueButtonAnswer);
+    testStatus = true;
+  });
 
 });

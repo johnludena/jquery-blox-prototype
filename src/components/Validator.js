@@ -158,7 +158,12 @@ class Validator extends React.Component {
 				</style>
       
       </head>
-			<body>
+      <body>
+
+        ${lessonData.html ? lessonData.html : ""}
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
 				<link rel="stylesheet" href="https://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.css"/>
 				<script	crossorigin	src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 				<script	crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>

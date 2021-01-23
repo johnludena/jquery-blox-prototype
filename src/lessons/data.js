@@ -29,6 +29,7 @@ const lesson_04_md_2 = raw("./04/md/2.md");
 
 // lesson 5
 const lesson_05_js = raw("./05/js.txt");
+const lesson_05_html = raw("./05/html.txt");
 const lesson_05_js_validation = raw("./05/js_validation.txt");
 const lesson_05_md_0 = raw("./05/md/0.md");
 const lesson_05_md_1 = raw("./05/md/1.md");
@@ -151,6 +152,7 @@ const lessons = [
       70: 'red',
     },
     textPanelsMd: [lesson_05_md_0, lesson_05_md_1, lesson_05_md_2, lesson_05_md_3],
+    html: lesson_05_html,
     js: lesson_05_js,
     js_validation: lesson_05_js_validation,
     lessonSubmitted: false,
