@@ -1,66 +1,41 @@
-// __tests__/displayUser-test.js
 'use strict';
 
-// import $ from 'jquery';
-const $ = require('jquery');
+import $ from 'jquery';
+// const $ = require('jquery');
 
 
-// jest.mock('./fetchCurrentUser');
+let testStatus = false;
 
-// test('displays a user after a click', () => {
-//   // Set up our document body
-//   document.body.innerHTML =
-//     '<div>' +
-//     '  <span id="username" />' +
-//     '  <button id="button" />' +
-//     '</div>';
+// FUNCTIONS
+// ============== CHAPTER 5 ================== //
 
-//   // This module has a side-effect
-//   require('./displayUser');
+// 1. Create a function named 'sayHello' that outputs a message to the console.
+// function sayHello() {
+//   console.log('Hi, ny name is John');
+// }
 
-//   const $ = require('jquery');
-//   const fetchCurrentUser = require('./fetchCurrentUser');
-
-//   // Tell the fetchCurrentUser mock function to automatically invoke
-//   // its callback with some data
-//   fetchCurrentUser.mockImplementation(cb => {
-//     cb({
-//       fullName: 'John Ludena',
-//       loggedIn: false,
-//     });
+// describe('Lesson 5a Test', () => {
+  
+//   it('function "sayHello" is defined', () => {
+//     expect(sayHello).toBeDefined();
+//     testStatus = true;
 //   });
 
-//   // Use jquery to emulate a click on our button
-//   $('#button').trigger('click');
-
-//   // Assert that the fetchCurrentUser function was called, and that the
-//   // #username span's inner text was updated as we'd expect it to.
-//   expect(fetchCurrentUser).toBeCalled();
-//   expect($('#username').text()).toEqual('John Ludena - Logged Out');
 // });
 
-// Set up our document body
+// ============== CHAPTER 6 ================== //
 
-document.body.innerHTML = `
-  <button class="blue btn">learn more</button>
-  <button class="red btn">learn more</button>
-`
+// 2. Invoke the function below to actually run and output its message to the console
+function sayHelloBack() {
+  console.log('Hi there! Nice to meet you kind stranger.');
+}
 
-var blueButton = $('.red');
-var testStatus = false;
+sayHelloBack();
 
-describe('Lesson 4 Test', () => {
+describe('Lesson 5b Test', () => {
   
-  test('variable "blueButton" is defined', () => {
-    expect(blueButton[0]).toBeDefined();
-    testStatus = true;
-  });
-
-  test('var "blueButton" has the correct DOM node assigned to it', () => {
-
-    let blueButtonAnswer = $('.btn.blue');
-
-    expect(blueButton).toMatchObject(blueButtonAnswer);
+  it('function "sayHelloBack" returns string "Hi John"', () => {
+    // expect(sayHelloBack()).toBe('Hi John');
     testStatus = true;
   });
 

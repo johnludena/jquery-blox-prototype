@@ -57,21 +57,20 @@ class ChatBubble extends React.Component {
           <ul>
             <li>Hey there! Thanks for checking out jQueryBlox 🙌</li>
             <li>
-              If you have 60 seconds,
-              <a href="#" onClick={this.openSubscribeModal}>
-                I'd love to know what you think of it.
-              </a>{" "}
-              It would help me a LOT to make it even better.{" "}
-            </li>
-            <li>
-              Also, if you'd like to hear about the NEXT version of jQueryBlox,{" "}
               <a href="#" onClick={this.openFeedbackModal}>
-                you can join my mailing list
+              I'd love to hear your feedback!
               </a>{" "}
-              and I'll send you updates on its progress.
+              It would help me a <em>lot</em> to make it even better in the future.{" "}
             </li>
             <li>
-              PS - You can get in touch with me <a href="mailto: johnludena@gmail.com">here</a> and <a target="_blank" href="https://www.linkedin.com/in/john-ludena/">here</a>.
+              Also, if you'd like to hear about the <em>next</em> version of jQueryBlox,{" "}
+              <a href="#" onClick={this.openSubscribeModal}>
+                you can subscribe here
+              </a>{" "}
+              and I'll send you updates on its progress and when it's ready!
+            </li>
+            <li>
+              PS - Just want to say hi? You can get in touch with me <a href="mailto:johnludena@gmail.com">here</a> and <a target="_blank" href="https://www.linkedin.com/in/john-ludena/">here</a>.
             </li>
           </ul>
         </div>

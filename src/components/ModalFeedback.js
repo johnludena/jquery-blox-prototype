@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Modal from 'react-modal';
 import FeedbackForm from './FeedbackForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 Modal.setAppElement('#root'); // set #root container to 'aria-hidden' while modal is active
 
@@ -41,8 +43,10 @@ class ModalFeedback extends React.Component {
 
     return (
         <Modal isOpen={this.props.isModalFeedbackVisible} style={customModalStyles} onRequestClose={this.closeModal}>
-            <button onClick={this.closeModal}>close modal</button>
-            <h1>Modal content test</h1>
+            <button onClick={this.closeModal} className="button--close-modal">
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <h1>I want to hear your feedback</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa repellendus culpa exercitationem. Exercitationem explicabo sed quidem? Hic amet, reiciendis omnis, deleniti odio, voluptatem eos totam corporis ipsum illo fugit vel!</p>
 
             <FeedbackForm />

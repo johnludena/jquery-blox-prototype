@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Modal from "react-modal";
 import Mailchimp from "react-mailchimp-form";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-Modal.setAppElement("#root"); // set #root container to 'aria-hidden' while modal is active
+Modal.setAppElement("#root"); // set #root container to 'aria-hidden' while modal is active (a11y)
 
 const customModalStyles = {
   content: {
@@ -45,8 +47,11 @@ class ModalSubscribe extends React.Component {
         style={customModalStyles}
         onRequestClose={this.closeModal}
       >
-        <button onClick={this.closeModal}>close modal</button>
-        <h1>MailChimp Signup Form</h1>
+        <button onClick={this.closeModal} className="button--close-modal">
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
+
+        <h1>Get updates on the next version of jQueryBlox</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa
           repellendus culpa exercitationem. Exercitationem explicabo sed quidem?

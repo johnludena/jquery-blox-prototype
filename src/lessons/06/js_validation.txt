@@ -1,23 +1,14 @@
-describe('Lesson 4 Test', () => {
+describe('Lesson 5 Test', () => {
   
-  it('variable "fruits" is defined', () => {
-    expect(fruits).toBeDefined();
+  it('variable "blueButton" is defined', () => {
+    expect(blueButton[0]).toBeDefined();
     testStatus = true;
   });
 
-  // it('variable "fruits" is an array', () => {
-  //   expect(fruits).toBe(true);
-  //   testStatus = true;
-  // });
-
-  // it('variable "fruits" is an array with length of 5', () => {
-  //   expect(fruits).toBe(true);
-  //   testStatus = true;
-  // });
-
-  // it('variable "numeroTres" is defined', () => {
-  //   expect(numeroTres).toBeDefined();
-  //   testStatus = true;
-  // });
+  it('var "blueButton" has the correct DOM node assigned to it', () => {
+    let blueButtonAnswer = $('.btn.blue');
+    expect(blueButton).toMatchObject(blueButtonAnswer);
+    testStatus = true;
+  });
 
 });

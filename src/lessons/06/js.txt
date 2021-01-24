@@ -1,1 +1,1 @@
-// Create a function called 'showMyName' that logs to the console the words... [** EDIT **]
+// Create a jQuery object for a 'button' element with class 'btn' and assign it to a variable called 'blueButton'
