@@ -12,7 +12,6 @@ class GameGrid extends React.Component {
     this.lessonIndex = this.props.lessonKey;
 
     this.state = {
-      audioFilePlayedOnce: false,
       blocksCompleted: false // empty block 'active' or 'on' class for successful submission
     }
   }
@@ -21,13 +20,9 @@ class GameGrid extends React.Component {
 
     let lessonData = this.props.lessonsReducer.lessons[this.lessonIndex]
 
-    // play chime on successful submission only ONCE per lesson
-    if (lessonData.lessonCompleted && this.state.audioFilePlayedOnce === false) {
-      // this.audioFile.current.play();
-      this.setState({
-        audioFilePlayedOnce: true,
-        blocksCompleted: true
-      });
+    // play chime on successful completion only ONCE per lesson
+    if (lessonData.lessonCompleted === false && lessonData.lessonPassed) {
+      this.audioFile.current.play();
     }
   }
 

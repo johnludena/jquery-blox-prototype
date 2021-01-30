@@ -95,8 +95,9 @@ const lessons = [
     js: lesson_01_js,
     js_validation: lesson_01_js_validation,
     lessonSubmitted: false,
-    lessonPassed: false,
-    lessonCompleted: false,
+    lessonPassed: false, // indicates whether current user JS code works
+    lessonCompleted: false, // keeps track of whether this lesson has been completed once already
+    successChimePlayed: false
   },
 
   // LESSON 2
@@ -111,6 +112,7 @@ const lessons = [
     lessonSubmitted: false,
     lessonPassed: false,
     lessonCompleted: false,
+    successChimePlayed: false
   },
 
   // lESSON 3
