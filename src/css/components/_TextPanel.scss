@@ -4,9 +4,11 @@
   margin-bottom: 40px;
 
   // code variables
-  p > code {
-    background: #48466f;
+  p, li {
+    code {
+      background: #48466f;
     padding: 0px 3px;
     border-radius: 2px;
+    }
   }
 }

@@ -15,3 +15,9 @@ curtisabbott@me.com
 Name: Curtis 
 Reference: FocusMate
 Description: Cool ass middle-age dude with an epic beard! His FocusMate sessions are from inside a beautiful rustic-looking cabin. Has a sabbath Saturday practice during FocusMate sessions. 
+
+--
+adammehdiarafan@gmail.com
+Name: Adam 
+Reference: FocusMate
+Description: Cool young dude. Currently studying programming for midterms and is interested in learning Javascript too.
