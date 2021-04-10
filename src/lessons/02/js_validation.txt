@@ -1,7 +1,7 @@
 describe('Lesson 2 test', () => {
   it('log a message to the console saying "hello"', () => {
 
-    expect(window.console.log).toHaveBeenCalledWith('hello');
+    expect(consoleSpy).toHaveBeenCalledWith('hello');
     testStatus = true;
   })
 })

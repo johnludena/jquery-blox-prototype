@@ -171,19 +171,12 @@ class Validator extends React.Component {
         <script type="text/javascript">
 
           const {
-            core: {describe, it, expect, run, afterAll, afterEach, global},
+            core: {describe, it, expect, run, afterAll, afterEach},
             enzyme: {mount},
             prettify,
           } = window.jestLite;
 
-          console.log(window.jestLite);
-
-          window.console = {
-            log: window.jestLite.core.jest.fn(),
-            info: window.jestLite.core.jest.fn(),
-            error: window.jestLite.core.jest.fn()
-          }
-          
+          const consoleSpy = window.jestLite.core.jest.spyOn(console, 'log');         
 
         </script>
 
