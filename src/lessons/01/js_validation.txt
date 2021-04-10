@@ -5,4 +5,9 @@ describe('Lesson 1 Test', () => {
     testStatus = true;
   });
 
+  it('variable "firstName" is a string', () => {
+    expect(typeof firstName).toBe('string');
+    testStatus = true;
+  });
+
 });

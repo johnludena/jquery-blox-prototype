@@ -1,18 +1,54 @@
 describe('Lesson 4 Test', () => {
   
-  it('variable "topFive" is defined', () => {
-    expect(topFive).toBeDefined();
+  it('variable "myDreamCar" is defined', () => {
+    expect(myDreamCar).toBeDefined();
     testStatus = true;
   });
 
-  it('"topFive" array has 5 items', () => {
-    expect(topFive.length).toBe(5);
+  it('variable "myDreamCar" is an object', () => {
+    expect(typeof myDreamCar).toBe('object');
     testStatus = true;
   });
 
-  it('"middleFriend" has value of the third array member', () => {
-    expect(middleFriend).toBe(topFive[2]);
+  it('"myDreamCar" has a property called called "year"', () => {
+    expect(myDreamCar.year).toBeDefined();
     testStatus = true;
   });
+
+  it('The "year" property of "myDreamCar" is a number', () => {
+    expect(typeof myDreamCar.year).toBe('number');
+    testStatus = true;
+  });
+
+  it('"myDreamCar" has a property called called "make"', () => {
+    expect(myDreamCar.make).toBeDefined();
+    testStatus = true;
+  });
+
+  it('The "make" property of "myDreamCar" is a string', () => {
+    expect(typeof myDreamCar.make).toBe('string');
+    testStatus = true;
+  });
+
+  it('"myDreamCar" has a property called called "model"', () => {
+    expect(myDreamCar.model).toBeDefined();
+    testStatus = true;
+  });
+
+  it('The "model" property of "myDreamCar" is a string', () => {
+    expect(typeof myDreamCar.model).toBe('string');
+    testStatus = true;
+  });
+
+  it('"myDreamCar" has a property called called "color"', () => {
+    expect(myDreamCar.color).toBeDefined();
+    testStatus = true;
+  });
+
+  it('The "color" property of "myDreamCar" is a string', () => {
+    expect(typeof myDreamCar.color).toBe('string');
+    testStatus = true;
+  });
+
 
 });

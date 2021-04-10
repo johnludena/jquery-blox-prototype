@@ -1,1 +1,1 @@
-// Create an array called `topFive` with your top 5 friends. Also create a variable called `middleFriend` and set it to the value of the third member of your friends array.
+// Create your dream car object with the properties specified above

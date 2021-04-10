@@ -1,1 +1,1 @@
-// Create a variable called 'myDreamCar' and set set it to an object with your dream car's properties
+// Create a variable called 'myAge' with your age today and a variable called 'programmingExp' with a boolean value

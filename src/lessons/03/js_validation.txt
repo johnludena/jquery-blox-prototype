@@ -1,27 +1,22 @@
 describe('Lesson 3 Test', () => {
   
-  it('var "myDreamCar" is defined', () => {
-    expect(myDreamCar).toBeDefined();
+  it('variable "myAge" is defined', () => {
+    expect(myAge).toBeDefined();
     testStatus = true;
   });
 
-   it('property "year" is a number', () => {
-    expect(typeof myDreamCar.year).toBe('number');
+  it('variable "myAge" is a number', () => {
+    expect(typeof myAge).toBe('number');
     testStatus = true;
   });
 
-  it('property "make" has a string value', () => {
-    expect(typeof myDreamCar.make).toBe('string');
+  it('variable "programmingExp" is defined', () => {
+    expect(programmingExp).toBeDefined();
     testStatus = true;
   });
 
-  it('property "model" has a string value', () => {
-    expect(typeof myDreamCar.model).toBe('string');
-    testStatus = true;
-  });
-
-  it('property "color" has a string value', () => {
-    expect(typeof myDreamCar.color).toBe('string');
+  it('variable "programmingExp" is a boolean', () => {
+    expect(typeof programmingExp).toBe('boolean');
     testStatus = true;
   });
 
