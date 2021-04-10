@@ -79,11 +79,7 @@ class Validator extends React.Component {
     let userScript = `<script type="text/javascript">${lessonData.js}</script>`;
 
     let validationScript = `<script type="text/javascript">
-			const {
-				core: {describe, it, expect, run, afterAll, afterEach},
-				enzyme: {mount},
-				prettify,
-			} = window.jestLite;
+			
 
 			let testStatus = false;
 			let passTests = 0;
@@ -172,6 +168,24 @@ class Validator extends React.Component {
 				<script crossorigin	src="https://unpkg.com/jest-lite@1.0.0-alpha.4/dist/core.js"></script>
 				<script	crossorigin	src="https://unpkg.com/jest-lite@1.0.0-alpha.4/dist/enzyme.js"></script>
 				<script	crossorigin	src="https://unpkg.com/jest-lite@1.0.0-alpha.4/dist/prettify.js"></script>
+        <script type="text/javascript">
+
+          const {
+            core: {describe, it, expect, run, afterAll, afterEach, global},
+            enzyme: {mount},
+            prettify,
+          } = window.jestLite;
+
+          console.log(window.jestLite);
+
+          window.console = {
+            log: window.jestLite.core.jest.fn(),
+            info: window.jestLite.core.jest.fn(),
+            error: window.jestLite.core.jest.fn()
+          }
+          
+
+        </script>
 
 				${lessonData.lessonSubmitted ? userScript : ""}
 

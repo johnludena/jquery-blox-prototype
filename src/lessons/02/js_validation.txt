@@ -1,18 +1,7 @@
-describe('Lesson 2 Test', () => {
-  
-  it('variable "myAge" is defined', () => {
-    expect(myAge).toBeDefined();
-    testStatus = true;
-  });
+describe('Lesson 2 test', () => {
+  it('log a message to the console saying "hello"', () => {
 
-  it('variable "myAge" is a number', () => {
-    expect(typeof myAge === 'number').toBeTruthy();
+    expect(window.console.log).toHaveBeenCalledWith('hello');
     testStatus = true;
-  });
-
-  it('variable "programmingExp" is defined', () => {
-    expect(programmingExp).toBeDefined();
-    testStatus = true;
-  });
-
-});
+  })
+})

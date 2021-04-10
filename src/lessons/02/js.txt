@@ -1,1 +1,1 @@
-// Create a variable called 'myAge' and one for 'programmingExp' with their correct values
+// Log the word 'hello' to the console
